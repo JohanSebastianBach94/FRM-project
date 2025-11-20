@@ -18,6 +18,17 @@ param(
 Write-Host "Creating attach directory: $AttachDir"
 New-Item -ItemType Directory -Path $AttachDir -Force | Out-Null
 
+# Helper to download safely (catch errors and continue)
+function SafeDownload {
+    param($url, $out)
+    try {
+        Invoke-WebRequest -Uri $url -OutFile $out -UseBasicParsing -ErrorAction Stop
+        Write-Host "  fetched $url -> $out"
+    } catch {
+        Write-Warning "Failed to download $url : $($_.Exception.Message)"
+    }
+}
+
 # World Bank (example: general government gross debt % GDP)
 $wbIndicator = 'GC.DOD.TOTL.GD.ZS'
 $countries = @('FRA','DEU','ITA','ESP','USA','GBR','CHE')
@@ -25,7 +36,7 @@ foreach ($c in $countries) {
     $url = "https://api.worldbank.org/v2/country/$c/indicator/$wbIndicator?format=json&per_page=2000"
     $out = Join-Path $AttachDir "wb_${wbIndicator}_${c}.json"
     Write-Host "Downloading World Bank $c -> $out"
-    Invoke-WebRequest -Uri $url -OutFile $out -UseBasicParsing -ErrorAction SilentlyContinue
+    SafeDownload $url $out
 }
 
 # IMF (CompactData pattern)
@@ -38,7 +49,7 @@ foreach ($s in $imfSeries) {
     $url = "$imfBase/$($s.dataset)/$($s.key)"
     $out = Join-Path $AttachDir $s.fname
     Write-Host "Downloading IMF $($s.key) -> $out"
-    Invoke-WebRequest -Uri $url -OutFile $out -UseBasicParsing -ErrorAction SilentlyContinue
+    SafeDownload $url $out
 }
 
 # ECB BSI sample (SDMX JSON via SDW REST)
@@ -51,8 +62,8 @@ foreach ($s in $ecbSeries) {
     foreach ($host in $ecbHosts) {
         $url = "$host/data/$($s.dataset)/$($s.key)?detail=dataonly&startPeriod=2018-01&format=sdmx-json"
         $out = Join-Path $AttachDir $s.fname
-        Write-Host "Attempting ECB $($s.key) via $host -> $out"
-        Invoke-WebRequest -Uri $url -OutFile $out -UseBasicParsing -ErrorAction SilentlyContinue
+    Write-Host "Attempting ECB $($s.key) via $host -> $out"
+    SafeDownload $url $out
     }
 }
 
@@ -64,14 +75,14 @@ $bisCandidates = @(
 foreach ($b in $bisCandidates) {
     $out = Join-Path $AttachDir $b.fname
     Write-Host "Downloading BIS candidate: $($b.url) -> $out"
-    Invoke-WebRequest -Uri $b.url -OutFile $out -UseBasicParsing -ErrorAction SilentlyContinue
+    SafeDownload $b.url $out
     # also try conservative fallbacks
     $base = $b.url.Split('?')[0]
     $alts = @($base, $base + '/csv', $base + '/CSV')
     foreach ($a in $alts) {
         $altOut = Join-Path $AttachDir ([IO.Path]::GetFileName($a) + '_' + $b.fname)
-        Write-Host "Trying alternative $a -> $altOut"
-        Invoke-WebRequest -Uri $a -OutFile $altOut -UseBasicParsing -ErrorAction SilentlyContinue
+    Write-Host "Trying alternative $a -> $altOut"
+    SafeDownload $a $altOut
     }
 }
 

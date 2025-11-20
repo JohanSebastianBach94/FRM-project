@@ -1,0 +1,38 @@
+name: Prepare attach downloads
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prepare-attach:
+    runs-on: windows-2022
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure PowerShell script is present
+        run: |
+          if (-Not (Test-Path -Path .\scripts\prepare_attach_downloads.ps1)) {
+            Write-Error 'prepare_attach_downloads.ps1 not found in scripts/'; exit 2
+          }
+
+      - name: Run prepare_attach_downloads.ps1
+        shell: pwsh
+        run: |
+          $out = "$GITHUB_WORKSPACE\\attach_downloads"
+          Remove-Item -Recurse -Force -ErrorAction SilentlyContinue $out
+          mkdir $out
+          Write-Host "Running helper to populate $out"
+          & .\scripts\prepare_attach_downloads.ps1 -OutDir $out
+          # Create a zip for reliable artifact upload
+          $zipPath = "$GITHUB_WORKSPACE\\attach_downloads.zip"
+          if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
+          Compress-Archive -Path "$out\\*" -DestinationPath $zipPath
+          Write-Host "Created $zipPath"
+
+      - name: Upload attach bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: attach_downloads
+          path: |
+            attach_downloads.zip

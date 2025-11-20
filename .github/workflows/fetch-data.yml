@@ -1,0 +1,49 @@
+name: Scheduled data fetch
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # daily at 02:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    name: Fetch structural data and commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install requirements
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt || true; fi
+
+      - name: Run fetcher
+        run: |
+          # Run full fetch (World Bank, ECB, IMF, BIS). The script includes preflight checks.
+          python "scripts/extend_fetch_structural_data.py" --only worldbank,ecb,imf,bis
+
+      - name: Commit updated data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data_repository || true
+          if git diff --staged --quiet; then
+            echo "No data changes to commit"
+          else
+            git commit -m "chore(data): automated update of data_repository [ci skip]" || true
+            git push
+          fi

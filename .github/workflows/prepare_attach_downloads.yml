@@ -19,15 +19,18 @@ jobs:
       - name: Run prepare_attach_downloads.ps1
         shell: pwsh
         run: |
-          $out = "$GITHUB_WORKSPACE\\attach_downloads"
+          # Use the environment variable explicitly and build a safe path
+          $workspace = $env:GITHUB_WORKSPACE
+          if ([string]::IsNullOrEmpty($workspace)) { $workspace = (Get-Location).Path }
+          $out = Join-Path $workspace 'attach_downloads'
           Remove-Item -Recurse -Force -ErrorAction SilentlyContinue $out
-          mkdir $out
+          New-Item -ItemType Directory -Path $out -Force | Out-Null
           Write-Host "Running helper to populate $out"
           & .\scripts\prepare_attach_downloads.ps1 -OutDir $out
           # Create a zip for reliable artifact upload
-          $zipPath = "$GITHUB_WORKSPACE\\attach_downloads.zip"
+          $zipPath = Join-Path $workspace 'attach_downloads.zip'
           if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
-          Compress-Archive -Path "$out\\*" -DestinationPath $zipPath
+          Compress-Archive -Path (Join-Path $out '*') -DestinationPath $zipPath
           Write-Host "Created $zipPath"
 
       - name: Upload attach bundle

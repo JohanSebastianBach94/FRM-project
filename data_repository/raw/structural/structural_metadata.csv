@@ -233,3 +233,16 @@ IMF,IFS:USA.NGDP_R,USA,annual,2025-12-07T03:27:39.320041,FAIL,<urlopen error tim
 IMF,IFS:ITA.NGDP_R,ITA,annual,2025-12-07T03:28:14.451760,FAIL,<urlopen error timed out>,IMF IFS nominal GDP (Italy)
 BIS/CDIS,BIS:LBS_D_PUB,,quarterly,2025-12-07T03:28:27.583903,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/structural/bis_lbs_d_pub.csv,BIS Locational Banking Statistics (public CSV)
 BIS/CDIS,CDIS:CDIS_D_PUB,,annual,2025-12-07T03:28:40.194766,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/structural/bis_cdis_d_pub.csv,IMF/BIS Coordinated Direct Investment Survey (public CSV)
+WorldBank,GC.DOD.TOTL.GD.ZS,FRA,annual,2025-12-08T03:21:16.738235,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/macro/wb_GC.DOD.TOTL.GD.ZS_FRA.json,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,DEU,annual,2025-12-08T03:21:16.925342,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/macro/wb_GC.DOD.TOTL.GD.ZS_DEU.json,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,ITA,annual,2025-12-08T03:21:17.333456,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/macro/wb_GC.DOD.TOTL.GD.ZS_ITA.json,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,ESP,annual,2025-12-08T03:21:19.772869,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/macro/wb_GC.DOD.TOTL.GD.ZS_ESP.json,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,USA,annual,2025-12-08T03:21:20.174084,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/macro/wb_GC.DOD.TOTL.GD.ZS_USA.json,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,GBR,annual,2025-12-08T03:21:20.565019,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/macro/wb_GC.DOD.TOTL.GD.ZS_GBR.json,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,CHE,annual,2025-12-08T03:21:20.754074,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/macro/wb_GC.DOD.TOTL.GD.ZS_CHE.json,general government gross debt % GDP
+ECB,BSI:M.U2.N.A.A20.A.1.U2.3000.Z01.E,,monthly,2025-12-08T03:21:31.238146,FAIL,<urlopen error [Errno -2] Name or service not known>,"ECB BSI - Loans to NFCs (Euro area), SDMX guideline syntax (last error: <urlopen error [Errno -2] Name or service not known>)"
+ECB,BSI:M.U2.N.A.A20.A.1.U2.1000.Z01.E,,monthly,2025-12-08T03:21:41.527353,FAIL,<urlopen error [Errno -2] Name or service not known>,ECB BSI - Loans to households (Euro area) (last error: <urlopen error [Errno -2] Name or service not known>)
+IMF,IFS:USA.NGDP_R,USA,annual,2025-12-08T03:22:16.706426,FAIL,<urlopen error timed out>,IMF IFS nominal GDP (guideline CompactData syntax)
+IMF,IFS:ITA.NGDP_R,ITA,annual,2025-12-08T03:22:51.858088,FAIL,<urlopen error timed out>,IMF IFS nominal GDP (Italy)
+BIS/CDIS,BIS:LBS_D_PUB,,quarterly,2025-12-08T03:23:06.985908,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/structural/bis_lbs_d_pub.csv,BIS Locational Banking Statistics (public CSV)
+BIS/CDIS,CDIS:CDIS_D_PUB,,annual,2025-12-08T03:23:21.793340,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/structural/bis_cdis_d_pub.csv,IMF/BIS Coordinated Direct Investment Survey (public CSV)

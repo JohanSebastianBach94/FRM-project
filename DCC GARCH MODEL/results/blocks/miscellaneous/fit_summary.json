@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-01-16T14:37:56.357607",
+  "n_series": 17,
+  "n_observations": 9319,
+  "date_range": {
+    "start": "1990-02-02 00:00:00",
+    "end": "2025-10-22 00:00:00"
+  },
+  "dcc_parameters": {
+    "a": 0.03,
+    "b": 0.9
+  },
+  "adcc_parameters": {
+    "a": 0.03,
+    "b": 0.9,
+    "gamma": 0.0
+  },
+  "garch_convergence": {
+    "converged": 16,
+    "failed": 0
+  }
+}

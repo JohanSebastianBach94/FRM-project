@@ -1,0 +1,11 @@
+{
+  "bis_internal_id": "",
+  "bis_internal_title": "",
+  "series_key": "BORROWERS_CTY:DE|DECIMALS:1|DSR_BORROWERS:P|FREQ:Q|TITLE_TS:Germany - Private non-financial sector",
+  "series_key_norm": "",
+  "bis_source_file": "bis_api_bis_ws_dsr_1_0_all_20251216T142436Z.xml",
+  "catalog_series": "BIS_LBS_Private_NFC_DEU",
+  "bis_series": "BIS_LBS_Private_NFC_DEU",
+  "bis_title": "Germany - Private non-financial sector",
+  "written_at": "2025-12-18T16:41:35.370315Z"
+}

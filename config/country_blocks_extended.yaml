@@ -1,0 +1,991 @@
+#+#+#+#+############################################################
+# Country blocks (governed driver allow-list)
+#
+# Notes:
+# - Series ordering in `series_codes` matters: Step 2 harmonization keeps the first-K
+#   drivers per block (weakest-ISO cutoff).
+# - Downstream factor prep should prefer `outputs/country_block_definition.json`.
+#+#+#+#+############################################################
+
+country_blocks:
+
+# --- USA (USA) ---
+- country: USA
+  iso_code: USA
+  region: USA
+  coverage_window: 1990-2025
+  blocks:
+
+  - key: macro
+    coverage: Core GDP (GDPC1), CPI, unemployment, nominal GDP, BIS credit stocks cover 1990–2025 (monthly/quarterly as noted).
+    status_notes: Ingested series anchored on FRED/Eurostat/WB feeds ensure continuous macro coverage.
+    series_codes:
+    - GDPC1
+    - NAEXKP01USQ661S
+    - CPIAUCSL
+    - UNRATE
+    - BIS_LBS_Private_NFC_USA
+    - M1SL
+    - M2SL
+    - DFF
+    local_series_files:
+      NOMINAL_GDP_USA: data_repository/raw/macro/NOMINAL_GDP_USA.csv
+      M2SL: data_repository/raw/fred/M2SL.csv
+      M1SL: data_repository/raw/fred/M1SL.csv
+    data_provenance:
+      M2SL: FRED M2SL (money supply aggregate)
+      M1SL: FRED M1SL (narrow money aggregate)
+
+  - key: real_estate
+    coverage: HPI real, 30-year mortgage rate, mortgage debt BIS, rent-to-income and price-to-income ratios cover 1990–2025 where available.
+    status_notes: Use FRED MORTGAGE30US as the US benchmark mortgage time series; keep affordability ratios for context.
+    series_codes:
+    - USA_HPI_REAL
+    - Rent_to_income_ratio_USA
+    - Price_to_income_USA
+    - MORTGAGE30US
+    local_series_files:
+      USA_HPI_REAL: data_repository/raw/fred/CSUSHPISA.csv
+      MORTGAGE30US: data_repository/raw/fred/MORTGAGE30US.csv
+      Rent_to_income_ratio_USA: data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_USA.csv
+      Price_to_income_USA: data_repository/raw/providers/derived_risk_drivers/Price_to_income_USA.csv
+      BIS_LBS_Household_Loans_USA: data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Household_Loans_USA.csv
+    data_provenance:
+      USA_HPI_REAL: FRED CSUSHPISA (S&P/Case-Shiller U.S. National Home Price Index)
+      MORTGAGE30US: FRED MORTGAGE30US (stress indicator pipeline)
+      Rent_to_income_ratio_USA: scripts/derive_real_estate_ratios.py (Eurostat/FRED rent and income ratios)
+      Price_to_income_USA: scripts/derive_real_estate_ratios.py (Eurostat/FRED rent and income ratios)
+      BIS_LBS_Household_Loans_USA: scripts/ingest_zero_data_series.py (BIS household loans monthly resampled)
+    missing_series:
+      Rent_to_income_ratio_USA: proxy_established
+      Price_to_income_ratio_USA: proxy_established
+
+  - key: public_finance
+    coverage: DNSS betas + debt-to-GDP + sovereign spreads and CDS where available.
+    status_notes: Use DNSS betas for curve shape; sovereign yield curve proxies (IRLTLT01*) are redundant when the DNSS factors are healthy.
+    series_codes:
+    - USA_beta0
+    - USA_beta1
+    - USA_beta2
+    - USA_beta3
+    - GC.DOD.TOTL.GD.ZS_USA
+    - Sovereign_spread_vs_Germany_USA
+    - CDS_5y_USA
+    local_series_files:
+      GC.DOD.TOTL.GD.ZS_USA: data_repository/raw/macro/general_government_gross_debt_pct_gdp_USA.csv
+      Sovereign_spread_vs_Germany_USA: data_repository/raw/providers/derived_risk_drivers/spread_USA_vs_DEU_10Y.csv
+      CDS_5y_USA: data_repository/raw/providers/derived_risk_drivers/cds_proxy_USA_vs_DEU_5Y.csv
+    data_provenance:
+      GC.DOD.TOTL.GD.ZS_USA: worldbank_gov_debt_pct_gdp_parsed
+      Sovereign_spread_vs_Germany_USA: scripts/prototype_missing_risk_drivers.py (USA vs Germany 10Y spread derived from Bund and Treasury yields)
+      CDS_5y_USA: scripts/prototype_missing_risk_drivers.py (ZCB strip-based 5Y bond spread proxy vs DEU)
+      USA_beta3: Derived (DNSS) dnss_pipeline (twist factor calibration)
+    missing_series:
+      Sovereign_spread_vs_Germany_USA: proxy_established
+
+  - key: external_fx
+    coverage: FX indices and cross rates (weekly preferred) 1990–2025.
+    status_notes: Anchor US coverage on the dollar's major crosses before layering in credit or volatility proxies.
+    series_codes:
+    - DEXUSEU
+    - DEXUSUK
+    - DEXJPUS
+    - DEXINUS
+    - DEXSZUS
+    - DEXKOUS
+    - DEXMXUS
+    - DEXBZUS
+    - USD_BROAD_INDEX
+    - USD_JPY
+    - USD_CNY
+    - USD_INR
+    - GBP_USD
+    local_series_files:
+      DXY: data_repository/raw/fred/DTWEXBGS.csv
+      USD_BROAD_INDEX: data_repository/raw/fred/DTWEXBGS.csv
+      USD_JPY: data_repository/raw/fred/JPINTDUSDJPY.csv
+      GBP_USD: data_repository/raw/fred/CCUSSP01GBM650N.csv
+      USD_CNY: data_repository/raw/fred/CCUSSP02CNM650N.csv
+      EUR_USD: data_repository/raw/market_data/FX_EURUSD_EURUSD_X.csv
+      DEXJPUS: data_repository/raw/fred/DEXJPUS.csv
+      DEXSZUS: data_repository/raw/fred/DEXSZUS.csv
+      DEXCHUS: data_repository/raw/fred/DEXCHUS.csv
+      DEXKOUS: data_repository/raw/fred/DEXKOUS.csv
+      DEXMXUS: data_repository/raw/fred/DEXMXUS.csv
+      DEXBZUS: data_repository/raw/fred/DEXBZUS.csv
+      DEXUSEU: data_repository/raw/fred/DEXUSEU.csv
+      DEXUSUK: data_repository/raw/fred/DEXUSUK.csv
+      DEXINUS: data_repository/raw/fred/DEXINUS.csv
+    data_provenance:
+      DEXUSEU: FRED fred_fx fx_pairs
+      DEXUSUK: FRED fred_fx fx_pairs
+      DEXJPUS: FRED fred_fx fx_pairs
+      DEXSZUS: FRED fred_fx fx_pairs
+      DEXKOUS: FRED fred_fx fx_pairs
+      DEXMXUS: FRED fred_fx fx_pairs
+      DEXBZUS: FRED fred_fx fx_pairs
+      USD_BROAD_INDEX: FRED fred_fx trade-weighted
+      USD_JPY: FRED fred_fx fx_pairs
+      USD_CNY: FRED fred_fx fx_pairs
+      GBP_USD: FRED fred_fx fx_pairs
+
+  - key: financial_markets
+    coverage: Equity indexes, volatility and credit spreads 1990–2025.
+    status_notes: Use VIX for USA; include MOVE, TED and credit spread proxies.
+    series_codes:
+    - ^GSPC
+    - VIXCLS
+    - credit_spread_USA
+    local_series_files:
+      MOVE: data_repository/raw/providers/derived_risk_drivers/move_index_daily.csv
+      credit_spread_USA: data_repository/raw/providers/derived_risk_drivers/credit_spread_USA.csv
+    data_provenance:
+      MOVE: scripts/prototype_missing_risk_drivers.py (yfinance ^MOVE / daily realized-vol proxy)
+      XLC: Yahoo Finance yfinance_sector sector_equities
+      XLF: Yahoo Finance yfinance_sector sector_equities
+      XLK: Yahoo Finance yfinance_sector sector_equities
+      XLP: Yahoo Finance yfinance_sector sector_equities
+      XLRE: Yahoo Finance yfinance_sector sector_equities
+      XLU: Yahoo Finance yfinance_sector sector_equities
+      XLV: Yahoo Finance yfinance_sector sector_equities
+      XLY: Yahoo Finance yfinance_sector sector_equities
+
+  - key: banking_system
+    coverage: BIS LBS aggregates, NPL ratios, bank equity indexes, interbank rates.
+    status_notes: Add NPL ratios (annual, safe interpolation), BKX for USA banks, and TEDRATE as interbank stress reference (SOFR_3m coverage < threshold).
+    series_codes:
+    - BIS_LBS_Household_Loans_USA
+    - Bank_equity_index_USA
+    - TEDRATE
+    - WALCL
+    local_series_files:
+      BIS_LBS_Household_Loans_USA: data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Household_Loans_USA.csv
+      BIS_LBS_Private_NFC_USA: data_repository/processed/BIS_LBS_Private_NFC_Loans_USA.csv
+      Bank_equity_index_USA: data_repository/raw/providers/bank_indices/bank_equity_index_USA.csv
+      NPL_PROXY_USA: data_repository/raw/providers/npl_proxies/monthly/npl_proxy_USA.csv
+      SOFR_3m: data_repository/raw/providers/derived_risk_drivers/SOFR_3m.csv
+      TEDRATE: data_repository/raw/providers/derived_risk_drivers/ted_rate_monthly.csv
+      WALCL: data_repository/raw/fred/WALCL.csv
+    data_provenance:
+      BIS_LBS_Private_NFC_USA: scripts/ingest_zero_data_series.py (processed BIS private NFC loans flows resampled to month-end)
+      Bank_equity_index_USA: Yahoo Finance ^BKX (scripts/fetch_bank_equity_indexes.py)
+      NPL_PROXY_USA: BIS LBS household aggregates via scripts/build_npl_proxy_from_bis.py
+      SOFR_3m: Merged real-time SOFR from FED note-term SOFR + historical 3m SOFR (scripts/merge_sofr_from_term_note.py)
+      WALCL: FRED WALCL (Federal Reserve total assets)
+
+  - key: systemic_stress
+    coverage: Cross-asset stress proxy for USA (rates vol).
+    status_notes: Keep systemic_stress free of implied equity vol (VIX stays in financial_markets).
+    series_codes:
+    - SWAPTION_VOL_USA
+    - COMM_PAPER_SPREAD_USA
+    local_series_files:
+      SWAPTION_VOL_USA: data_repository/raw/providers/derived_risk_drivers/swaption_vol_proxy_USA.csv
+      COMM_PAPER_SPREAD_USA: data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_USA.csv
+    data_provenance:
+      SWAPTION_VOL_USA: scripts/prototype_missing_risk_drivers.py (swaption vol proxy)
+      COMM_PAPER_SPREAD_USA: data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_USA.csv (local derived proxy)
+
+  - key: commodities
+    coverage: Global commodities and energy prices 1990–2025.
+    status_notes: Track energy, metals, and agriculture indexes for inflation/backwardation signals.
+    series_codes:
+    - DCOILBRENTEU
+    - DCOILWTICO
+    - DHHNGSP
+    - FAO_AG_INDEX
+    - GOLD_SPOT
+    - Gold_Futures
+    - WTI_Crude_Futures
+    - LME_METALS_INDEX
+    - PALUMUSDM
+    - PCOPPUSDM
+    - PIORECRUSDM
+    - PMAIZMTUSDM
+    - PSOYBUSDQ
+    - PWHEAMTUSDM
+    - TTF_GAS
+    local_series_files:
+      DCOILBRENTEU: data_repository/raw/fred/DCOILBRENTEU.csv
+      DCOILWTICO: data_repository/raw/fred/DCOILWTICO.csv
+      DHHNGSP: data_repository/raw/fred/DHHNGSP.csv
+      FAO_AG_INDEX: data_repository/raw/commodities/FAO_AG_INDEX.csv
+      GOLD_SPOT: data_repository/raw/commodities/GOLD_SPOT.csv
+      Gold_Futures: data/stress_indicators_expanded.csv
+      WTI_Crude_Futures: data/stress_indicators_expanded.csv
+      LME_METALS_INDEX: data_repository/raw/commodities/LME_METALS_INDEX.csv
+      PALUMUSDM: data_repository/raw/fred/PALUMUSDM.csv
+      PCOPPUSDM: data_repository/raw/fred/PCOPPUSDM.csv
+      PIORECRUSDM: data_repository/raw/fred/PIORECRUSDM.csv
+      PMAIZMTUSDM: data_repository/raw/fred/PMAIZMTUSDM.csv
+      PSOYBUSDQ: data_repository/raw/fred/PSOYBUSDQ.csv
+      PWHEAMTUSDM: data_repository/raw/fred/PWHEAMTUSDM.csv
+      XLB: industry_data_raw.csv
+      XLE: industry_data_raw.csv
+      XLI: industry_data_raw.csv
+    data_provenance:
+      DCOILBRENTEU: FRED DCOILBRENTEU (Brent crude spot)
+      DCOILWTICO: FRED DCOILWTICO (WTI crude spot)
+      DHHNGSP: FRED DHHNGSP (Henry Hub gas spot)
+      FAO_AG_INDEX: FAO agriculture price index (manual ingest)
+      GOLD_SPOT: Manual resample of Gold_Futures column from data/risk_indicators/pipeline/stress_indicators.csv
+      Gold_Futures: Panel merged stress indicators (gold futures volatility signal)
+      WTI_Crude_Futures: Panel merged stress indicators (WTI futures volatility signal)
+      LME_METALS_INDEX: Manual CSV from LME metal price index
+      PALUMUSDM: FRED PALUMUSDM (aluminum index)
+      PCOPPUSDM: FRED PCOPPUSDM (copper index)
+      PIORECRUSDM: FRED PIORECRUSDM (iron ore index)
+      PMAIZMTUSDM: FRED PMAIZMTUSDM (maize index)
+      PSOYBUSDQ: FRED PSOYBUSDQ (soybeans index)
+      PWHEAMTUSDM: FRED PWHEAMTUSDM (wheat index)
+# --- Germany (DEU) ---
+- country: Germany
+  iso_code: DEU
+  region: EUR
+  coverage_window: 1990-2025
+  blocks:
+
+  - key: macro
+    coverage: Core GDP, CPI, unemployment, nominal GDP, BIS credit stocks cover 1990–2025 plus ECB money-supply aggregates (M3/M2/M1).
+    series_codes:
+    - DEU_GDP_EUROSTAT
+    - DEU_UNRATE_EUROSTAT
+    - NAEXKP01DEQ661S
+    - DEUCPIALLMINMEI
+    - BIS_LBS_Private_NFC_DEU
+    - MYAGM1EZM196N
+    - MYAGM2EZM196N
+    - ECBDFR
+    - MABMM301EZM189S
+    local_series_files:
+      BIS_LBS_Private_NFC_DEU: data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Private_NFC_Total_DEU.csv
+      MABMM301EZM189S: data_repository/raw/fred/MABMM301EZM189S.csv
+      MYAGM2EZM196N: data_repository/raw/fred/MYAGM2EZM196N.csv
+      MYAGM1EZM196N: data_repository/raw/fred/MYAGM1EZM196N.csv
+    data_provenance:
+      BIS_LBS_Private_NFC_DEU: data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Private_NFC_Total_DEU.csv (BIS monthly credit release)
+      MABMM301EZM189S: FRED MABMM301EZM189S (Euro area M3 aggregate)
+      MYAGM2EZM196N: FRED MYAGM2EZM196N (Euro area M2 aggregate via IMF IFS)
+      MYAGM1EZM196N: FRED MYAGM1EZM196N (Euro area M1 aggregate via IMF IFS)
+  - key: real_estate
+    coverage: HPI real, rent-to-income, price-to-income.
+    series_codes:
+    - DEU_HPI_REAL
+    - Rent_to_income_ratio_DEU
+    - Price_to_income_DEU
+    - Mortgage_rate_DEU
+    local_series_files:
+      Rent_to_income_ratio_DEU: data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_DEU.csv
+      Price_to_income_DEU: data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_DEU.csv
+      DEU_HPI_REAL: data_repository/raw/providers/real_estate/DEU_HPI_REAL.csv
+      Mortgage_rate_DEU: data_repository/raw/ecb/MIR.M.DE.B.A2C.A.R.A.2250.EUR.N.csv
+      BIS_LBS_Household_Loans_DEU: data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Household_Loans_DEU.csv
+    data_provenance:
+      Rent_to_income_ratio_DEU: scripts/derive_real_estate_ratios.py (Eurostat rent & income series)
+      Price_to_income_DEU: scripts/derive_real_estate_ratios.py (Eurostat rent & income series)
+      DEU_HPI_REAL: scripts/ingest_zero_data_series.py (Eurostat real HPI)
+      Mortgage_rate_DEU: ECB SDW MIR mortgage interest rate (scripts/fetch_mortgage_and_rent_proxies.py)
+      BIS_LBS_Household_Loans_DEU: scripts/ingest_zero_data_series.py (BIS household loans monthly resampled)
+    missing_series:
+      Rent_to_income_ratio_DEU: proxy_established
+      Price_to_income_DEU: proxy_established
+  - key: public_finance
+    coverage: DNSS betas + debt-to-GDP; DEU anchors the euro-area curve.
+    series_codes:
+    - DEU_beta0
+    - DEU_beta1
+    - DEU_beta2
+    - DEU_beta3
+    - GC.DOD.TOTL.GD.ZS_DEU
+    - DEU_Periphery_Spread_Composite
+    - CDS_5y_DEU
+    local_series_files:
+      CDS_5y_DEU: data_repository/raw/providers/derived_risk_drivers/cds_proxy_DEU_vs_USA_5Y.csv
+      DEU_Periphery_Spread_Composite: data/stress_indicators_expanded.csv
+    data_provenance:
+      CDS_5y_DEU: scripts/prototype_missing_risk_drivers.py (Benchmark CDS proxy vs USA 5Y)
+      DEU_Periphery_Spread_Composite: Panel derived (mean of EU periphery spreads vs Bund)
+      DEU_beta3: Derived (DNSS) dnss_pipeline (twist factor calibration)
+  - key: external_fx
+    coverage: EUR bilateral FX vs key non-euro currencies (USD, GBP, CHF, JPY, CNY).
+    series_codes:
+    - EUR_USD
+    - EUR_GBP
+    - EUR_CHF
+    - EUR_JPY
+    - EUR_GBP_XR
+    - EUR_CHF_XR
+    - EUR_JPY_XR
+    - EUR_CNY_XR
+    - EUR_INR
+    - EUR_INR_XR
+    local_series_files:
+      EUR_USD: data_repository/raw/market_data/FX_EURUSD_EURUSD_X.csv
+      EUR_TRY_XR: data_repository/raw/market_data/FX_EURTRY_EURTRY_X.csv
+      EUR_PLN_XR: data_repository/raw/market_data/FX_EURPLN_EURPLN_X.csv
+      EUR_CZK_XR: data_repository/raw/market_data/FX_EURCZK_EURCZK_X.csv
+      DEXJPUS: data_repository/raw/fred/DEXJPUS.csv
+      DEXSZUS: data_repository/raw/fred/DEXSZUS.csv
+      DEXCHUS: data_repository/raw/fred/DEXCHUS.csv
+      EMLC: data_repository/raw/market_data/ETF_EMLC.csv
+  - key: financial_markets
+    coverage: Equity indexes, volatility, credit spreads.
+    series_codes:
+    - ^GDAXI
+    - V2X
+    - credit_spread_DEU
+    local_series_files:
+      V2X: data_repository/raw/providers/derived_risk_drivers/Euro_STOXX_RealizedVol20.csv
+      credit_spread_DEU: data_repository/raw/providers/derived_risk_drivers/credit_spread_DEU.csv
+    data_provenance:
+      EWG: Panel Derived panel merged_panel (German equity ETF stress proxy)
+      V2X: scripts/download_euro_stoxx_vol_proxy.py (derived 20-day realized vol from ^STOXX50E via yfinance)
+  - key: banking_system
+    coverage: BIS LBS aggregates, NPL proxies, Euribor 3m, bank equity indices.
+    series_codes:
+    - BIS_LBS_Household_Loans_DEU
+    - Bank_equity_index_DEU
+    - EURIBOR_3m
+    local_series_files:
+      BIS_LBS_Household_Loans_DEU: data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Household_Loans_DEU.csv
+      NPL_PROXY_DEU: data_repository/raw/providers/npl_proxies/monthly/npl_proxy_DEU.csv
+      Bank_equity_index_DEU: data_repository/raw/providers/bank_indices/bank_equity_index_DEU.csv
+      EURIBOR_3m: data_repository/raw/providers/derived_risk_drivers/EURIBOR_3m.csv
+    data_provenance:
+      NPL_PROXY_DEU: BIS LBS household aggregates via scripts/build_npl_proxy_from_bis.py
+      Bank_equity_index_DEU: "Equal-weighted composite of Deutsche Bank, Commerzbank, and other DAX banks (scripts/fetch_bank_equity_indexes.py)"
+  - key: systemic_stress
+    coverage: Cross-asset stress proxies (rates vol, funding stress, central-bank balance sheet).
+    series_codes:
+    - ECBASSETS
+    - SWAPTION_VOL_DEU
+    - COMM_PAPER_SPREAD_EUR
+    local_series_files:
+      BTP_Bund_Spread: data/stress_indicators_expanded.csv
+      OAT_Bund_Spread: data/stress_indicators_expanded.csv
+      Bonos_Bund_Spread: data/stress_indicators_expanded.csv
+      Treasury_Bund_Spread: data/stress_indicators_expanded.csv
+      EURIBOR_ESTR_SPREAD: data/stress_indicators_expanded.csv
+      EURIBOR_3m: data_repository/raw/providers/derived_risk_drivers/EURIBOR_3m.csv
+      SWAPTION_VOL_DEU: data_repository/raw/providers/derived_risk_drivers/swaption_vol_proxy_DEU.csv
+      credit_spread_DEU: data_repository/raw/providers/derived_risk_drivers/credit_spread_DEU.csv
+      COMM_PAPER_SPREAD_EUR: data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_EUR.csv
+    data_provenance:
+      BTP_Bund_Spread: Panel merged stress indicators (BTP vs Bund spread)
+      OAT_Bund_Spread: Panel merged stress indicators (OAT vs Bund spread)
+      Bonos_Bund_Spread: Panel merged stress indicators (Bonos vs Bund spread)
+      Treasury_Bund_Spread: Panel merged stress indicators (Treasury vs Bund spread)
+      DEU_Periphery_Spread_Composite: Panel derived (mean of EU periphery spreads vs Bund)
+      EURIBOR_ESTR_SPREAD: Panel derived (EUR3MTD156N minus ECB €STR)
+      SWAPTION_VOL_DEU: scripts/prototype_missing_risk_drivers.py (BAML spread proxy)
+      credit_spread_DEU: scripts/derive_public_finance_proxies.py (BAML corporate credit spread proxy)
+      ECBASSETS: FRED ECBASSETS (ECB balance sheet total assets)
+    missing_series:
+      SWAPTION_VOL_DEU: proxy_established
+  - key: commodities
+    coverage: Global oil, gas, metals, agricultural, and gold indexes.
+    series_codes:
+    - DCOILBRENTEU
+    - DCOILWTICO
+    - DHHNGSP
+    - FAO_AG_INDEX
+    - GOLD_SPOT
+    - Gold_Futures
+    - WTI_Crude_Futures
+    - LME_METALS_INDEX
+    - PALUMUSDM
+    - PCOPPUSDM
+    - PIORECRUSDM
+    - PMAIZMTUSDM
+    - PSOYBUSDQ
+    - PWHEAMTUSDM
+    - TTF_GAS
+    local_series_files:
+      DCOILBRENTEU: data_repository/raw/fred/DCOILBRENTEU.csv
+      DCOILWTICO: data_repository/raw/fred/DCOILWTICO.csv
+      DHHNGSP: data_repository/raw/fred/DHHNGSP.csv
+      FAO_AG_INDEX: data_repository/raw/commodities/FAO_AG_INDEX.csv
+      GOLD_SPOT: data_repository/raw/commodities/GOLD_SPOT.csv
+      Gold_Futures: data/stress_indicators_expanded.csv
+      WTI_Crude_Futures: data/stress_indicators_expanded.csv
+      LME_METALS_INDEX: data_repository/raw/commodities/LME_METALS_INDEX.csv
+      PALUMUSDM: data_repository/raw/fred/PALUMUSDM.csv
+      PCOPPUSDM: data_repository/raw/fred/PCOPPUSDM.csv
+      PIORECRUSDM: data_repository/raw/fred/PIORECRUSDM.csv
+      PMAIZMTUSDM: data_repository/raw/fred/PMAIZMTUSDM.csv
+      PSOYBUSDQ: data_repository/raw/fred/PSOYBUSDQ.csv
+      PWHEAMTUSDM: data_repository/raw/fred/PWHEAMTUSDM.csv
+      TTF_GAS: data_repository/raw/fred/PNGASEUUSDM.csv
+    data_provenance:
+      DCOILBRENTEU: FRED DCOILBRENTEU (Brent crude spot)
+      DCOILWTICO: FRED DCOILWTICO (WTI crude spot)
+      DHHNGSP: FRED DHHNGSP (Henry Hub gas spot)
+      FAO_AG_INDEX: FAO agriculture price index (manual ingest)
+      GOLD_SPOT: Manual resample of Gold_Futures column from data/risk_indicators/pipeline/stress_indicators.csv
+      Gold_Futures: Panel merged stress indicators (gold futures volatility signal)
+      WTI_Crude_Futures: Panel merged stress indicators (WTI futures volatility signal)
+      LME_METALS_INDEX: Manual CSV from LME metals price index
+      PALUMUSDM: FRED PALUMUSDM (aluminum index)
+      PCOPPUSDM: FRED PCOPPUSDM (copper index)
+      PIORECRUSDM: FRED PIORECRUSDM (iron ore index)
+      PMAIZMTUSDM: FRED PMAIZMTUSDM (maize index)
+      PSOYBUSDQ: FRED PSOYBUSDQ (soybeans index)
+      PWHEAMTUSDM: FRED PWHEAMTUSDM (wheat index)
+      TTF_GAS: FRED PNGASEUUSDM (European TTF gas proxy)
+
+# --- France (FRA) ---
+- country: France
+  iso_code: FRA
+  region: EUR
+  coverage_window: 1990-2025
+  blocks:
+
+  - key: macro
+    coverage: Core GDP, CPI, unemployment, nominal GDP, BIS credit stocks cover 1990-2025 plus ECB money-supply aggregates (M3/M2/M1).
+    status_notes: Euro-area core macro series anchored on Eurostat/FRED feeds.
+    series_codes:
+    - FRA_GDP_EUROSTAT
+    - FRA_UNRATE_EUROSTAT
+    - NAEXKP01FRQ661S
+    - FRACPIALLMINMEI
+    - BIS_LBS_Private_NFC_FRA
+    - MYAGM1EZM196N
+    - MYAGM2EZM196N
+    - ECBDFR
+    - MABMM301EZM189S
+    local_series_files:
+      BIS_LBS_Private_NFC_FRA: data_repository/processed/BIS_LBS_Private_NFC_Loans_FRA.csv
+      MABMM301EZM189S: data_repository/raw/fred/MABMM301EZM189S.csv
+      MYAGM2EZM196N: data_repository/raw/fred/MYAGM2EZM196N.csv
+      MYAGM1EZM196N: data_repository/raw/fred/MYAGM1EZM196N.csv
+    data_provenance:
+      BIS_LBS_Private_NFC_FRA: scripts/ingest_zero_data_series.py (processed BIS private NFC loans flows resampled to month-end)
+      MABMM301EZM189S: FRED MABMM301EZM189S (Euro area M3 aggregate)
+      MYAGM2EZM196N: FRED MYAGM2EZM196N (Euro area M2 aggregate via IMF IFS)
+      MYAGM1EZM196N: FRED MYAGM1EZM196N (Euro area M1 aggregate via IMF IFS)
+  - key: real_estate
+    coverage: National residential HPI plus affordability ratios 1990-2025.
+    series_codes:
+    - FRA_HPI_REAL
+    - Rent_to_income_ratio_FRA
+    - Price_to_income_FRA
+    - Mortgage_rate_FRA
+    local_series_files:
+      Rent_to_income_ratio_FRA: data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_FRA.csv
+      Price_to_income_FRA: data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_FRA.csv
+      FRA_HPI_REAL: data_repository/raw/providers/real_estate/FRA_HPI_REAL.csv
+      Mortgage_rate_FRA: data_repository/raw/ecb/MIR.M.FR.B.A2C.A.R.A.2250.EUR.N.csv
+      BIS_LBS_Household_Loans_FRA: data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Household_Loans_FRA.csv
+    data_provenance:
+      Rent_to_income_ratio_FRA: scripts/derive_real_estate_ratios.py (Eurostat rent & income series)
+      Price_to_income_FRA: scripts/derive_real_estate_ratios.py (Eurostat rent & income series)
+      FRA_HPI_REAL: scripts/ingest_zero_data_series.py (Eurostat real HPI)
+      Mortgage_rate_FRA: ECB SDW MIR mortgage interest rate (scripts/fetch_mortgage_and_rent_proxies.py)
+      BIS_LBS_Household_Loans_FRA: scripts/ingest_zero_data_series.py (BIS household loans monthly resampled)
+    missing_series:
+      Rent_to_income_ratio_FRA: proxy_established
+      Price_to_income_FRA: proxy_established
+  - key: public_finance
+    coverage: DNSS betas + debt-to-GDP + sovereign spreads and CDS where available.
+    series_codes:
+    - FRA_beta0
+    - FRA_beta1
+    - FRA_beta2
+    - FRA_beta3
+    - GC.DOD.TOTL.GD.ZS_FRA
+    - OAT_Bund_Spread
+    - CDS_5y_FRA
+    local_series_files:
+      GC.DOD.TOTL.GD.ZS_FRA: data_repository/raw/macro/general_government_gross_debt_pct_gdp_FRA.csv
+      OAT_Bund_Spread: data/stress_indicators_expanded.csv
+      CDS_5y_FRA: data_repository/raw/providers/derived_risk_drivers/cds_proxy_FRA_vs_USA_5Y.csv
+    data_provenance:
+      GC.DOD.TOTL.GD.ZS_FRA: eurostat_gov_10dd_edpt1_parsed
+      OAT_Bund_Spread: Panel merged stress indicators (OAT vs Bund spread)
+      CDS_5y_FRA: scripts/prototype_missing_risk_drivers.py (ZCB strip-based 5Y bond spread proxy vs USA)
+      FRA_beta3: Derived (DNSS) dnss_pipeline (twist factor calibration)
+  - key: external_fx
+    coverage: EUR bilateral FX vs key non-euro currencies (USD, GBP, CHF, JPY, CNY).
+    series_codes:
+    - EUR_USD
+    - EUR_GBP
+    - EUR_CHF
+    - EUR_JPY
+    - EUR_GBP_XR
+    - EUR_CHF_XR
+    - EUR_JPY_XR
+    - EUR_CNY_XR
+    - EUR_INR
+    - EUR_INR_XR
+    local_series_files:
+      EUR_USD: data_repository/raw/market_data/FX_EURUSD_EURUSD_X.csv
+      EUR_TRY_XR: data_repository/raw/market_data/FX_EURTRY_EURTRY_X.csv
+      EUR_PLN_XR: data_repository/raw/market_data/FX_EURPLN_EURPLN_X.csv
+      EUR_CZK_XR: data_repository/raw/market_data/FX_EURCZK_EURCZK_X.csv
+      DEXJPUS: data_repository/raw/fred/DEXJPUS.csv
+      DEXSZUS: data_repository/raw/fred/DEXSZUS.csv
+      DEXCHUS: data_repository/raw/fred/DEXCHUS.csv
+      EMLC: data_repository/raw/market_data/ETF_EMLC.csv
+  - key: financial_markets
+    series_codes:
+    - ^FCHI
+    - V2X
+    - credit_spread_FRA
+    local_series_files:
+      ^FCHI: data_repository/raw/market_data/EQUITY_France__FCHI.csv
+      V2X: data_repository/raw/providers/derived_risk_drivers/Euro_STOXX_RealizedVol20.csv
+      credit_spread_FRA: data_repository/raw/providers/derived_risk_drivers/credit_spread_FRA.csv
+    data_provenance:
+      EWQ: Panel Derived panel merged_panel (French equity ETF stress proxy)
+      V2X: scripts/download_euro_stoxx_vol_proxy.py (derived 20-day realized vol from ^STOXX50E via yfinance)
+  - key: banking_system
+    series_codes:
+    - BIS_LBS_Household_Loans_FRA
+    - Bank_equity_index_FRA
+    - EURIBOR_3m
+    local_series_files:
+      BIS_LBS_Household_Loans_FRA: data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Household_Loans_FRA.csv
+      NPL_PROXY_FRA: data_repository/raw/providers/npl_proxies/monthly/npl_proxy_FRA.csv
+      Bank_equity_index_FRA: data_repository/raw/providers/bank_indices/bank_equity_index_FRA.csv
+      EURIBOR_3m: data_repository/raw/providers/derived_risk_drivers/EURIBOR_3m.csv
+    data_provenance:
+      NPL_PROXY_FRA: BIS LBS household aggregates via scripts/build_npl_proxy_from_bis.py
+      Bank_equity_index_FRA: "Equal-weighted composite of BNP.PA, GLE.PA, ACA.PA, SGO.PA, and BPCE.PA via scripts/fetch_bank_equity_indexes.py (BPCE.PA returned inactive/delisted in the latest run)"
+  - key: systemic_stress
+    coverage: Cross-asset stress proxies (rates vol, funding stress, central-bank balance sheet).
+    series_codes:
+    - ECBASSETS
+    - SWAPTION_VOL_DEU
+    - COMM_PAPER_SPREAD_EUR
+    local_series_files:
+      OAT_Bund_Spread: data/stress_indicators_expanded.csv
+      EURIBOR_ESTR_SPREAD: data/stress_indicators_expanded.csv
+      EURIBOR_3m: data_repository/raw/providers/derived_risk_drivers/EURIBOR_3m.csv
+      credit_spread_FRA: data_repository/raw/providers/derived_risk_drivers/credit_spread_FRA.csv
+      COMM_PAPER_SPREAD_EUR: data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_EUR.csv
+    data_provenance:
+      OAT_Bund_Spread: Panel merged stress indicators (OAT vs Bund spread)
+      EURIBOR_ESTR_SPREAD: Panel derived (EUR3MTD156N minus ECB €STR)
+      credit_spread_FRA: scripts/derive_public_finance_proxies.py (BAML corporate credit spread proxy)
+      COMM_PAPER_SPREAD_EUR: scripts/derive_public_finance_proxies.py (Euro-area commercial paper spread)
+      ECBASSETS: FRED ECBASSETS (ECB balance sheet total assets)
+  - key: commodities
+    coverage: Global oil, gas, metals, agricultural, and gold price indices for stress monitoring.
+    series_codes:
+    - DCOILBRENTEU
+    - DCOILWTICO
+    - DHHNGSP
+    - FAO_AG_INDEX
+    - GOLD_SPOT
+    - Gold_Futures
+    - WTI_Crude_Futures
+    - LME_METALS_INDEX
+    - PALUMUSDM
+    - PCOPPUSDM
+    - PIORECRUSDM
+    - PMAIZMTUSDM
+    - PSOYBUSDQ
+    - PWHEAMTUSDM
+    - TTF_GAS
+    local_series_files:
+      DCOILBRENTEU: data_repository/raw/fred/DCOILBRENTEU.csv
+      DCOILWTICO: data_repository/raw/fred/DCOILWTICO.csv
+      DHHNGSP: data_repository/raw/fred/DHHNGSP.csv
+      FAO_AG_INDEX: data_repository/raw/commodities/FAO_AG_INDEX.csv
+      GOLD_SPOT: data_repository/raw/commodities/GOLD_SPOT.csv
+      Gold_Futures: data/stress_indicators_expanded.csv
+      WTI_Crude_Futures: data/stress_indicators_expanded.csv
+      LME_METALS_INDEX: data_repository/raw/commodities/LME_METALS_INDEX.csv
+      PALUMUSDM: data_repository/raw/fred/PALUMUSDM.csv
+      PCOPPUSDM: data_repository/raw/fred/PCOPPUSDM.csv
+      PIORECRUSDM: data_repository/raw/fred/PIORECRUSDM.csv
+      PMAIZMTUSDM: data_repository/raw/fred/PMAIZMTUSDM.csv
+      PSOYBUSDQ: data_repository/raw/fred/PSOYBUSDQ.csv
+      PWHEAMTUSDM: data_repository/raw/fred/PWHEAMTUSDM.csv
+      TTF_GAS: data_repository/raw/fred/PNGASEUUSDM.csv
+    data_provenance:
+      DCOILBRENTEU: FRED DCOILBRENTEU (Brent crude spot)
+      DCOILWTICO: FRED DCOILWTICO (WTI crude spot)
+      DHHNGSP: FRED DHHNGSP (Henry Hub gas spot)
+      FAO_AG_INDEX: FAO agriculture price index (manual ingest)
+      GOLD_SPOT: Manual resample of Gold_Futures column from data/risk_indicators/pipeline/stress_indicators.csv
+      Gold_Futures: Panel merged stress indicators (gold futures volatility signal)
+      WTI_Crude_Futures: Panel merged stress indicators (WTI futures volatility signal)
+      LME_METALS_INDEX: Manual CSV from LME metals price index
+      PALUMUSDM: FRED PALUMUSDM (aluminum index)
+      PCOPPUSDM: FRED PCOPPUSDM (copper index)
+      PIORECRUSDM: FRED PIORECRUSDM (iron ore index)
+      PMAIZMTUSDM: FRED PMAIZMTUSDM (maize index)
+      PSOYBUSDQ: FRED PSOYBUSDQ (soybeans index)
+      PWHEAMTUSDM: FRED PWHEAMTUSDM (wheat index)
+      TTF_GAS: FRED PNGASEUUSDM (European TTF gas proxy)
+
+# --- Italy (ITA) ---
+- country: Italy
+  iso_code: ITA
+  region: EUR
+  coverage_window: 1990-2025
+  blocks:
+
+  - key: macro
+    coverage: Core GDP, CPI, unemployment, nominal GDP, BIS credit stocks cover 1990–2025 plus ECB money-supply aggregates (M3/M2/M1).
+    series_codes:
+    - ITA_GDP_EUROSTAT
+    - ITA_UNRATE_EUROSTAT
+    - NAEXKP01ITQ661S
+    - ITACPIALLMINMEI
+    - BIS_LBS_Private_NFC_ITA
+    - MYAGM1EZM196N
+    - MYAGM2EZM196N
+    - ECBDFR
+    - MABMM301EZM189S
+    local_series_files:
+      BIS_LBS_Private_NFC_ITA: data_repository/processed/BIS_LBS_Private_NFC_Loans_ITA.csv
+      MABMM301EZM189S: data_repository/raw/fred/MABMM301EZM189S.csv
+      MYAGM2EZM196N: data_repository/raw/fred/MYAGM2EZM196N.csv
+      MYAGM1EZM196N: data_repository/raw/fred/MYAGM1EZM196N.csv
+    data_provenance:
+      BIS_LBS_Private_NFC_ITA: scripts/ingest_zero_data_series.py (processed BIS private NFC loans flows resampled to month-end)
+      MABMM301EZM189S: FRED MABMM301EZM189S (Euro area M3 aggregate)
+      MYAGM2EZM196N: FRED MYAGM2EZM196N (Euro area M2 aggregate via IMF IFS)
+      MYAGM1EZM196N: FRED MYAGM1EZM196N (Euro area M1 aggregate via IMF IFS)
+  - key: real_estate
+    coverage: HPI real and affordability ratios.
+    series_codes:
+    - ITA_HPI_REAL
+    - Rent_to_income_ratio_ITA
+    - Price_to_income_ITA
+    - Mortgage_rate_ITA
+    local_series_files:
+      Rent_to_income_ratio_ITA: data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_ITA.csv
+      Price_to_income_ITA: data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_ITA.csv
+      ITA_HPI_REAL: data_repository/raw/providers/real_estate/ITA_HPI_REAL.csv
+      Mortgage_rate_ITA: data_repository/raw/ecb/MIR.M.IT.B.A2C.A.R.A.2250.EUR.N.csv
+      BIS_LBS_Household_Loans_ITA: data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Household_Loans_ITA.csv
+    data_provenance:
+      Rent_to_income_ratio_ITA: scripts/derive_real_estate_ratios.py (Eurostat rent & income series)
+      Price_to_income_ITA: scripts/derive_real_estate_ratios.py (Eurostat rent & income series)
+      ITA_HPI_REAL: scripts/ingest_zero_data_series.py (Eurostat real HPI)
+      Mortgage_rate_ITA: ECB SDW MIR mortgage interest rate (scripts/fetch_mortgage_and_rent_proxies.py)
+      BIS_LBS_Household_Loans_ITA: scripts/ingest_zero_data_series.py (BIS household loans monthly resampled)
+    missing_series:
+      Rent_to_income_ratio_ITA: proxy_established
+      Price_to_income_ITA: proxy_established
+  - key: public_finance
+    coverage: DNSS betas plus debt-to-GDP and spread proxies.
+    series_codes:
+    - ITA_beta0
+    - ITA_beta1
+    - ITA_beta2
+    - ITA_beta3
+    - GC.DOD.TOTL.GD.ZS_ITA
+    - BTP_Bund_Spread
+    - CDS_5y_ITA
+    local_series_files:
+      GC.DOD.TOTL.GD.ZS_ITA: data_repository/raw/macro/general_government_gross_debt_pct_gdp_ITA.csv
+      BTP_Bund_Spread: data/stress_indicators_expanded.csv
+      CDS_5y_ITA: data_repository/raw/providers/derived_risk_drivers/cds_proxy_ITA_vs_USA_5Y.csv
+    data_provenance:
+      GC.DOD.TOTL.GD.ZS_ITA: eurostat_gov_10dd_edpt1_parsed
+      BTP_Bund_Spread: Panel merged stress indicators (BTP vs Bund spread)
+      CDS_5y_ITA: scripts/prototype_missing_risk_drivers.py (ZCB strip-based 5Y bond spread proxy vs USA)
+      ITA_beta3: Derived (DNSS) dnss_pipeline (twist factor calibration)
+  - key: external_fx
+    series_codes:
+    - EUR_USD
+    - EUR_GBP
+    - EUR_CHF
+    - EUR_JPY
+    - EUR_GBP_XR
+    - EUR_CHF_XR
+    - EUR_JPY_XR
+    - EUR_CNY_XR
+    - EUR_INR
+    - EUR_INR_XR
+    local_series_files:
+      EUR_USD: data_repository/raw/market_data/FX_EURUSD_EURUSD_X.csv
+      EUR_TRY_XR: data_repository/raw/market_data/FX_EURTRY_EURTRY_X.csv
+      EUR_PLN_XR: data_repository/raw/market_data/FX_EURPLN_EURPLN_X.csv
+      EUR_CZK_XR: data_repository/raw/market_data/FX_EURCZK_EURCZK_X.csv
+      DEXJPUS: data_repository/raw/fred/DEXJPUS.csv
+      DEXSZUS: data_repository/raw/fred/DEXSZUS.csv
+      DEXCHUS: data_repository/raw/fred/DEXCHUS.csv
+      EMLC: data_repository/raw/market_data/ETF_EMLC.csv
+  - key: financial_markets
+    series_codes:
+    - ^FTSEMIB
+    - V2X
+    - credit_spread_ITA
+    local_series_files:
+      ^FTSEMIB: data_repository/raw/market_data/EQUITY_Italy__FTSEMIB.csv
+      V2X: data_repository/raw/providers/derived_risk_drivers/Euro_STOXX_RealizedVol20.csv
+      credit_spread_ITA: data_repository/raw/providers/derived_risk_drivers/credit_spread_ITA.csv
+    data_provenance:
+      EWI: Panel Derived panel merged_panel (Italian equity ETF stress proxy)
+      V2X: scripts/download_euro_stoxx_vol_proxy.py (derived 20-day realized vol from ^STOXX50E via yfinance)
+  - key: banking_system
+    series_codes:
+    - BIS_LBS_Household_Loans_ITA
+    - Bank_equity_index_ITA
+    - EURIBOR_3m
+    local_series_files:
+      BIS_LBS_Household_Loans_ITA: data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Household_Loans_ITA.csv
+      NPL_PROXY_ITA: data_repository/raw/providers/npl_proxies/monthly/npl_proxy_ITA.csv
+      Bank_equity_index_ITA: data_repository/raw/providers/bank_indices/bank_equity_index_ITA.csv
+      EURIBOR_3m: data_repository/raw/providers/derived_risk_drivers/EURIBOR_3m.csv
+    data_provenance:
+      NPL_PROXY_ITA: BIS LBS household aggregates via scripts/build_npl_proxy_from_bis.py
+      Bank_equity_index_ITA: "Equal-weighted composite of ISP.MI, UCG.MI, BAMI.MI, BPER.MI, and MPS.MI via scripts/fetch_bank_equity_indexes.py (BPER.MI and MPS.MI reported delisted)"
+  - key: systemic_stress
+    coverage: Cross-asset stress proxies (rates vol, funding stress, central-bank balance sheet).
+    series_codes:
+    - ECBASSETS
+    - SWAPTION_VOL_DEU
+    - COMM_PAPER_SPREAD_EUR
+    local_series_files:
+      BTP_Bund_Spread: data/stress_indicators_expanded.csv
+      credit_spread_ITA: data_repository/raw/providers/derived_risk_drivers/credit_spread_ITA.csv
+      EURIBOR_ESTR_SPREAD: data/stress_indicators_expanded.csv
+      EURIBOR_3m: data_repository/raw/providers/derived_risk_drivers/EURIBOR_3m.csv
+      COMM_PAPER_SPREAD_EUR: data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_EUR.csv
+      ECBASSETS: FRED ECBASSETS (ECB balance sheet total assets)
+    data_provenance:
+      BTP_Bund_Spread: Panel merged stress indicators (BTP vs Bund spread)
+      credit_spread_ITA: scripts/derive_public_finance_proxies.py (BAML corporate credit spread proxy)
+      EURIBOR_ESTR_SPREAD: Panel derived (EUR3MTD156N minus ECB €STR)
+      COMM_PAPER_SPREAD_EUR: scripts/derive_public_finance_proxies.py (Euro-area commercial paper spread)
+  - key: commodities
+    series_codes:
+    - DCOILBRENTEU
+    - DCOILWTICO
+    - DHHNGSP
+    - FAO_AG_INDEX
+    - GOLD_SPOT
+    - Gold_Futures
+    - WTI_Crude_Futures
+    - LME_METALS_INDEX
+    - PALUMUSDM
+    - PCOPPUSDM
+    - PIORECRUSDM
+    - PMAIZMTUSDM
+    - PSOYBUSDQ
+    - PWHEAMTUSDM
+    - TTF_GAS
+    local_series_files:
+      LME_METALS_INDEX: data_repository/raw/commodities/LME_METALS_INDEX.csv
+      FAO_AG_INDEX: data_repository/raw/commodities/FAO_AG_INDEX.csv
+      GOLD_SPOT: data_repository/raw/commodities/GOLD_SPOT.csv
+      TTF_GAS: data_repository/raw/fred/PNGASEUUSDM.csv
+      PALUMUSDM: data_repository/raw/fred/PALUMUSDM.csv
+      PCOPPUSDM: data_repository/raw/fred/PCOPPUSDM.csv
+      PIORECRUSDM: data_repository/raw/fred/PIORECRUSDM.csv
+      PMAIZMTUSDM: data_repository/raw/fred/PMAIZMTUSDM.csv
+      PSOYBUSDQ: data_repository/raw/fred/PSOYBUSDQ.csv
+      PWHEAMTUSDM: data_repository/raw/fred/PWHEAMTUSDM.csv
+      WTI_Crude_Futures: data/stress_indicators_expanded.csv
+    data_provenance:
+      TTF_GAS: FRED PNGASEUUSDM (European TTF gas proxy currently acceptable fallback)
+      PALUMUSDM: FRED PALUMUSDM (aluminum index)
+      PCOPPUSDM: FRED PCOPPUSDM (copper index)
+      PIORECRUSDM: FRED PIORECRUSDM (iron ore index)
+      PMAIZMTUSDM: FRED PMAIZMTUSDM (maize index)
+      PSOYBUSDQ: FRED PSOYBUSDQ (soybeans index)
+      PWHEAMTUSDM: FRED PWHEAMTUSDM (wheat index)
+      WTI_Crude_Futures: Panel merged stress indicators (WTI futures volatility signal)
+
+# --- Spain (ESP) ---
+- country: Spain
+  iso_code: ESP
+  region: EUR
+  coverage_window: 1990-2025
+  blocks:
+
+  - key: macro
+    coverage: Core GDP, CPI, unemployment, nominal GDP, BIS credit stocks plus ECB money-supply aggregates (M3/M2/M1).
+    series_codes:
+    - ESP_GDP_EUROSTAT
+    - ESP_UNRATE_EUROSTAT
+    - NAEXKP01ESQ661S
+    - ESPCPIALLMINMEI
+    - BIS_LBS_Private_NFC_ESP
+    - MYAGM1EZM196N
+    - MYAGM2EZM196N
+    - ECBDFR
+    - MABMM301EZM189S
+    local_series_files:
+      ESPCPIALLMINMEI: data_repository/raw/fred/ESPCPIALLMINMEI.csv
+      BIS_LBS_Private_NFC_ESP: data_repository/processed/BIS_LBS_Private_NFC_Loans_ESP.csv
+      MABMM301EZM189S: data_repository/raw/fred/MABMM301EZM189S.csv
+      MYAGM2EZM196N: data_repository/raw/fred/MYAGM2EZM196N.csv
+      MYAGM1EZM196N: data_repository/raw/fred/MYAGM1EZM196N.csv
+    data_provenance:
+      BIS_LBS_Private_NFC_ESP: scripts/ingest_zero_data_series.py (processed BIS private NFC loans flows resampled to month-end)
+      MABMM301EZM189S: FRED MABMM301EZM189S (Euro area M3 aggregate)
+      MYAGM2EZM196N: FRED MYAGM2EZM196N (Euro area M2 aggregate via IMF IFS)
+      MYAGM1EZM196N: FRED MYAGM1EZM196N (Euro area M1 aggregate via IMF IFS)
+  - key: real_estate
+    coverage: HPI real and affordability.
+    series_codes:
+    - ESP_HPI_REAL
+    - Rent_to_income_ratio_ESP
+    - Price_to_income_ESP
+    - Mortgage_rate_ESP
+    local_series_files:
+      Rent_to_income_ratio_ESP: data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_ESP.csv
+      Price_to_income_ESP: data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_ESP.csv
+      ESP_HPI_REAL: data_repository/raw/providers/real_estate/ESP_HPI_REAL.csv
+      Mortgage_rate_ESP: data_repository/raw/ecb/MIR.M.ES.B.A2C.A.R.A.2250.EUR.N.csv
+      BIS_LBS_Household_Loans_ESP: data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Household_Loans_ESP.csv
+    data_provenance:
+      Rent_to_income_ratio_ESP: scripts/derive_real_estate_ratios.py (Eurostat rent & income series)
+      Price_to_income_ESP: scripts/derive_real_estate_ratios.py (Eurostat rent & income series)
+      ESP_HPI_REAL: scripts/ingest_zero_data_series.py (Eurostat real HPI)
+      Mortgage_rate_ESP: ECB SDW MIR mortgage interest rate (scripts/fetch_mortgage_and_rent_proxies.py)
+      BIS_LBS_Household_Loans_ESP: scripts/ingest_zero_data_series.py (BIS household loans monthly resampled)
+    missing_series:
+      Rent_to_income_ratio_ESP: proxy_established
+      Price_to_income_ESP: proxy_established
+  - key: public_finance
+    coverage: DNSS betas, debt-to-GDP, spreads.
+    series_codes:
+    - ESP_beta0
+    - ESP_beta1
+    - ESP_beta2
+    - ESP_beta3
+    - GC.DOD.TOTL.GD.ZS_ESP
+    - Bonos_Bund_Spread
+    - CDS_5y_ESP
+    local_series_files:
+      GC.DOD.TOTL.GD.ZS_ESP: data_repository/raw/macro/general_government_gross_debt_pct_gdp_ESP.csv
+      Bonos_Bund_Spread: data/stress_indicators_expanded.csv
+      CDS_5y_ESP: data_repository/raw/providers/derived_risk_drivers/cds_proxy_ESP_vs_USA_5Y.csv
+    data_provenance:
+      GC.DOD.TOTL.GD.ZS_ESP: eurostat_gov_10dd_edpt1_parsed
+      Bonos_Bund_Spread: Panel merged stress indicators (Bonos vs Bund spread)
+      CDS_5y_ESP: scripts/prototype_missing_risk_drivers.py (ZCB strip-based 5Y bond spread proxy vs USA)
+      ESP_beta3: Derived (DNSS) dnss_pipeline (twist factor calibration)
+  - key: external_fx
+    series_codes:
+    - EUR_USD
+    - EUR_GBP
+    - EUR_CHF
+    - EUR_JPY
+    - EUR_GBP_XR
+    - EUR_CHF_XR
+    - EUR_JPY_XR
+    - EUR_CNY_XR
+    - EUR_INR
+    - EUR_INR_XR
+    local_series_files:
+      EUR_USD: data_repository/raw/market_data/FX_EURUSD_EURUSD_X.csv
+      EUR_TRY_XR: data_repository/raw/market_data/FX_EURTRY_EURTRY_X.csv
+      EUR_PLN_XR: data_repository/raw/market_data/FX_EURPLN_EURPLN_X.csv
+      EUR_CZK_XR: data_repository/raw/market_data/FX_EURCZK_EURCZK_X.csv
+      DEXJPUS: data_repository/raw/fred/DEXJPUS.csv
+      DEXSZUS: data_repository/raw/fred/DEXSZUS.csv
+      DEXCHUS: data_repository/raw/fred/DEXCHUS.csv
+      EMLC: data_repository/raw/market_data/ETF_EMLC.csv
+  - key: financial_markets
+    series_codes:
+    - ^IBEX
+    - V2X
+    - credit_spread_ESP
+    local_series_files:
+      ^IBEX: data_repository/raw/market_data/EQUITY_Spain__IBEX35.csv
+      V2X: data_repository/raw/providers/derived_risk_drivers/Euro_STOXX_RealizedVol20.csv
+      BAMLH0A0HYM2: data_repository/raw/fred/BAMLH0A0HYM2.csv
+      credit_spread_ESP: data_repository/raw/providers/derived_risk_drivers/credit_spread_ESP.csv
+    data_provenance:
+      EWP: Panel Derived panel merged_panel (Spanish equity ETF stress proxy)
+      V2X: scripts/download_euro_stoxx_vol_proxy.py (derived 20-day realized vol from ^STOXX50E via yfinance)
+  - key: banking_system
+    series_codes:
+    - BIS_LBS_Household_Loans_ESP
+    - Bank_equity_index_ESP
+    - EURIBOR_3m
+    local_series_files:
+      BIS_LBS_Household_Loans_ESP: data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Household_Loans_ESP.csv
+      NPL_PROXY_ESP: data_repository/raw/providers/npl_proxies/monthly/npl_proxy_ESP.csv
+      Bank_equity_index_ESP: data_repository/raw/providers/bank_indices/bank_equity_index_ESP.csv
+      EURIBOR_3m: data_repository/raw/providers/derived_risk_drivers/EURIBOR_3m.csv
+    data_provenance:
+      NPL_PROXY_ESP: BIS LBS household aggregates via scripts/build_npl_proxy_from_bis.py
+      Bank_equity_index_ESP: Composite of SAN.MC, BBVA.MC, and CABK.MC via scripts/fetch_bank_equity_indexes.py
+  - key: systemic_stress
+    coverage: Cross-asset stress proxies (rates vol, funding stress, central-bank balance sheet).
+    series_codes:
+    - ECBASSETS
+    - SWAPTION_VOL_DEU
+    - COMM_PAPER_SPREAD_EUR
+    local_series_files:
+      Bonos_Bund_Spread: data/stress_indicators_expanded.csv
+      EURIBOR_ESTR_SPREAD: data/stress_indicators_expanded.csv
+      EURIBOR_3m: data_repository/raw/providers/derived_risk_drivers/EURIBOR_3m.csv
+      credit_spread_ESP: data_repository/raw/providers/derived_risk_drivers/credit_spread_ESP.csv
+      COMM_PAPER_SPREAD_EUR: data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_EUR.csv
+    data_provenance:
+      Bonos_Bund_Spread: Panel merged stress indicators (Bonos vs Bund spread)
+      EURIBOR_ESTR_SPREAD: Panel derived (EUR3MTD156N minus ECB €STR)
+      credit_spread_ESP: scripts/derive_public_finance_proxies.py (BAML corporate credit spread proxy)
+      COMM_PAPER_SPREAD_EUR: scripts/derive_public_finance_proxies.py (Euro-area commercial paper spread)
+      ECBASSETS: FRED ECBASSETS (ECB balance sheet total assets)
+  - key: commodities
+    series_codes:
+    - DCOILBRENTEU
+    - DCOILWTICO
+    - DHHNGSP
+    - FAO_AG_INDEX
+    - GOLD_SPOT
+    - Gold_Futures
+    - WTI_Crude_Futures
+    - LME_METALS_INDEX
+    - PALUMUSDM
+    - PCOPPUSDM
+    - PIORECRUSDM
+    - PMAIZMTUSDM
+    - PSOYBUSDQ
+    - PWHEAMTUSDM
+    - TTF_GAS
+    local_series_files:
+      DCOILBRENTEU: data_repository/raw/fred/DCOILBRENTEU.csv
+      DCOILWTICO: data_repository/raw/fred/DCOILWTICO.csv
+      DHHNGSP: data_repository/raw/fred/DHHNGSP.csv
+      FAO_AG_INDEX: data_repository/raw/commodities/FAO_AG_INDEX.csv
+      GOLD_SPOT: data_repository/raw/commodities/GOLD_SPOT.csv
+      Gold_Futures: data/stress_indicators_expanded.csv
+      WTI_Crude_Futures: data/stress_indicators_expanded.csv
+      LME_METALS_INDEX: data_repository/raw/commodities/LME_METALS_INDEX.csv
+      PALUMUSDM: data_repository/raw/fred/PALUMUSDM.csv
+      PCOPPUSDM: data_repository/raw/fred/PCOPPUSDM.csv
+      PIORECRUSDM: data_repository/raw/fred/PIORECRUSDM.csv
+      PMAIZMTUSDM: data_repository/raw/fred/PMAIZMTUSDM.csv
+      PSOYBUSDQ: data_repository/raw/fred/PSOYBUSDQ.csv
+      PWHEAMTUSDM: data_repository/raw/fred/PWHEAMTUSDM.csv
+      TTF_GAS: data_repository/raw/fred/PNGASEUUSDM.csv
+    data_provenance:
+      DCOILBRENTEU: FRED DCOILBRENTEU (Brent crude spot)
+      DCOILWTICO: FRED DCOILWTICO (WTI crude spot)
+      DHHNGSP: FRED DHHNGSP (Henry Hub gas spot)
+      FAO_AG_INDEX: FAO agriculture price index (manual ingest)
+      GOLD_SPOT: Manual resample of Gold_Futures column from data/risk_indicators/pipeline/stress_indicators.csv
+      Gold_Futures: Panel merged stress indicators (gold futures volatility signal)
+      WTI_Crude_Futures: Panel merged stress indicators (WTI futures volatility signal)
+      LME_METALS_INDEX: Manual CSV from LME metals price index
+      PALUMUSDM: FRED PALUMUSDM (aluminum index)
+      PCOPPUSDM: FRED PCOPPUSDM (copper index)
+      PIORECRUSDM: FRED PIORECRUSDM (iron ore index)
+      PMAIZMTUSDM: FRED PMAIZMTUSDM (maize index)
+      PSOYBUSDQ: FRED PSOYBUSDQ (soybeans index)
+      PWHEAMTUSDM: FRED PWHEAMTUSDM (wheat index)
+      TTF_GAS: FRED PNGASEUUSDM (European TTF gas proxy)
+
+missing_series_overview:
+  Public_Finance: []
+  Systemic_Stress: []
+
+notes:
+  - GC.DOD.TOTL.GD.ZS_* series now live only inside public_finance blocks for each country; macro blocks host CPI/GDP/credit stocks only.
+  - MOVE/TED sources are centralized inside the `financial_markets` block so the same instrument no longer appears in banking_system or systemic_stress blocks.
+  - France/Italy/Spain CDS and spread proxies are derived in `scripts/derive_public_finance_proxies.py` and stored under data_repository/raw/providers/derived_risk_drivers to keep public_finance coverage consistent with macro literature (debt and spreads together).
+  - Extra commodity proxies (WTI_Crude_Futures, TTF_GAS, LME_METALS_INDEX) land in the `commodities` block so the macro/public_finance split focuses on fundamentals and fiscal metrics.
+  - Next recommended step: run the scripts that depend on this file (presence check, `analysis/collect_block_status.py`, and `analysis/missing_series_report.py`) to verify the blocks after the reconstruction and flag any additional missing series.

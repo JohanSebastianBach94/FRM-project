@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    html, body { margin: 0; padding: 0; background: white; }
+    #wrap { padding: 24px 28px; }
+  </style>
+</head>
+<body>
+  <div id="wrap"></div>
+
+  <script src="https://unpkg.com/viz.js@2.1.2/viz.js"></script>
+  <script src="https://unpkg.com/viz.js@2.1.2/full.render.js"></script>
+  <script>
+    (async () => {
+      const dot = "digraph pipeline {\n  rankdir=LR;\n  bgcolor=\"white\";\n  labelloc=\"t\";\n  label=\"Stress-testing via Monte Carlo scenarios\";\n  fontsize=24;\n  fontname=\"Helvetica\";\n  pad=0.25;\n  nodesep=0.35;\n  ranksep=0.55;\n\n  node [shape=box, style=\"rounded,filled\", color=\"#444444\", fontname=\"Helvetica\", fontsize=12];\n  edge [color=\"#444444\", penwidth=1.4, arrowsize=0.85];\n\n  inputs   [fillcolor=\"#EBF5FF\", label=\"Inputs & prep\\n\\nMacro/market series -> cleaning\\nstandardization + health checks\"];\n  blocks   [fillcolor=\"#ECF8EF\", label=\"Country blocks (Step 2)\\n\\nGroup factors into themes\\n(banking, FX, public finance, commodities ...)\"];\n  dynamics [fillcolor=\"#ECF8EF\", label=\"Factor dynamics\\n\\nVolatility + correlations\\n(ADCC / DCC-GARCH family)\\n+ mean reversion\"];\n  mc       [fillcolor=\"#FFF3E6\", label=\"Monte Carlo scenarios (Step 12)\\n\\nSimulate many joint futures\\nfor block shock paths\"];\n  regimes  [fillcolor=\"#FFF3E6\", label=\"Regimes\\n\\nBucket draws by severity quantiles\\n(baseline -> adverse -> crisis)\"];\n\n  realized  [fillcolor=\"#EBF5FF\", label=\"Realized overlay\\n\\nCompute \\\"Today\\\" from the latest window\\n(in comparable sigma units)\"];\n  reporting [fillcolor=\"#F7EEF7\", label=\"Reporting (Step 12.1)\\n\\nSeverity distributions + ranking\\nCrisis drivers (block shares)\"];\n  network   [fillcolor=\"#F7EEF7\", label=\"Network lens\\n\\nConnectedness deltas\\n(stress regime vs median)\"];\n\n  subgraph cluster_top {\n    rank=same;\n    inputs; blocks; dynamics; mc; regimes;\n  }\n\n  subgraph cluster_bottom {\n    rank=same;\n    realized; reporting; network;\n  }\n\n  inputs -> blocks -> dynamics -> mc -> regimes;\n\n  mc -> reporting;\n  regimes -> reporting;\n  regimes -> network;\n  realized -> reporting;\n}\n";
+      const wrap = document.getElementById('wrap');
+      try {
+        const viz = new Viz();
+        const svg = await viz.renderSVGElement(dot);
+        svg.setAttribute('data-rendered', '1');
+        wrap.appendChild(svg);
+      } catch (e) {
+        wrap.innerText = 'viz.js render failed: ' + (e && e.message ? e.message : String(e));
+      }
+    })();
+  </script>
+</body>
+</html>

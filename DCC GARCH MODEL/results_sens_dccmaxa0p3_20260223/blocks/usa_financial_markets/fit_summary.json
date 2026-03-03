@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-02-23T19:52:32.150653",
+  "n_series": 2,
+  "n_observations": 6980,
+  "date_range": {
+    "start": "1999-02-01 00:00:00",
+    "end": "2025-10-31 00:00:00"
+  },
+  "dcc_parameters": {
+    "a": 0.2999999453871078,
+    "b": 0.6799989802392884
+  },
+  "adcc_parameters": null,
+  "garch_quality_gate": {
+    "triggered": false,
+    "convergence_rate": 1.0,
+    "min_convergence_rate": 0.5,
+    "shrinkage": 0.2,
+    "reason": null
+  },
+  "garch_convergence": {
+    "converged": 2,
+    "failed": 0
+  }
+}

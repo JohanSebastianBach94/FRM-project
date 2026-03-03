@@ -1,0 +1,23 @@
+{
+  "episode_id": "covid_2020",
+  "source_episode_diagnostics": "C:/Users/frank/Documents/FRM project/analysis_outputs/scenarios/latest/historical_replay/replay_20260216_182324/episodes/covid_2020/episode_diagnostics.json",
+  "exclude_flat_then_spike": true,
+  "exclude_stale_spike": true,
+  "stale_spike": {
+    "z_threshold": 8.0,
+    "unique_ratio_threshold": 0.15,
+    "round_decimals": 6
+  },
+  "by_block": {
+    "ita_macro": {
+      "excluded_series": [
+        "ITA_UNRATE_EUROSTAT"
+      ]
+    },
+    "usa_systemic_stress": {
+      "excluded_series": [
+        "COMM_PAPER_SPREAD_USA"
+      ]
+    }
+  }
+}

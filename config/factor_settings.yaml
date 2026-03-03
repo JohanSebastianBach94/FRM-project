@@ -1,0 +1,43 @@
+# Shared Step 3 factor settings
+#
+# Goal: keep PCA/FCI behavior consistent across monthly and daily factor pipelines.
+# These defaults are intentionally conservative (favor interpretability + stability).
+
+pca:
+  monthly:
+    # Trigger PCA only when blocks are extremely collinear.
+    corr_cutoff: 0.95
+    variance_target: 0.90
+    max_components: 6
+
+  daily:
+    # Heuristics to avoid PCA unless needed (dimension reduction for correlated blocks).
+    correlation_threshold: 0.55
+    min_series: 3
+    series_trigger: 5
+    component_max: 6
+    variance_target: 0.90
+    # Additional cap to avoid PCA dominating the factor set.
+    block_component_cap: 2
+
+fci:
+  monthly:
+    # Options: mean | pca | auto
+    # - mean: average of available standardized proxies
+    # - pca: first PC of available standardized proxies
+    # - auto: pca only when enough proxies exist, else mean
+    method: auto
+    min_proxies_for_pca: 3
+    proxies_global:
+      - VIXCLS
+      - BAMLH0A0HYM2
+      - BAMLC0A4CBBB
+      - BAMLH0A1HYBB
+      - DCOILWTICO
+      - DCOILBRENTEU
+
+  daily:
+    # Daily FCI is derived from blocks whose key contains this substring.
+    financial_block_keyword: financial
+    min_series: 3
+    method: pca1

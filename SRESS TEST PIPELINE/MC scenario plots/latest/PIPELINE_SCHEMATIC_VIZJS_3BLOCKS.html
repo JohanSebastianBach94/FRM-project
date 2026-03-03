@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    html, body { margin: 0; padding: 0; background: white; }
+    #wrap { padding: 24px 28px; }
+  </style>
+</head>
+<body>
+  <div id="wrap"></div>
+
+  <script src="https://unpkg.com/viz.js@2.1.2/viz.js"></script>
+  <script src="https://unpkg.com/viz.js@2.1.2/full.render.js"></script>
+  <script>
+    (async () => {
+      const dot = "digraph pipeline {\n  rankdir=LR;\n  compound=true;\n  bgcolor=\"white\";\n  labelloc=\"t\";\n  label=\"Stress-testing via Monte Carlo scenarios\";\n  fontsize=24;\n  fontname=\"Helvetica\";\n  pad=0.25;\n  nodesep=0.45;\n  ranksep=0.75;\n\n  node [shape=box, style=\"rounded,filled\", color=\"#444444\", fontname=\"Helvetica\", fontsize=12];\n  edge [color=\"#444444\", penwidth=1.6, arrowsize=0.9];\n\n  subgraph cluster_model {\n    label=\"Model and framework\";\n    labelloc=\"t\";\n    fontsize=14;\n    fontname=\"Helvetica\";\n    style=\"rounded\";\n    color=\"#444444\";\n    penwidth=1.6;\n\n    inputs   [fillcolor=\"#EBF5FF\", label=\"Inputs & prep (Step 1)\\n\\nMacro/market series -> cleaning\\nstandardization + health checks\"];\n    blocks   [fillcolor=\"#ECF8EF\", label=\"Country blocks (Step 2)\\n\\nGroup factors into themes\\n(banking, FX, public finance, commodities ...)\"];\n    dynamics [fillcolor=\"#ECF8EF\", label=\"Factor dynamics (Step 3)\\n\\nVolatility + correlations\\n(ADCC / DCC-GARCH family)\\n+ mean reversion\"];\n\n    inputs -> blocks -> dynamics;\n  }\n\n  subgraph cluster_mc {\n    label=\"MC scenario building\";\n    labelloc=\"t\";\n    fontsize=14;\n    fontname=\"Helvetica\";\n    style=\"rounded\";\n    color=\"#444444\";\n    penwidth=1.6;\n\n    mc      [fillcolor=\"#FFF3E6\", label=\"Monte Carlo scenarios (Step 4)\\n\\nSimulate many joint futures\\nfor block shock paths\"];\n    regimes [fillcolor=\"#FFF3E6\", label=\"Regimes (Step 5)\\n\\nBucket draws by severity quantiles\\n(baseline -> adverse -> crisis)\"];\n\n    mc -> regimes;\n  }\n\n  subgraph cluster_reporting {\n    label=\"Reporting and Ranking\";\n    labelloc=\"t\";\n    fontsize=14;\n    fontname=\"Helvetica\";\n    style=\"rounded\";\n    color=\"#444444\";\n    penwidth=1.6;\n\n    realized  [fillcolor=\"#EBF5FF\", label=\"Realized overlay\\n\\nCompute \\\"Today\\\" from the latest window\\n(in comparable sigma units)\"];\n    reporting [fillcolor=\"#F7EEF7\", label=\"Reporting\\n\\nSeverity distributions + ranking\\nCrisis drivers (block shares)\"];\n    network   [fillcolor=\"#F7EEF7\", label=\"Network lens\\n\\nConnectedness deltas\\n(stress regime vs median)\"];\n\n    realized -> reporting;\n  }\n\n  # Big-box arrows: Model -> MC -> Reporting\n  dynamics -> mc [ltail=cluster_model, lhead=cluster_mc];\n  regimes -> reporting [ltail=cluster_mc, lhead=cluster_reporting];\n\n  # Extra semantic links\n  regimes -> network;\n}\n";
+      const wrap = document.getElementById('wrap');
+      try {
+        const viz = new Viz();
+        const svg = await viz.renderSVGElement(dot);
+        svg.setAttribute('data-rendered', '1');
+        wrap.appendChild(svg);
+      } catch (e) {
+        wrap.innerText = 'viz.js render failed: ' + (e && e.message ? e.message : String(e));
+      }
+    })();
+  </script>
+</body>
+</html>

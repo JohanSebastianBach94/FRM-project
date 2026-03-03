@@ -1,0 +1,199 @@
+# Phase 3 deterministic scenario library for stress testing (Phase A MVP)
+# The values below mirror the 2025 CCAR (Baseline/Severely Adverse) and ECB (Adverse/Energy Shock) narratives.
+# Numbers are approximated from the official scenario narratives (Fed/ECB stress testing publications) and expressed in the units used by `config/stress_indicators_config.py`.
+
+scenarios:
+  - id: ccar_baseline
+    source: CCAR
+    scenario_type: baseline
+    description: |
+      Fed CCAR baseline for 2025, reflecting a moderate slowdown, mild spread widening, and contained inflation ahead of an expected pause in policy tightening.
+    horizon: 2025Q4
+    notes: |
+      `delta` values represent deviations from `results/latest_fred_snapshot.csv` (or another run-time base). Adopted from the CCAR release (2024/2025) headline numbers (GDP growth ~0.2% q/q, unemployment ~4.2%).
+    factor_shocks:
+      - series_code: NAEXKP01DEQ661S
+        name: Germany_GDP_Growth
+        delta: -0.3
+        unit: percent
+        rationale: "ECB Baseline idea for Germany in CCAR baseline: mild slowing"
+      - series_code: NAEXKP01FRQ661S
+        name: France_GDP_Growth
+        delta: -0.2
+        unit: percent
+      - series_code: NAEXKP01ESQ661S
+        name: Spain_GDP_Growth
+        delta: -0.4
+        unit: percent
+      - series_code: GDPC1
+        name: USA_GDP
+        delta: -0.25
+        unit: percent
+        rationale: "Quarter-on-quarter change implied by CCAR baseline slowdown"
+      - series_code: LRHUTTTTUSM156N
+        name: USA_Unemployment
+        delta: 0.3
+        unit: percent
+      - series_code: UNRATE
+        name: USA_Unemployment_US
+        delta: 0.25
+        unit: percent
+      - series_code: BAMLC0A4CBBB
+        name: BBB_Corporate_OAS
+        delta: 0.15
+        unit: percent
+      - series_code: ^GSPC
+        name: SP500
+        delta: -5.0
+        unit: percent
+      - series_code: DCOILWTICO
+        name: WTI_Crude
+        delta: -4.0
+        unit: percent
+  - id: ccar_severely_adverse
+    source: CCAR
+    scenario_type: severely_adverse
+    description: |
+      Fed CCAR severely adverse narrative (inflation re-acceleration, liquidity squeeze, sharp growth fall, and a 3-year recession tail).
+    horizon: 2026Q2
+    notes: |
+      The shocks emulate the 2025 Fed scenario: GDP contraction around 6‒7 pp, unemployment jumping above 9%, vol spike, and marked curve inversion.
+    factor_shocks:
+      - series_code: GDPC1
+        name: USA_GDP
+        delta: -6.5
+        unit: percent
+      - series_code: NAEXKP01FRQ661S
+        name: France_GDP_Growth
+        delta: -2.8
+        unit: percent
+      - series_code: NAEXKP01DEQ661S
+        name: Germany_GDP_Growth
+        delta: -3.2
+        unit: percent
+      - series_code: NAEXKP01ESQ661S
+        name: Spain_GDP_Growth
+        delta: -3.5
+        unit: percent
+      - series_code: UNRATE
+        name: USA_Unemployment_US
+        delta: 4.5
+        unit: percent
+      - series_code: LRHUTTTTFRM156S
+        name: France_Unemployment
+        delta: 3.8
+        unit: percent
+      - series_code: LRHUTTTTITM156S
+        name: Italy_Unemployment
+        delta: 4.1
+        unit: percent
+      - series_code: BAMLC0A4CBBB
+        name: BBB_Corporate_OAS
+        delta: 2.4
+        unit: percent
+      - series_code: BAMLC0A0CM
+        name: Corp_Master_OAS
+        delta: 1.8
+        unit: percent
+      - series_code: VIXCLS
+        name: VIX
+        delta: 22.0
+        unit: index
+      - series_code: ^GSPC
+        name: SP500
+        delta: -32.0
+        unit: percent
+      - series_code: DCOILWTICO
+        name: WTI_Crude
+        delta: 8.0
+        unit: percent
+  - id: ecb_adverse
+    source: ECB
+    scenario_type: adverse
+    description: |
+      ECB 2025 adverse scenario emphasizing euro-area recession triggered by tighter financial conditions, energy-induced inflation, and sovereign spread widening.
+    horizon: 2026Q1
+    notes: |
+      Derived from ECB stress test scenarios (adverse + baseline). GDP growth halts, credit spreads and sovereign spreads widen, and policy rates rise before reversing.
+    factor_shocks:
+      - series_code: NAEXKP01DEQ661S
+        name: Germany_GDP_Growth
+        delta: -3.6
+        unit: percent
+      - series_code: NAEXKP01FRQ661S
+        name: France_GDP_Growth
+        delta: -3.0
+        unit: percent
+      - series_code: NAEXKP01ESQ661S
+        name: Spain_GDP_Growth
+        delta: -3.8
+        unit: percent
+      - series_code: IRLTLT01DEM156N
+        name: Germany_10Y_Yield
+        delta: 0.8
+        unit: percent
+      - series_code: IRLTLT01ITM156N
+        name: Italy_10Y_Yield
+        delta: 1.2
+        unit: percent
+      - series_code: IRLTLT01ESM156N
+        name: Spain_10Y_Yield
+        delta: 1.5
+        unit: percent
+      - series_code: ECBDFR
+        name: ECB_Deposit_Rate
+        delta: 0.65
+        unit: percent
+      - series_code: EUR3MTD156N
+        name: Euribor_3M
+        delta: 0.85
+        unit: percent
+      - series_code: BAMLH0A1HYBB
+        name: HighYield_Banks
+        delta: 1.3
+        unit: percent
+      - series_code: ^GDAXI
+        name: DAX
+        delta: -18.0
+        unit: percent
+  - id: ecb_energy_shock
+    source: ECB
+    scenario_type: energy_shock
+    description: |
+      ECB energy shock variant with elevated energy costs, widening spreads, and an acceleration in inflation; designed to stress ECB capital buffers.
+    horizon: 2026Q2
+    notes: |
+      Captures ECB storylines where energy prices surge and sovereign spreads widen more sharply than the baseline.
+    factor_shocks:
+      - series_code: DCOILBRENTEU
+        name: Brent_Crude
+        delta: 17.0
+        unit: percent
+      - series_code: DCOILWTICO
+        name: WTI_Crude
+        delta: 20.0
+        unit: percent
+      - series_code: DEUCPIALLMINMEI
+        name: Germany_CPI
+        delta: 2.5
+        unit: index
+      - series_code: FRACPIALLMINMEI
+        name: France_CPI
+        delta: 2.3
+        unit: index
+      - series_code: ESPCPIALLMINMEI
+        name: Spain_CPI
+        delta: 2.4
+        unit: index
+  - series_code: CPIAUCSL
+        name: USA_CPI
+        delta: 1.1
+        unit: index
+      - series_code: ECBDFR
+        name: ECB_Deposit_Rate
+        delta: 0.75
+        unit: percent
+      - series_code: ECBASSETS
+        name: ECB_Balance_Sheet
+        delta: 150.0
+        unit: billions_euros

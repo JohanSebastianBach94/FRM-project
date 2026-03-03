@@ -1,0 +1,60 @@
+digraph pipeline {
+	bgcolor=white fontname=Helvetica fontsize=22 label="Stress-testing via Monte Carlo scenarios" labelloc=t nodesep=0.35 pad=0.25 rankdir=LR ranksep=0.55
+	node [color="#444444" fontname=Helvetica fontsize=12 shape=box style="rounded,filled"]
+	edge [arrowsize=0.85 color="#444444" penwidth=1.4]
+	inputs [label="Inputs & prep
+
+Macro/market series -> cleaning
+standardization + health checks" fillcolor="#EBF5FF"]
+	blocks [label="Country blocks (Step 2)
+
+Group factors into themes
+(banking, FX, public finance, commodities ...)" fillcolor="#ECF8EF"]
+	dynamics [label="Factor dynamics
+
+Volatility + correlations
+(ADCC / DCC-GARCH family)
++ mean reversion" fillcolor="#ECF8EF"]
+	mc [label="Monte Carlo scenarios (Step 12)
+
+Simulate many joint futures
+for block shock paths" fillcolor="#FFF3E6"]
+	regimes [label="Regimes
+
+Bucket draws by severity quantiles
+(baseline -> adverse -> crisis)" fillcolor="#FFF3E6"]
+	reporting [label="Reporting (Step 12.1)
+
+Severity distributions + ranking
+Crisis drivers (block shares)" fillcolor="#F7EEF7"]
+	network [label="Network lens
+
+Connectedness deltas
+(stress regime vs median)" fillcolor="#F7EEF7"]
+	realized [label="Realized overlay
+
+Compute \"Today\" from the latest window
+(in comparable sigma units)" fillcolor="#EBF5FF"]
+	subgraph cluster_top {
+		rank=same
+		inputs
+		blocks
+		dynamics
+		mc
+		regimes
+	}
+	subgraph cluster_bottom {
+		rank=same
+		realized
+		reporting
+		network
+	}
+	inputs -> blocks
+	blocks -> dynamics
+	dynamics -> mc
+	mc -> regimes
+	mc -> reporting
+	regimes -> reporting
+	regimes -> network
+	realized -> reporting
+}

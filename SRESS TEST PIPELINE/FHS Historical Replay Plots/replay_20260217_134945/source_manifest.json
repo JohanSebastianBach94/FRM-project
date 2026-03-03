@@ -1,0 +1,77 @@
+{
+  "run_id": "replay_20260217_134945",
+  "created_utc": "2026-02-17T13:49:45.287805Z",
+  "episodes_config": "config/historical_episodes.yaml",
+  "n_episodes": 3,
+  "n_blocks": 40,
+  "scenario_run_id": "latest",
+  "settings": {
+    "min_obs": 60,
+    "anchor": "end_of_sample",
+    "rotate_to_current_correlation": false,
+    "re_volatilize_with_current_vol": true,
+    "catalog_series_filter": {
+      "catalog_path": "C:/Users/frank/Documents/FRM project/catalog.csv",
+      "respect_do_not_use": true,
+      "min_coverage_ratio": 0.54,
+      "drop_unknown_series": false,
+      "expected_series_source": "C:/Users/frank/Documents/FRM project/outputs/country_block_definition.json"
+    },
+    "low_frequency_replay": {
+      "release_date_shocks_low_frequency": true,
+      "release_date_shocks_frequency_labels": [
+        "annual",
+        "monthly",
+        "quarterly"
+      ],
+      "release_date_change_tol": 0.0,
+      "dt_daily_inputs_root": "C:/Users/frank/Documents/FRM project/analysis_outputs/scenarios/latest/inputs"
+    }
+  },
+  "blocks": [
+    "deu_banking_system",
+    "deu_commodities",
+    "deu_external_fx",
+    "deu_financial_markets",
+    "deu_macro",
+    "deu_public_finance",
+    "deu_real_estate",
+    "deu_systemic_stress",
+    "esp_banking_system",
+    "esp_commodities",
+    "esp_external_fx",
+    "esp_financial_markets",
+    "esp_macro",
+    "esp_public_finance",
+    "esp_real_estate",
+    "esp_systemic_stress",
+    "fra_banking_system",
+    "fra_commodities",
+    "fra_external_fx",
+    "fra_financial_markets",
+    "fra_macro",
+    "fra_public_finance",
+    "fra_real_estate",
+    "fra_systemic_stress",
+    "ita_banking_system",
+    "ita_commodities",
+    "ita_external_fx",
+    "ita_financial_markets",
+    "ita_macro",
+    "ita_public_finance",
+    "ita_real_estate",
+    "ita_systemic_stress",
+    "usa_banking_system",
+    "usa_commodities",
+    "usa_external_fx",
+    "usa_financial_markets",
+    "usa_macro",
+    "usa_public_finance",
+    "usa_real_estate",
+    "usa_systemic_stress"
+  ],
+  "block_selection": {
+    "explicit_block_ids": null,
+    "expected_block_ids_source": "C:/Users/frank/Documents/FRM project/outputs/country_block_definition.json"
+  }
+}

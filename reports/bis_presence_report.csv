@@ -1,0 +1,22 @@
+country,iso,token,expected_path,present,found_path
+USA,USA,BIS_LBS_Private_NFC,C:\Users\frank\Documents\FRM project\data_repository\processed\BIS_LBS_Private_NFC_Loans_USA.csv,True,C:\Users\frank\Documents\FRM project\data_repository\processed\BIS_LBS_Private_NFC_Loans_USA.csv
+USA,USA,BIS_LBS_Household_Loans,data_repository/processed/BIS_LBS_Household_Loans_USA.csv,True,data_repository/processed/BIS_LBS_Household_Loans_USA.csv
+USA,USA,BIS_LBS_Household_Loans,data_repository/processed/BIS_LBS_Household_Loans_USA.csv,True,data_repository/processed/BIS_LBS_Household_Loans_USA.csv
+USA,USA,BIS_LBS_Total_Loans,,False,
+USA,USA,BIS_LBS_Household_Loans,data_repository/processed/BIS_LBS_Household_Loans_USA.csv,True,data_repository/processed/BIS_LBS_Household_Loans_USA.csv
+Germany,DEU,BIS_LBS_Private_NFC_DEU,C:\Users\frank\Documents\FRM project\data_repository\processed\BIS_LBS_Private_NFC_Loans_DEU.csv,True,C:\Users\frank\Documents\FRM project\data_repository\processed\BIS_LBS_Private_NFC_Loans_DEU.csv
+Germany,DEU,BIS_LBS_Household_Loans,data_repository/processed/BIS_LBS_Household_Loans_DEU.csv,True,data_repository/processed/BIS_LBS_Household_Loans_DEU.csv
+Germany,DEU,BIS_LBS_Total_Loans,,False,
+Germany,DEU,BIS_LBS_Household_Loans,data_repository/processed/BIS_LBS_Household_Loans_DEU.csv,True,data_repository/processed/BIS_LBS_Household_Loans_DEU.csv
+France,FRA,BIS_LBS_Private_NFC_FRA,C:\Users\frank\Documents\FRM project\data_repository\processed\BIS_LBS_Private_NFC_Loans_FRA.csv,True,C:\Users\frank\Documents\FRM project\data_repository\processed\BIS_LBS_Private_NFC_Loans_FRA.csv
+France,FRA,BIS_LBS_Household_Loans,data_repository/processed/BIS_LBS_Household_Loans_FRA.csv,True,data_repository/processed/BIS_LBS_Household_Loans_FRA.csv
+France,FRA,BIS_LBS_Total_Loans,,False,
+France,FRA,BIS_LBS_Household_Loans,data_repository/processed/BIS_LBS_Household_Loans_FRA.csv,True,data_repository/processed/BIS_LBS_Household_Loans_FRA.csv
+Italy,ITA,BIS_LBS_Private_NFC_ITA,C:\Users\frank\Documents\FRM project\data_repository\processed\BIS_LBS_Private_NFC_Loans_ITA.csv,True,C:\Users\frank\Documents\FRM project\data_repository\processed\BIS_LBS_Private_NFC_Loans_ITA.csv
+Italy,ITA,BIS_LBS_Household_Loans,data_repository/processed/BIS_LBS_Household_Loans_ITA.csv,True,data_repository/processed/BIS_LBS_Household_Loans_ITA.csv
+Italy,ITA,BIS_LBS_Total_Loans,,False,
+Italy,ITA,BIS_LBS_Household_Loans,data_repository/processed/BIS_LBS_Household_Loans_ITA.csv,True,data_repository/processed/BIS_LBS_Household_Loans_ITA.csv
+Spain,ESP,BIS_LBS_Private_NFC_ESP,C:\Users\frank\Documents\FRM project\data_repository\processed\BIS_LBS_Private_NFC_Loans_ESP.csv,True,C:\Users\frank\Documents\FRM project\data_repository\processed\BIS_LBS_Private_NFC_Loans_ESP.csv
+Spain,ESP,BIS_LBS_Household_Loans,data_repository/processed/BIS_LBS_Household_Loans_ESP.csv,True,data_repository/processed/BIS_LBS_Household_Loans_ESP.csv
+Spain,ESP,BIS_LBS_Total_Loans,,False,
+Spain,ESP,BIS_LBS_Household_Loans,data_repository/processed/BIS_LBS_Household_Loans_ESP.csv,True,data_repository/processed/BIS_LBS_Household_Loans_ESP.csv

@@ -1,0 +1,84 @@
+{
+  "iso": "USA",
+  "frequency": "daily",
+  "factor_space": "literature",
+  "inputs": {
+    "literature_daily": {
+      "path": "C:\\Users\\frank\\Documents\\FRM project\\analysis_outputs\\literature_factors\\USA_block_factors_M_daily.csv",
+      "mtime_epoch": 1771868489.6482258,
+      "mtime_utc": "2026-02-23T17:41:29.648226+00:00",
+      "size_bytes": 1247009,
+      "sha256": "ae575a183e75d628e44ee219d1a31384ad96a6175629d2d3a1f2ef1458ab4ee1"
+    },
+    "literature_resampled": null,
+    "literature_manifest": {
+      "path": "C:\\Users\\frank\\Documents\\FRM project\\analysis_outputs\\literature_factors\\USA_literature_manifest.json",
+      "mtime_epoch": 1771868489.5270433,
+      "mtime_utc": "2026-02-23T17:41:29.527043+00:00",
+      "size_bytes": 12153,
+      "sha256": "6f2e7ca6a2eab01643d52874dad8b43c39bc86f2690953515d3eb6aab6aa1e33"
+    }
+  },
+  "preflight": {
+    "iso": "USA",
+    "literature_dir": "C:\\Users\\frank\\Documents\\FRM project\\analysis_outputs\\literature_factors",
+    "literature_freq": "M",
+    "daily_path": "C:\\Users\\frank\\Documents\\FRM project\\analysis_outputs\\literature_factors\\USA_block_factors_M_daily.csv",
+    "resampled_path": null,
+    "manifest_path": "C:\\Users\\frank\\Documents\\FRM project\\analysis_outputs\\literature_factors\\USA_literature_manifest.json",
+    "stale_daily_detected": false,
+    "force": true
+  },
+  "model": "ADCC",
+  "fit_method": "opt",
+  "params": {
+    "a": 0.05,
+    "b": 0.9,
+    "g": 0.05
+  },
+  "persistence": 0.9750000000000001,
+  "loglikelihood": 58760.591874026264,
+  "fit_info": {
+    "fit_method": "opt",
+    "model_type": "adcc",
+    "opt": {
+      "success": true,
+      "status": 0,
+      "message": "Optimization terminated successfully",
+      "nit": 5,
+      "max_a": null,
+      "large_a_penalty_lambda": 0.0,
+      "large_a_threshold": 0.2
+    }
+  },
+  "corr_diag": {
+    "spd_projection_dates": 0
+  },
+  "columns": [
+    "USA_macro_f1",
+    "USA_macro_f2",
+    "USA_real_estate_f1",
+    "USA_real_estate_f2",
+    "USA_public_finance_f1",
+    "USA_public_finance_f2",
+    "USA_external_fx_f1",
+    "USA_external_fx_f2",
+    "USA_financial_markets_f1",
+    "USA_financial_markets_f2",
+    "USA_banking_system_f1",
+    "USA_banking_system_f2",
+    "USA_systemic_stress_f1",
+    "USA_systemic_stress_f2",
+    "USA_commodities_f1",
+    "USA_commodities_f2",
+    "VIXCLS",
+    "Rt_daily"
+  ],
+  "start": "2002-12-31",
+  "end": "2025-09-29",
+  "residuals_shape": [
+    5838,
+    18
+  ],
+  "pair_count": 153
+}

@@ -1,0 +1,63 @@
+# Step 4 explicit target configuration.
+#
+# Goal: map Step 3 drivers -> a fixed, governed set of stress targets.
+#
+# Notes:
+# - Targets must exist as columns in `data/cleaned_monthly_panel_full.parquet` (preferred)
+#   or `data/cleaned_monthly_panel.parquet`.
+# - If a target is missing for an ISO, Step 4 will skip it (and warn).
+# - If you only want global macro targets, you can leave `per_iso` empty.
+# - Add per-ISO targets (e.g., DNSS betas) under `per_iso`.
+
+targets:
+  # Targets applied to every ISO (when present in the cleaned monthly panel).
+  # Keep this list small: “targets” are outcomes you want to explain/predict/stress,
+  # not the market drivers you will later simulate in vol/corr models.
+  global: []
+
+  # Optional ISO-specific targets.
+  per_iso:
+    USA:
+      # Macro outcomes
+      - GDPC1
+      - CPIAUCSL
+      - UNRATE
+
+      # DNSS betas
+      - USA_beta0
+      - USA_beta1
+      - USA_beta2
+    DEU:
+      # Macro outcomes (available CPI proxy in cleaned panel)
+      - DEU_GDP_EUROSTAT
+      - DEU_UNRATE_EUROSTAT
+      - DEUCPIALLMINMEI
+
+      # DNSS betas
+      - DEU_beta0
+      - DEU_beta1
+      - DEU_beta2
+    FRA:
+      - FRA_GDP_EUROSTAT
+      - FRA_UNRATE_EUROSTAT
+      - FRACPIALLMINMEI
+      - FRA_beta0
+      - FRA_beta1
+      - FRA_beta2
+    ESP:
+      - ESP_GDP_EUROSTAT
+      - ESP_UNRATE_EUROSTAT
+      - ESPCPIALLMINMEI
+      - ESP_beta0
+      - ESP_beta1
+      - ESP_beta2
+    ITA:
+      # Macro outcomes (available CPI proxy in cleaned panel)
+      - ITA_GDP_EUROSTAT
+      - ITA_UNRATE_EUROSTAT
+      - ITACPIALLMINMEI
+
+      # DNSS betas
+      - ITA_beta0
+      - ITA_beta1
+      - ITA_beta2

@@ -1,0 +1,165 @@
+# FSAP-style macro narrative templates (more adverse / tail-oriented than the IMF-style template)
+#
+# Use this to generate a clearly separated “FSAP adverse” narrative family.
+# This file is intentionally parallel to scenario_macro_templates.yaml so Step 10.1 / 10.2 can be run unchanged.
+#
+# Typical use:
+#   python "SRESS TEST PIPELINE/10.1_macro_narrative_and_plots.py" --run-id <run_id> --macro-config "SRESS TEST PIPELINE/scenario_macro_templates_fsap.yaml" --tag fsap
+#   python "SRESS TEST PIPELINE/10.2_factor_shocks_from_macro.py" --run-id <run_id> --macro-config "SRESS TEST PIPELINE/scenario_macro_templates_fsap.yaml" --imf-mode macro_first --tag fsap_macro_first
+#
+# Semantics:
+# - Each macro variable is represented as a quarterly PATH of *deltas* vs baseline.
+# - Units: "pp" and "bp" are additive; "%" is multiplicative on an index baseline.
+#
+# Design intent:
+# - Larger macro dislocation than the IMF-style template:
+#   * deeper GDP contraction
+#   * larger unemployment increase
+#   * larger equity drawdown / spread widening
+# - Still stylized; calibrate to your preferred FSAP episode(s) if needed.
+
+version: 1
+
+defaults:
+  horizon_quarters: 12
+
+  # Kept here for comparability, but in IMF Mode A (macro_first) this is NOT forced.
+  # It’s used only as a label in the reporting.
+  scenario_ladder:
+    risk_on: 0.50
+    mild: 0.95
+    severe: 0.99
+
+  # Severity scalar used by Step 10.1 to scale peaks (scenario multipliers also apply).
+  severity:
+    source: factor_shocks
+    reference_factor: V2X
+    normalize: scenario_median_peak_abs
+    clip: [0.5, 2.0]
+
+  # Optional per-ISO multipliers.
+  iso_multipliers:
+    ITA: 1.2
+    ESP: 1.2
+    DEU: 1.0
+    FRA: 1.0
+    USA: 1.0
+
+step10_2:
+  # Keep inversion focused on the macro targets that exist as Step 4 targets.
+  use_variables:
+    - cpi_infl_yoy
+    - unemployment_rate
+
+  # Same pragmatic per-ISO overrides as the IMF template (GDP mappings are currently unstable in some ISOs).
+  use_variables_by_iso:
+    DEU: [unemployment_rate]
+    FRA: [unemployment_rate, cpi_infl_yoy]
+    ESP: [unemployment_rate, cpi_infl_yoy]
+    ITA: [cpi_infl_yoy]
+    USA: [cpi_infl_yoy, unemployment_rate]
+
+  min_test_r2: 0.0
+
+  macro_to_target_by_iso:
+    DEU:
+      cpi_infl_yoy: DEUCPIALLMINMEI
+      unemployment_rate: DEU_UNRATE_EUROSTAT
+    FRA:
+      cpi_infl_yoy: FRACPIALLMINMEI
+      unemployment_rate: FRA_UNRATE_EUROSTAT
+    ESP:
+      cpi_infl_yoy: ESPCPIALLMINMEI
+      unemployment_rate: ESP_UNRATE_EUROSTAT
+    ITA:
+      cpi_infl_yoy: ITACPIALLMINMEI
+      unemployment_rate: ITA_UNRATE_EUROSTAT
+    USA:
+      cpi_infl_yoy: CPIAUCSL
+      unemployment_rate: UNRATE
+
+variables:
+  - variable: gdp_growth_yoy
+    units: pp
+    # FSAP-style: deeper contraction (stylized). Increase if you want closer alignment to severe FSAP episodes.
+    peak_at_severity_1: -4.5
+    shape: hump_trough_recover
+    baseline_levels:
+      DEU: 1.5
+      FRA: 1.4
+      ITA: 1.0
+      ESP: 1.2
+      USA: 2.0
+
+  - variable: cpi_infl_yoy
+    units: pp
+    # FSAP-style: larger disinflation (stylized)
+    peak_at_severity_1: -1.5
+    shape: hump_trough_recover
+    baseline_levels:
+      DEU: 2.0
+      FRA: 2.0
+      ITA: 2.0
+      ESP: 2.0
+      USA: 2.2
+
+  - variable: unemployment_rate
+    units: pp
+    # FSAP-style adverse: materially larger labor market shock (vs +0.7pp IMF template)
+    peak_at_severity_1: 3.0
+    shape: lagged_hump
+    baseline_levels:
+      DEU: 4.0
+      FRA: 7.5
+      ITA: 8.0
+      ESP: 11.0
+      USA: 4.2
+
+  - variable: policy_rate
+    units: bp
+    peak_at_severity_1: -200
+    shape: front_loaded_revert
+    baseline_levels:
+      DEU: 350
+      FRA: 350
+      ITA: 350
+      ESP: 350
+      USA: 450
+
+  - variable: equity_price
+    units: "%"
+    peak_at_severity_1: -45
+    shape: front_loaded_partial_recover
+    baseline_levels:
+      DEU: 100
+      FRA: 100
+      ITA: 100
+      ESP: 100
+      USA: 100
+
+  - variable: sovereign_spread
+    units: bp
+    peak_at_severity_1: 400
+    shape: front_loaded_revert
+    baseline_levels:
+      DEU: 30
+      FRA: 50
+      ITA: 140
+      ESP: 110
+      USA: 40
+
+scenarios:
+  - scenario_id: fsap_baseline
+    description: "FSAP baseline (no stress deltas; reference path)"
+    ladder_level: risk_on
+    scenario_severity_multiplier: 0.0
+
+  - scenario_id: fsap_adverse
+    description: "FSAP adverse scenario"
+    ladder_level: mild
+    scenario_severity_multiplier: 1.0
+
+  - scenario_id: fsap_severely_adverse
+    description: "FSAP severely adverse scenario"
+    ladder_level: severe
+    scenario_severity_multiplier: 1.4

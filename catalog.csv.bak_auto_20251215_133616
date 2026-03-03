@@ -1,0 +1,242 @@
+series,coverage_ratio,coverage_bucket,frequency_label,median_gap_days,last_observation,window_obs,total_obs,source,source_group,source_detail,has_data,provider,fetch_method,storage_path
+BAMLC0A1CAAAEY,0.729837,partial_70_90,daily,1,2025-10-22T00:00:00,13102,10523,FRED,fred_credit,credit_spreads_fred,True,fred,fredapi,
+BAMLC0A2CAAEY,0.735148,partial_70_90,daily,1,2025-12-11T00:00:00,13102,7559,FRED,fred_credit,credit_spreads_fred,True,fred,fredapi,
+BAMLC0A3CAEY,0.735480,partial_70_90,daily,1,2025-10-22T00:00:00,13102,10523,FRED,fred_credit,credit_spreads_fred,True,fred,fredapi,
+BAMLC0A4CBBB,0.545636,lt_70,daily,1,2025-10-22T00:00:00,13102,10523,FRED,core_config,credit,True,fred,fredapi,
+BAMLH0A0CM,,,daily,,,,0,Panel Derived,panel,merged_panel,False,panel,merged_panel,data/stress_indicators_expanded.csv
+BAMLH0A0HYM2,0.761699,partial_70_90,daily,1,2025-10-22T00:00:00,13102,10523,FRED,core_config,credit,True,fred,fredapi,
+BAMLH0A1HYBB,0.747538,partial_70_90,daily,1,2025-10-22T00:00:00,13102,10523,FRED,fred_credit,credit_spreads_fred,True,fred,fredapi,
+BAMLH0A2HYBEY,0.742892,partial_70_90,daily,1,2025-12-11T00:00:00,13102,7559,FRED,fred_credit,credit_spreads_fred,True,fred,fredapi,
+BAMLHE00EHYIEY,0.701516,partial_70_90,daily,1,2025-10-22T00:00:00,13102,10158,FRED,core_config,credit,True,fred,fredapi,
+BTP_Bund_Spread,0.967442,full_>90,daily,31,2025-10-22T00:00:00,13102,12655,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+Bank_equity_index_DEU,0.811628,partial_70_90,monthly,31,2025-12-01T00:00:00,431,349,Manual CSV,manual,data_repository/raw/providers/bank_indices/bank_equity_index_DEU.csv,True,manual,local_csv,data_repository/raw/providers/bank_indices/bank_equity_index_DEU.csv
+Bank_equity_index_ESP,0.509302,lt_70,monthly,31,2025-12-01T00:00:00,431,219,Manual CSV,manual,data_repository/raw/providers/bank_indices/bank_equity_index_ESP.csv,True,manual,local_csv,data_repository/raw/providers/bank_indices/bank_equity_index_ESP.csv
+Bank_equity_index_FRA,0.672093,lt_70,monthly,31,2025-12-01T00:00:00,431,289,Manual CSV,manual,data_repository/raw/providers/bank_indices/bank_equity_index_FRA.csv,True,manual,local_csv,data_repository/raw/providers/bank_indices/bank_equity_index_FRA.csv
+Bank_equity_index_ITA,0.725581,partial_70_90,monthly,31,2025-12-01T00:00:00,431,312,Manual CSV,manual,data_repository/raw/providers/bank_indices/bank_equity_index_ITA.csv,True,manual,local_csv,data_repository/raw/providers/bank_indices/bank_equity_index_ITA.csv
+Bank_equity_index_USA,0.918605,full_>90,monthly,31,2025-12-01T00:00:00,431,395,Manual CSV,manual,data_repository/raw/providers/bank_indices/bank_equity_index_USA.csv,True,manual,local_csv,data_repository/raw/providers/bank_indices/bank_equity_index_USA.csv
+Bonos_Bund_Spread,0.997674,full_>90,daily,31,2025-10-22T00:00:00,13102,13048,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+Brent_Crude_Futures,0.499170,lt_70,daily,1,2025-10-22T00:00:00,13102,6660,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+CDS_5y_FRA,0.765116,partial_70_90,monthly,31,2025-09-30T00:00:00,431,329,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/cds_proxy_FRA_vs_USA_5Y.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/cds_proxy_FRA_vs_USA_5Y.csv
+CDS_5y_ITA,0.951163,full_>90,monthly,31,2025-09-30T00:00:00,431,409,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/cds_proxy_ITA_vs_USA_5Y.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/cds_proxy_ITA_vs_USA_5Y.csv
+CDS_5y_USA,0.002326,lt_70,monthly,31.0,2025-09-30T00:00:00,431,426,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/cds_proxy_USA_vs_USA_5Y.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/cds_proxy_USA_vs_USA_5Y.csv
+COMM_PAPER_SPREAD_EUR,0.779070,partial_70_90,monthly,31,2025-10-31T00:00:00,431,335,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_EUR.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_EUR.csv
+COMM_PAPER_SPREAD_USA,0.806977,partial_70_90,monthly,31,2025-12-31T00:00:00,431,348,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_USA.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_USA.csv
+CPIAUCSL,0.965116,full_>90,daily,31,2025-10-22T00:00:00,13102,13048,FRED,core_config,inflation,True,fred,fredapi,
+DCOILBRENTEU,0.984512,full_>90,daily,1,2025-10-22T00:00:00,13102,13048,FRED,fred_commodities,commodities,True,fred,fredapi,
+DCOILWTICO,0.981856,full_>90,daily,1,2025-10-22T00:00:00,13102,13048,FRED,fred_commodities,commodities,True,fred,fredapi,
+DEUCPIALLMINMEI,0.816279,partial_70_90,daily,31,2025-06-01T00:00:00,13102,12905,FRED,core_config,inflation,True,fred,fredapi,
+DEU_beta0,1.027769,full_>90,daily,1,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+DEU_beta1,1.029760,full_>90,daily,1,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+DEU_beta2,1.029981,full_>90,daily,1,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+DEU_beta3,1.029981,full_>90,daily,1,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+DEXBZUS,0.836597,partial_70_90,daily,1,2025-12-05T00:00:00,13102,7757,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXCHUS,0.770218,partial_70_90,daily,1,2025-12-05T00:00:00,13102,8935,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXJPUS,0.986060,full_>90,daily,1,2025-12-05T00:00:00,13102,8996,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXKOUS,0.942250,full_>90,daily,1,2025-12-05T00:00:00,13102,8963,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXMXUS,0.879411,partial_70_90,daily,1,2025-12-05T00:00:00,13102,8042,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXSZUS,0.986171,full_>90,daily,1,2025-12-05T00:00:00,13102,8996,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXUSEU,0.740347,partial_70_90,daily,1,2025-12-05T00:00:00,13102,6753,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXUSUK,0.986945,full_>90,daily,1,2025-12-05T00:00:00,13102,8996,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DFF,0.606040,lt_70,daily,1,2025-10-22T00:00:00,13102,13048,FRED,core_config,monetary,True,fred,fredapi,
+DHHNGSP,0.734484,partial_70_90,daily,1,2025-12-08T00:00:00,13102,7265,FRED,fred_commodities,commodities,True,fred,fredapi,
+DXY,0.550393,lt_70,daily,1,2025-12-05T00:00:00,13102,4996,Manual CSV,manual,data_repository/raw/fred/DTWEXBGS.csv,True,manual,local_csv,data_repository/raw/fred/DTWEXBGS.csv
+ECBDFR,0.433566,lt_70,daily,56,2025-10-22T00:00:00,13102,9792,FRED,core_config,monetary,True,fred,fredapi,
+EMLC,0.417856,lt_70,daily,1,2025-12-12T00:00:00,13102,3873,Yahoo Finance,yfinance_credit_etf,credit_etf_proxies,True,yahoo,yfinance,
+ESPCPIALLMINMEI,0.979070,full_>90,daily,31,2025-06-01T00:00:00,13102,12905,FRED,core_config,inflation,True,fred,fredapi,
+ESP_beta0,1.027437,full_>90,daily,1,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+ESP_beta1,1.030092,full_>90,daily,1,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+ESP_beta2,1.029207,full_>90,daily,1,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+ESP_beta3,1.029207,full_>90,daily,1,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,series,coverage_ratio,coverage_bucket,frequency_label,median_gap_days,last_observation,window_obs,total_obs,source,source_group,source_detail,has_data,provider,fetch_method,storage_path
+BAMLC0A1CAAAEY,0.80316,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,10523,FRED,fred_credit,credit_spreads_fred,True,fred,fredapi,
+BAMLC0A2CAAEY,0.576935,lt_70,daily,1.0,2025-12-11T00:00:00,13102,7559,FRED,fred_credit,credit_spreads_fred,True,fred,fredapi,
+BAMLC0A3CAEY,0.80316,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,10523,FRED,fred_credit,credit_spreads_fred,True,fred,fredapi,
+BAMLC0A4CBBB,0.80316,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,10523,FRED,core_config,credit,True,fred,fredapi,
+BAMLH0A0CM,,,daily,,,,0,Panel Derived,panel,merged_panel,False,panel,merged_panel,data/stress_indicators_expanded.csv
+BAMLH0A0HYM2,0.80316,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,10523,FRED,core_config,credit,True,fred,fredapi,
+BAMLH0A1HYBB,0.80316,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,10523,FRED,fred_credit,credit_spreads_fred,True,fred,fredapi,
+BAMLH0A2HYBEY,0.576935,lt_70,daily,1.0,2025-12-11T00:00:00,13102,7559,FRED,fred_credit,credit_spreads_fred,True,fred,fredapi,
+BAMLHE00EHYIEY,0.775301,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,10158,FRED,core_config,credit,True,fred,fredapi,
+BTP_Bund_Spread,0.965883,full_>90,daily,1.0,2025-10-22T00:00:00,13102,12655,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+Bank_equity_index_DEU,0.809745,partial_70_90,monthly,31.0,2025-12-01T00:00:00,431,349,Manual CSV,manual,data_repository/raw/providers/bank_indices/bank_equity_index_DEU.csv,True,manual,local_csv,data_repository/raw/providers/bank_indices/bank_equity_index_DEU.csv
+Bank_equity_index_ESP,0.508121,lt_70,monthly,31.0,2025-12-01T00:00:00,431,219,Manual CSV,manual,data_repository/raw/providers/bank_indices/bank_equity_index_ESP.csv,True,manual,local_csv,data_repository/raw/providers/bank_indices/bank_equity_index_ESP.csv
+Bank_equity_index_FRA,0.670534,lt_70,monthly,31.0,2025-12-01T00:00:00,431,289,Manual CSV,manual,data_repository/raw/providers/bank_indices/bank_equity_index_FRA.csv,True,manual,local_csv,data_repository/raw/providers/bank_indices/bank_equity_index_FRA.csv
+Bank_equity_index_ITA,0.723898,partial_70_90,monthly,31.0,2025-12-01T00:00:00,431,312,Manual CSV,manual,data_repository/raw/providers/bank_indices/bank_equity_index_ITA.csv,True,manual,local_csv,data_repository/raw/providers/bank_indices/bank_equity_index_ITA.csv
+Bank_equity_index_USA,0.916473,full_>90,monthly,31.0,2025-12-01T00:00:00,431,395,Manual CSV,manual,data_repository/raw/providers/bank_indices/bank_equity_index_USA.csv,True,manual,local_csv,data_repository/raw/providers/bank_indices/bank_equity_index_USA.csv
+Bonos_Bund_Spread,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13079,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+Brent_Crude_Futures,0.508319,lt_70,daily,1.0,2025-10-22T00:00:00,13102,6660,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+CDS_5y_FRA,0.763341,partial_70_90,monthly,31.0,2025-09-30T00:00:00,431,329,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/cds_proxy_FRA_vs_USA_5Y.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/cds_proxy_FRA_vs_USA_5Y.csv
+CDS_5y_ITA,0.948956,full_>90,monthly,31.0,2025-09-30T00:00:00,431,409,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/cds_proxy_ITA_vs_USA_5Y.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/cds_proxy_ITA_vs_USA_5Y.csv
+CDS_5y_USA,0.988399,full_>90,monthly,31.0,2025-09-30T00:00:00,431,426,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/cds_proxy_USA_vs_USA_5Y.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/cds_proxy_USA_vs_USA_5Y.csv
+COMM_PAPER_SPREAD_EUR,0.777262,partial_70_90,monthly,31.0,2025-10-31T00:00:00,431,335,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_EUR.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_EUR.csv
+COMM_PAPER_SPREAD_USA,0.807425,partial_70_90,monthly,31.0,2025-12-31T00:00:00,431,349,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_USA.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/comm_paper_spread_USA.csv
+CPIAUCSL,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13079,FRED,core_config,inflation,True,fred,fredapi,
+DCOILBRENTEU,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13078,FRED,fred_commodities,commodities,True,fred,fredapi,
+DCOILWTICO,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13078,FRED,fred_commodities,commodities,True,fred,fredapi,
+DEUCPIALLMINMEI,0.984964,full_>90,daily,1.0,2025-06-01T00:00:00,13102,12936,FRED,core_config,inflation,True,fred,fredapi,
+DEU_beta0,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+DEU_beta1,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+DEU_beta2,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+DEU_beta3,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+DEXBZUS,0.592047,lt_70,daily,1.0,2025-12-05T00:00:00,13102,7757,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXCHUS,0.681957,lt_70,daily,1.0,2025-12-05T00:00:00,13102,8956,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXJPUS,0.686613,lt_70,daily,1.0,2025-12-05T00:00:00,13102,9017,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXKOUS,0.684094,lt_70,daily,1.0,2025-12-05T00:00:00,13102,8982,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXMXUS,0.613799,lt_70,daily,1.0,2025-12-05T00:00:00,13102,8042,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXSZUS,0.686613,lt_70,daily,1.0,2025-12-05T00:00:00,13102,9017,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXUSEU,0.515417,lt_70,daily,1.0,2025-12-05T00:00:00,13102,6753,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DEXUSUK,0.686613,lt_70,daily,1.0,2025-12-05T00:00:00,13102,9017,FRED,fred_fx,fx_pairs,True,fred,fredapi,
+DFF,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13079,FRED,core_config,monetary,True,fred,fredapi,
+DHHNGSP,0.554495,lt_70,daily,1.0,2025-12-08T00:00:00,13102,7265,FRED,fred_commodities,commodities,True,fred,fredapi,
+DXY,0.381316,lt_70,daily,1.0,2025-12-05T00:00:00,13102,4996,Manual CSV,manual,data_repository/raw/fred/DTWEXBGS.csv,True,manual,local_csv,data_repository/raw/fred/DTWEXBGS.csv
+ECBDFR,0.747367,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9792,FRED,core_config,monetary,True,fred,fredapi,
+EMLC,0.295604,lt_70,daily,1.0,2025-12-12T00:00:00,13102,3873,Yahoo Finance,yfinance_credit_etf,credit_etf_proxies,True,yahoo,yfinance,
+ESPCPIALLMINMEI,0.984964,full_>90,daily,1.0,2025-06-01T00:00:00,13102,12936,FRED,core_config,inflation,True,fred,fredapi,
+ESP_beta0,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+ESP_beta1,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+ESP_beta2,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+ESP_beta3,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+EURIBOR_3m,0.885132,partial_70_90,daily,1.0,2025-10-01T00:00:00,13102,11597,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/EURIBOR_3m.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/EURIBOR_3m.csv
+EUR_CHF,0.634178,lt_70,daily,1.0,2025-10-22T00:00:00,13102,8309,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+EUR_GBP,0.747138,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9789,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+EUR_JPY,0.634178,lt_70,daily,1.0,2025-10-22T00:00:00,13102,8309,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+EUR_USD,0.432835,lt_70,daily,1.0,2025-10-08T00:00:00,13102,5671,Manual CSV,manual,data_repository/raw/market_data/FX_EURUSD_EURUSD_X.csv,True,manual,local_csv,data_repository/raw/market_data/FX_EURUSD_EURUSD_X.csv
+EWC,0.571287,lt_70,daily,1.0,2025-12-12T00:00:00,13102,7485,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+EWG,0.571287,lt_70,daily,1.0,2025-12-12T00:00:00,13102,7485,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+EWI,0.571287,lt_70,daily,1.0,2025-12-12T00:00:00,13102,7485,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+EWJ,0.571287,lt_70,daily,1.0,2025-12-12T00:00:00,13102,7485,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+EWP,0.571287,lt_70,daily,1.0,2025-12-12T00:00:00,13102,7485,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+EWQ,0.571287,lt_70,daily,1.0,2025-12-12T00:00:00,13102,7485,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+EWT,0.489009,lt_70,daily,1.0,2025-12-12T00:00:00,13102,6407,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+EWU,0.571287,lt_70,daily,1.0,2025-12-12T00:00:00,13102,7485,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+EWW,0.571287,lt_70,daily,1.0,2025-12-12T00:00:00,13102,7485,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+EWY,0.491223,lt_70,daily,1.0,2025-12-12T00:00:00,13102,6436,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+EWZ,0.487941,lt_70,daily,1.0,2025-12-12T00:00:00,13102,6393,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+EZU,0.487101,lt_70,daily,1.0,2025-12-12T00:00:00,13102,6382,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+FAO_AG_INDEX,0.99768,full_>90,monthly,31.0,2025-11-01T00:00:00,431,431,Manual CSV,manual,data_repository/raw/commodities/FAO_AG_INDEX.csv,True,manual,local_csv,data_repository/raw/commodities/FAO_AG_INDEX.csv
+FRACPIALLMINMEI,0.984964,full_>90,daily,1.0,2025-06-01T00:00:00,13102,12936,FRED,core_config,inflation,True,fred,fredapi,
+FRA_beta0,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+FRA_beta1,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+FRA_beta2,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+FRA_beta3,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+FTSEMIB,0.541597,lt_70,daily,1.0,2025-10-08T00:00:00,13102,7096,Manual CSV,manual,data_repository/raw/market_data/EQUITY_Italy_FTSEMIB_MI.csv,True,manual,local_csv,data_repository/raw/market_data/EQUITY_Italy_FTSEMIB_MI.csv
+FXI,0.406808,lt_70,daily,1.0,2025-12-12T00:00:00,13102,5330,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+GC.DOD.TOTL.GD.ZS_ESP,0.916667,full_>90,annual,365.0,2023-01-01T00:00:00,36,36,Manual CSV,manual,data_repository/raw/macro/general_government_gross_debt_pct_gdp_ESP.csv,True,manual,local_csv,data_repository/raw/macro/general_government_gross_debt_pct_gdp_ESP.csv
+GC.DOD.TOTL.GD.ZS_FRA,0.833333,partial_70_90,annual,365.0,2024-01-01T00:00:00,36,30,Manual CSV,manual,data_repository/raw/macro/general_government_gross_debt_pct_gdp_FRA.csv,True,manual,local_csv,data_repository/raw/macro/general_government_gross_debt_pct_gdp_FRA.csv
+GC.DOD.TOTL.GD.ZS_ITA,0.055556,lt_70,annual,365.0,1992-01-01T00:00:00,36,2,Manual CSV,manual,data_repository/raw/macro/general_government_gross_debt_pct_gdp_ITA.csv,True,manual,local_csv,data_repository/raw/macro/general_government_gross_debt_pct_gdp_ITA.csv
+GC.DOD.TOTL.GD.ZS_USA,0.916667,full_>90,annual,365.0,2023-01-01T00:00:00,36,35,Manual CSV,manual,data_repository/raw/macro/general_government_gross_debt_pct_gdp_USA.csv,True,manual,local_csv,data_repository/raw/macro/general_government_gross_debt_pct_gdp_USA.csv
+GDPC1,0.98733,full_>90,daily,1.0,2025-07-02T00:00:00,13102,12967,FRED,core_config,macro,True,fred,fredapi,
+GOLD_SPOT,0.703016,partial_70_90,monthly,31.0,2025-10-31T00:00:00,431,303,Manual CSV,manual,data_repository/raw/commodities/GOLD_SPOT.csv,True,manual,local_csv,data_repository/raw/commodities/GOLD_SPOT.csv
+Gold_Futures,0.701038,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9185,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+HYG,0.3588,lt_70,daily,1.0,2025-12-12T00:00:00,13102,4701,Yahoo Finance,yfinance_credit_etf,credit_etf_proxies,True,yahoo,yfinance,
+IRLTLT01DEM156N,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13079,FRED,core_config,sovereign,True,fred,fredapi,
+IRLTLT01ESM156N,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13079,FRED,core_config,sovereign,True,fred,fredapi,
+IRLTLT01FRM156N,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13079,FRED,core_config,sovereign,True,fred,fredapi,
+IRLTLT01ITM156N,0.965883,full_>90,daily,1.0,2025-10-22T00:00:00,13102,12655,FRED,core_config,sovereign,True,fred,fredapi,
+IRLTLT01USM156N,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13079,FRED,core_config,sovereign,True,fred,fredapi,
+ITACPIALLMINMEI,0.984964,full_>90,daily,1.0,2025-06-01T00:00:00,13102,12936,FRED,core_config,inflation,True,fred,fredapi,
+ITA_beta0,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+ITA_beta1,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+ITA_beta2,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+ITA_beta3,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+JNK,0.346207,lt_70,daily,1.0,2025-12-12T00:00:00,13102,4536,Yahoo Finance,yfinance_credit_etf,credit_etf_proxies,True,yahoo,yfinance,
+LME_METALS_INDEX,0.373836,lt_70,daily,1.0,2025-12-09T00:00:00,13102,4898,Manual CSV,manual,data_repository/raw/commodities/LME_METALS_INDEX.csv,True,manual,local_csv,data_repository/raw/commodities/LME_METALS_INDEX.csv
+LQD,0.449015,lt_70,daily,1.0,2025-12-12T00:00:00,13102,5883,Yahoo Finance,yfinance_credit_etf,credit_etf_proxies,True,yahoo,yfinance,
+LRHUTTTTDEM156S,0.970386,full_>90,daily,1.0,2025-10-22T00:00:00,13102,12714,FRED,core_config,macro,True,fred,fredapi,
+LRHUTTTTESM156S,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13079,FRED,core_config,macro,True,fred,fredapi,
+LRHUTTTTFRM156S,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13079,FRED,core_config,macro,True,fred,fredapi,
+LRHUTTTTITM156S,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13079,FRED,core_config,macro,True,fred,fredapi,
+MABMM301EZM189S,0.947871,full_>90,daily,1.0,2024-02-01T00:00:00,13102,12450,FRED,core_config,monetary,True,fred,fredapi,
+MORTGAGE30US,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13075,FRED,core_config,interest_rate_derivative,True,fred,fredapi,
+Mortgage_rate_DEU,0.99536,full_>90,monthly,31.0,2025-10-01T00:00:00,431,430,Manual CSV,manual,data_repository/raw/fred/IRLTLT01DEM156N.csv,True,manual,local_csv,data_repository/raw/fred/IRLTLT01DEM156N.csv
+Mortgage_rate_ESP,0.99536,full_>90,monthly,31.0,2025-10-01T00:00:00,431,430,Manual CSV,manual,data_repository/raw/fred/IRLTLT01ESM156N.csv,True,manual,local_csv,data_repository/raw/fred/IRLTLT01ESM156N.csv
+Mortgage_rate_FRA,0.99536,full_>90,monthly,31.0,2025-10-01T00:00:00,431,430,Manual CSV,manual,data_repository/raw/fred/IRLTLT01FRM156N.csv,True,manual,local_csv,data_repository/raw/fred/IRLTLT01FRM156N.csv
+Mortgage_rate_ITA,0.965197,full_>90,monthly,31.0,2025-10-01T00:00:00,431,416,Manual CSV,manual,data_repository/raw/fred/IRLTLT01ITM156N.csv,True,manual,local_csv,data_repository/raw/fred/IRLTLT01ITM156N.csv
+Mortgage_rate_USA,0.996795,full_>90,weekly,7.0,2025-10-30T00:00:00,1872,1870,Manual CSV,manual,data_repository/raw/fred/MORTGAGE30US.csv,True,manual,local_csv,data_repository/raw/fred/MORTGAGE30US.csv
+NAEXKP01DEQ661S,0.938483,full_>90,daily,1.0,2023-10-01T00:00:00,13102,12327,FRED,core_config,macro,True,fred,fredapi,
+NAEXKP01ESQ661S,0.801481,partial_70_90,daily,1.0,2023-10-01T00:00:00,13102,10501,FRED,core_config,macro,True,fred,fredapi,
+NAEXKP01FRQ661S,0.938483,full_>90,daily,1.0,2023-10-01T00:00:00,13102,12327,FRED,core_config,macro,True,fred,fredapi,
+NAEXKP01ITQ661S,0.938483,full_>90,daily,1.0,2023-10-01T00:00:00,13102,12327,FRED,core_config,macro,True,fred,fredapi,
+NOMINAL_GDP_USA,0.948956,full_>90,monthly,31.0,2024-12-31T00:00:00,431,409,Manual CSV,manual,data_repository/raw/macro/NOMINAL_GDP_USA.csv,True,manual,local_csv,data_repository/raw/macro/NOMINAL_GDP_USA.csv
+OAT_Bund_Spread,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13079,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+PALUMUSDM,0.986079,full_>90,monthly,31.0,2025-06-01T00:00:00,431,426,FRED,fred_commodities,commodities,True,fred,fredapi,
+PCOPPUSDM,0.986079,full_>90,monthly,31.0,2025-06-01T00:00:00,431,426,FRED,fred_commodities,commodities,True,fred,fredapi,
+PIORECRUSDM,0.986079,full_>90,monthly,31.0,2025-06-01T00:00:00,431,426,FRED,fred_commodities,commodities,True,fred,fredapi,
+PMAIZMTUSDM,0.986079,full_>90,monthly,31.0,2025-06-01T00:00:00,431,426,FRED,fred_commodities,commodities,True,fred,fredapi,
+PSOYBUSDQ,0.979167,full_>90,quarterly,91.5,2025-04-01T00:00:00,144,142,FRED,fred_commodities,commodities,True,fred,fredapi,
+PWHEAMTUSDM,0.986079,full_>90,monthly,31.0,2025-06-01T00:00:00,431,426,FRED,fred_commodities,commodities,True,fred,fredapi,
+Price_to_income_ratio_USA,0.993039,full_>90,monthly,31.0,2025-09-30T00:00:00,431,429,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_USA.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_USA.csv
+Rent_to_income_ratio_USA,0.993039,full_>90,monthly,31.0,2025-09-30T00:00:00,431,429,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_USA.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_USA.csv
+SWAPTION_VOL_DEU,0.586933,lt_70,daily,1.0,2025-10-29T00:00:00,13102,7690,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/swaption_vol_proxy_DEU.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/swaption_vol_proxy_DEU.csv
+SWAPTION_VOL_USA,0.468096,lt_70,daily,1.0,2025-10-29T00:00:00,13102,6133,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/swaption_vol_proxy_USA.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/swaption_vol_proxy_USA.csv
+Sovereign_spread_vs_Germany_ESP,0.99536,full_>90,monthly,31.0,2025-10-31T00:00:00,431,430,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/spread_ESP_vs_DEU_10Y.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/spread_ESP_vs_DEU_10Y.csv
+Sovereign_spread_vs_Germany_USA,0.993039,full_>90,monthly,31.0,2025-09-30T00:00:00,431,428,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/spread_USA_vs_USA_10Y.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/spread_USA_vs_USA_10Y.csv
+TEDRATE,0.898336,partial_70_90,daily,1.0,2022-04-23T00:00:00,13102,11800,FRED,core_config,banking_stress,True,fred,fredapi,
+TTF_GAS,0.709977,partial_70_90,monthly,31.0,2025-06-01T00:00:00,431,306,Manual CSV,manual,data_repository/raw/fred/PNGASEUUSDM.csv,True,manual,local_csv,data_repository/raw/fred/PNGASEUUSDM.csv
+UNRATE,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13079,FRED,core_config,macro,True,fred,fredapi,
+USA_HPI_REAL,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13079,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+USA_beta0,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+USA_beta1,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+USA_beta2,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+USA_beta3,0.711342,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9320,Derived (DNSS),derived_dnss,dnss_pipeline,True,dnss,dnss_pipeline,
+USD_BROAD_INDEX,0.381316,lt_70,daily,1.0,2025-12-05T00:00:00,13102,4996,Manual CSV,manual,data_repository/raw/fred/DTWEXBGS.csv,True,manual,local_csv,data_repository/raw/fred/DTWEXBGS.csv
+USD_JPY,0.961838,full_>90,daily,1.0,2025-09-30T00:00:00,13102,12602,Manual CSV,manual,data_repository/raw/fred/JPINTDUSDJPY.csv,True,manual,local_csv,data_repository/raw/fred/JPINTDUSDJPY.csv
+V2X,0.35651,lt_70,daily,1.0,2025-12-11T00:00:00,13102,4671,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/Euro_STOXX_RealizedVol20.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/Euro_STOXX_RealizedVol20.csv
+VCIT,0.308274,lt_70,daily,1.0,2025-12-12T00:00:00,13102,4039,Yahoo Finance,yfinance_credit_etf,credit_etf_proxies,True,yahoo,yfinance,
+VIXCLS,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13078,FRED,core_config,market_volatility,True,fred,fredapi,
+WALCL,0.636926,lt_70,daily,1.0,2025-10-22T00:00:00,13102,8345,FRED,core_config,monetary,True,fred,fredapi,
+WTI_Crude_Futures,0.701572,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,9192,Panel Derived,panel,merged_panel,True,panel,merged_panel,data/stress_indicators_expanded.csv
+XLB,0.517936,lt_70,daily,1.0,2025-12-12T00:00:00,13102,6786,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+XLE,0.517936,lt_70,daily,1.0,2025-12-12T00:00:00,13102,6786,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+XLF,0.517936,lt_70,daily,1.0,2025-12-12T00:00:00,13102,6786,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+XLI,0.517936,lt_70,daily,1.0,2025-12-12T00:00:00,13102,6786,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+XLK,0.517936,lt_70,daily,1.0,2025-12-12T00:00:00,13102,6786,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+XLP,0.517936,lt_70,daily,1.0,2025-12-12T00:00:00,13102,6786,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+XLRE,0.195466,lt_70,daily,1.0,2025-12-12T00:00:00,13102,2561,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+XLU,0.517936,lt_70,daily,1.0,2025-12-12T00:00:00,13102,6786,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+XLV,0.517936,lt_70,daily,1.0,2025-12-12T00:00:00,13102,6786,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+XLY,0.517936,lt_70,daily,1.0,2025-12-12T00:00:00,13102,6786,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+^FCHI,0.6902,lt_70,daily,1.0,2025-10-08T00:00:00,13102,9043,Manual CSV,manual,data_repository/raw/market_data/EQUITY_France__FCHI.csv,True,manual,local_csv,data_repository/raw/market_data/EQUITY_France__FCHI.csv
+^GDAXI,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13078,FRED,core_config,equity_index,True,fred,fredapi,
+^GSPC,0.995878,full_>90,daily,1.0,2025-10-22T00:00:00,13102,13078,FRED,core_config,equity_index,True,fred,fredapi,
+^IBEX,0.899939,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,11791,FRED,core_config,equity_index,True,fred,fredapi,
+credit_spread_FRA,0.802784,partial_70_90,monthly,31.0,2025-09-30T00:00:00,431,346,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/credit_spread_FRA.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/credit_spread_FRA.csv
+credit_spread_ITA,0.802784,partial_70_90,monthly,31.0,2025-09-30T00:00:00,431,346,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/credit_spread_ITA.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/credit_spread_ITA.csv
+DSWP10,0.462067,lt_70,daily,1.0,2017-01-28T00:00:00,13102,6054,FRED,core_config,interest_rate_derivative,True,fred,fredapi,
+ECBASSETS,0.594871,lt_70,daily,1.0,2020-04-02T00:00:00,13102,7794,FRED,core_config,monetary,True,fred,fredapi,
+MOVE,0.542923,lt_70,monthly,31.0,2025-12-01T00:00:00,431,234,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/move_index_monthly.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/move_index_monthly.csv
+TED_SPREAD,0.598993,lt_70,daily,1.0,2022-01-21T00:00:00,13102,7869,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/ted_rate_monthly.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/ted_rate_monthly.csv
+credit_spread_DEU,0.522042,lt_70,monthly,31.0,2025-10-31T00:00:00,431,225,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/credit_spread_DEU.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/credit_spread_DEU.csv
+credit_spread_ESP,0.522042,lt_70,monthly,31.0,2025-10-31T00:00:00,431,225,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/credit_spread_ESP.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/credit_spread_ESP.csv
+CDS_5y_DEU,0.682135,lt_70,monthly,31.0,2025-09-30T00:00:00,431,294,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/cds_proxy_DEU_vs_USA_5Y.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/cds_proxy_DEU_vs_USA_5Y.csv
+CDS_5y_ESP,0.682135,lt_70,monthly,31.0,2025-09-30T00:00:00,431,294,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/cds_proxy_ESP_vs_USA_5Y.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/cds_proxy_ESP_vs_USA_5Y.csv
+ECBESTRVOLWGTTRMDMNRT,0.168982,lt_70,daily,1.0,2025-10-22T00:00:00,13102,2214,FRED,core_config,monetary,True,fred,fredapi,
+GBP_USD,0.944316,full_>90,monthly,31.0,2023-12-01T00:00:00,431,408,Manual CSV,manual,data_repository/raw/fred/CCUSSP01GBM650N.csv,True,manual,local_csv,data_repository/raw/fred/CCUSSP01GBM650N.csv
+SOFR_3m,0.141963,lt_70,daily,1.0,2025-12-12T00:00:00,13102,1860,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/SOFR_3m.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/SOFR_3m.csv
+Sovereign_spread_vs_Germany_FRA,0.582367,lt_70,monthly,31.0,2025-09-30T00:00:00,431,251,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/spread_FRA_vs_DEU_10Y.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/spread_FRA_vs_DEU_10Y.csv
+Sovereign_spread_vs_Germany_ITA,0.645012,lt_70,monthly,31.0,2025-09-30T00:00:00,431,278,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/spread_ITA_vs_DEU_10Y.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/spread_ITA_vs_DEU_10Y.csv
+USD_CNY,0.944316,full_>90,monthly,31.0,2023-12-01T00:00:00,431,408,Manual CSV,manual,data_repository/raw/fred/CCUSSP02CNM650N.csv,True,manual,local_csv,data_repository/raw/fred/CCUSSP02CNM650N.csv
+XLC,0.143719,lt_70,daily,1.0,2025-12-12T00:00:00,13102,1883,Yahoo Finance,yfinance_sector,sector_equities,True,yahoo,yfinance,
+BAMLC0A0CM,0.80316,partial_70_90,daily,1.0,2025-10-22T00:00:00,13102,10523,FRED,core_config,credit,True,fred,fredapi,
+BIS_LBS_Household_Loans,0.823666,partial_70_90,monthly,31.0,2025-07-31T00:00:00,431,355,Manual CSV,manual,data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Household_Loans_USA.csv,True,manual,local_csv,data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Household_Loans_USA.csv
+BIS_LBS_Private_NFC_DEU,0.322506,lt_70,monthly,31.0,2025-07-31T00:00:00,431,139,Manual CSV,manual,data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Private_NFC_Total_DEU.csv,True,manual,local_csv,data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Private_NFC_Total_DEU.csv
+BIS_LBS_Private_NFC_ITA,0.322506,lt_70,monthly,31.0,2025-07-31T00:00:00,431,139,Manual CSV,manual,data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Private_NFC_Total_ITA.csv,True,manual,local_csv,data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Private_NFC_Total_ITA.csv
+BIS_LBS_Private_NFC_Total,0.322506,lt_70,monthly,31.0,2025-07-31T00:00:00,431,139,Manual CSV,manual,data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Private_NFC_Total_USA.csv,True,manual,local_csv,data_repository/raw/providers/bis_lbs/monthly/BIS_LBS_Private_NFC_Total_USA.csv
+DEU_HPI_REAL,,,monthly,,,,0,Panel Derived,panel,data_repository/raw/providers/real_estate/DEU_HPI_REAL.csv,False,manual,local_csv,data_repository/raw/providers/real_estate/DEU_HPI_REAL.csv
+ESP_HPI_REAL,,,monthly,,,,0,Panel Derived,panel,data_repository/raw/providers/real_estate/ESP_HPI_REAL.csv,False,manual,local_csv,data_repository/raw/providers/real_estate/ESP_HPI_REAL.csv
+FRA_HPI_REAL,,,monthly,,,,0,Panel Derived,panel,data_repository/raw/providers/real_estate/FRA_HPI_REAL.csv,False,manual,local_csv,data_repository/raw/providers/real_estate/FRA_HPI_REAL.csv
+GC.DOD.TOTL.GD.ZS_DEU,,,annual,,,,0,Manual CSV,manual,data_repository/raw/macro/general_government_gross_debt_pct_gdp_DEU_extended.csv,False,manual,local_csv,data_repository/raw/macro/general_government_gross_debt_pct_gdp_DEU_extended.csv
+ITA_HPI_REAL,,,monthly,,,,0,Panel Derived,panel,data_repository/raw/providers/real_estate/ITA_HPI_REAL.csv,False,manual,local_csv,data_repository/raw/providers/real_estate/ITA_HPI_REAL.csv
+NPL_PROXY_DEU,0.795824,partial_70_90,monthly,31.0,2025-07-31T00:00:00,431,343,Manual CSV,manual,data_repository/raw/providers/npl_proxies/monthly/npl_proxy_DEU.csv,True,manual,local_csv,data_repository/raw/providers/npl_proxies/monthly/npl_proxy_DEU.csv
+NPL_PROXY_ESP,0.795824,partial_70_90,monthly,31.0,2025-07-31T00:00:00,431,343,Manual CSV,manual,data_repository/raw/providers/npl_proxies/monthly/npl_proxy_ESP.csv,True,manual,local_csv,data_repository/raw/providers/npl_proxies/monthly/npl_proxy_ESP.csv
+NPL_PROXY_FRA,0.795824,partial_70_90,monthly,31.0,2025-07-31T00:00:00,431,343,Manual CSV,manual,data_repository/raw/providers/npl_proxies/monthly/npl_proxy_FRA.csv,True,manual,local_csv,data_repository/raw/providers/npl_proxies/monthly/npl_proxy_FRA.csv
+NPL_PROXY_ITA,0.795824,partial_70_90,monthly,31.0,2025-07-31T00:00:00,431,343,Manual CSV,manual,data_repository/raw/providers/npl_proxies/monthly/npl_proxy_ITA.csv,True,manual,local_csv,data_repository/raw/providers/npl_proxies/monthly/npl_proxy_ITA.csv
+NPL_PROXY_USA,0.795824,partial_70_90,monthly,31.0,2025-07-31T00:00:00,431,343,Manual CSV,manual,data_repository/raw/providers/npl_proxies/monthly/npl_proxy_USA.csv,True,manual,local_csv,data_repository/raw/providers/npl_proxies/monthly/npl_proxy_USA.csv
+Price_to_income_DEU,,,quarterly,,,,0,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_DEU.csv,False,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_DEU.csv
+Price_to_income_ESP,,,quarterly,,,,0,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_ESP.csv,False,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_ESP.csv
+Price_to_income_FRA,,,quarterly,,,,0,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_FRA.csv,False,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_FRA.csv
+Price_to_income_ITA,,,quarterly,,,,0,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_ITA.csv,False,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/Price_to_income_ratio_ITA.csv
+Price_to_income_USA,,,,,,,0,Panel Derived,panel,merged_panel,False,panel,merged_panel,data/stress_indicators_expanded.csv
+Rent_to_income_ratio_DEU,0.993056,full_>90,quarterly,91.5,2025-12-31T00:00:00,144,144,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_DEU.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_DEU.csv
+Rent_to_income_ratio_ESP,0.993056,full_>90,quarterly,91.5,2025-12-31T00:00:00,144,144,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_ESP.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_ESP.csv
+Rent_to_income_ratio_FRA,0.993056,full_>90,quarterly,91.5,2025-12-31T00:00:00,144,144,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_FRA.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_FRA.csv
+Rent_to_income_ratio_ITA,0.993056,full_>90,quarterly,91.5,2025-12-31T00:00:00,144,144,Manual CSV,manual,data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_ITA.csv,True,manual,local_csv,data_repository/raw/providers/derived_risk_drivers/Rent_to_income_ratio_ITA.csv

@@ -1,0 +1,13 @@
+{
+  "a": 0.1715635627757902,
+  "b": 0.8018220994480248,
+  "a_plus_b": 0.9733856622238146,
+  "update_success_rate": 1.0,
+  "smoothness_mean": 0.008297820167481092,
+  "smoothness_75pct": 0.002803936732362647,
+  "successful_updates": 274074,
+  "total_updates": 274074,
+  "blocks_modeled": 40,
+  "series_modeled": 80,
+  "overfitting_blocks": []
+}

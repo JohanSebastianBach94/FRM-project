@@ -1,0 +1,40 @@
+# Step 5 shortlist + collinearity configuration (governed)
+# Pipeline-local copy so the Implementation Plan can reference pipeline paths.
+# The scripts accept --config to override.
+
+monthly:
+  selection:
+    min_features: 8
+    max_features: 12
+
+  ranking_weights:
+    contribution: 0.45
+    stability: 0.30
+    coverage: 0.15
+    oos_contribution: 0.10
+
+  performance_weighting:
+    test_r2_clip_low: 0.0
+    test_r2_clip_high: 1.0
+
+  pruning:
+    correlation_cluster_threshold: 0.85
+    vif_threshold: 8.0
+    dropna_for_corr: true
+
+daily:
+  selection:
+    max_features_default: 12
+    block_coverage:
+      enabled: true
+      # Ensure Monte Carlo factors remain block-representative even under a small cap.
+      # These keys must match `outputs/country_block_definition.json` block keys.
+      priority_blocks:
+        - macro
+        - financial_markets
+        - banking_system
+        - real_estate
+        - external_fx
+        - public_finance
+  pruning:
+    correlation_cluster_threshold: 0.95

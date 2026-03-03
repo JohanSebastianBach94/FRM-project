@@ -1,0 +1,38 @@
+{
+  "iso": "USA",
+  "model": "ADCC",
+  "params": {
+    "a": 0.01,
+    "b": 0.94,
+    "g": 0.05
+  },
+  "persistence": 0.975,
+  "loglikelihood": 55639.646761475815,
+  "min_eigen": -8.823785213071702e-16,
+  "residuals_shape": [
+    164,
+    105
+  ],
+  "pair_count": 5460,
+  "fit": {
+    "fit_method": "opt",
+    "model_type": "adcc",
+    "opt": {
+      "success": false,
+      "status": 4,
+      "message": "Inequality constraints incompatible",
+      "nit": 1,
+      "max_a": null,
+      "large_a_penalty_lambda": 0.0,
+      "large_a_threshold": 0.2
+    },
+    "fallback": "grid",
+    "corr_recursion": {
+      "spd_projection_dates": 163
+    },
+    "garch": {
+      "garch_convergence_rate": 1.0,
+      "min_garch_convergence_rate": 0.5
+    }
+  }
+}

@@ -1,0 +1,2 @@
+model,event,event_date,country,baseline_days,event_days,baseline_mean_corr,event_mean_corr,diff_mean_abs,diff_max_abs,rt_scaled_rt,rt_overlay,rt_driver_level,rt_driver_slope,rt_driver_curvature,rt_driver_lambda_dynamic,rt_driver_curve_volatility
+DCC,Market Bottom 2009,2009-03-09,Italy,42,29,0.014991618485325531,0.013223532921632565,0.023735273456667177,0.5335104482153719,0.1461488539533172,1.96983834488942,-0.7652233815989816,-0.2223396009795345,-0.03588749322918894,-0.06654773038138957,2.0899982061890947

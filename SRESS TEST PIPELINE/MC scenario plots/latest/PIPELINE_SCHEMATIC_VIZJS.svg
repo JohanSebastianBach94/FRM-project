@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1727pt" height="331pt" viewBox="0.00 0.00 1727.33 331.37" data-rendered="1">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 313.3691)">
+<title>pipeline</title>
+<polygon fill="#ffffff" stroke="transparent" points="-18,18 -18,-313.3691 1709.3304,-313.3691 1709.3304,18 -18,18"></polygon>
+<text text-anchor="middle" x="845.6652" y="-269.7691" font-family="Helvetica,sans-Serif" font-size="24.00" fill="#000000">Stress-testing via Monte Carlo scenarios</text>
+<g id="clust1" class="cluster">
+<title>cluster_top</title>
+<polygon fill="#ffffff" stroke="#000000" points="8,-31.5691 8,-164.5691 1191.078,-164.5691 1191.078,-31.5691 8,-31.5691"></polygon>
+<text text-anchor="middle" x="599.539" y="-138.9691" font-family="Helvetica,sans-Serif" font-size="24.00" fill="#000000">Stress-testing via Monte Carlo scenarios</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_bottom</title>
+<polygon fill="#ffffff" stroke="#000000" points="1215.078,-42.5691 1215.078,-250.5691 1683.3304,-250.5691 1683.3304,-42.5691 1215.078,-42.5691"></polygon>
+<text text-anchor="middle" x="1449.2042" y="-224.9691" font-family="Helvetica,sans-Serif" font-size="24.00" fill="#000000">Stress-testing via Monte Carlo scenarios</text>
+</g>
+<!-- inputs -->
+<g id="node1" class="node">
+<title>inputs</title>
+<path fill="#ebf5ff" stroke="#444444" d="M191.0252,-112.2695C191.0252,-112.2695 27.9916,-112.2695 27.9916,-112.2695 21.9916,-112.2695 15.9916,-106.2695 15.9916,-100.2695 15.9916,-100.2695 15.9916,-58.8688 15.9916,-58.8688 15.9916,-52.8688 21.9916,-46.8688 27.9916,-46.8688 27.9916,-46.8688 191.0252,-46.8688 191.0252,-46.8688 197.0252,-46.8688 203.0252,-52.8688 203.0252,-58.8688 203.0252,-58.8688 203.0252,-100.2695 203.0252,-100.2695 203.0252,-106.2695 197.0252,-112.2695 191.0252,-112.2695"></path>
+<text text-anchor="middle" x="109.5084" y="-97.3691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Inputs &amp; prep</text>
+<text text-anchor="middle" x="109.5084" y="-68.9691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Macro/market series -&gt; cleaning</text>
+<text text-anchor="middle" x="109.5084" y="-54.5691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">standardization + health checks</text>
+</g>
+<!-- blocks -->
+<g id="node2" class="node">
+<title>blocks</title>
+<path fill="#ecf8ef" stroke="#444444" d="M486.5793,-112.2695C486.5793,-112.2695 254.8291,-112.2695 254.8291,-112.2695 248.8291,-112.2695 242.8291,-106.2695 242.8291,-100.2695 242.8291,-100.2695 242.8291,-58.8688 242.8291,-58.8688 242.8291,-52.8688 248.8291,-46.8688 254.8291,-46.8688 254.8291,-46.8688 486.5793,-46.8688 486.5793,-46.8688 492.5793,-46.8688 498.5793,-52.8688 498.5793,-58.8688 498.5793,-58.8688 498.5793,-100.2695 498.5793,-100.2695 498.5793,-106.2695 492.5793,-112.2695 486.5793,-112.2695"></path>
+<text text-anchor="middle" x="370.7042" y="-97.3691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Country blocks (Step 2)</text>
+<text text-anchor="middle" x="370.7042" y="-68.9691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Group factors into themes</text>
+<text text-anchor="middle" x="370.7042" y="-54.5691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">(banking, FX, public finance, commodities ...)</text>
+</g>
+<!-- inputs&#45;&gt;blocks -->
+<g id="edge1" class="edge">
+<title>inputs-&gt;blocks</title>
+<path fill="none" stroke="#444444" stroke-width="1.4" d="M203.0683,-79.5691C213.1321,-79.5691 223.5157,-79.5691 233.9518,-79.5691"></path>
+<polygon fill="#444444" stroke="#444444" stroke-width="1.4" points="234.2247,-82.5442 242.7246,-79.5691 234.2246,-76.5942 234.2247,-82.5442"></polygon>
+</g>
+<!-- dynamics -->
+<g id="node3" class="node">
+<title>dynamics</title>
+<path fill="#ecf8ef" stroke="#444444" d="M702.3244,-119.1701C702.3244,-119.1701 550.414,-119.1701 550.414,-119.1701 544.414,-119.1701 538.414,-113.1701 538.414,-107.1701 538.414,-107.1701 538.414,-51.9681 538.414,-51.9681 538.414,-45.9681 544.414,-39.9681 550.414,-39.9681 550.414,-39.9681 702.3244,-39.9681 702.3244,-39.9681 708.3244,-39.9681 714.3244,-45.9681 714.3244,-51.9681 714.3244,-51.9681 714.3244,-107.1701 714.3244,-107.1701 714.3244,-113.1701 708.3244,-119.1701 702.3244,-119.1701"></path>
+<text text-anchor="middle" x="626.3692" y="-104.5691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Factor dynamics</text>
+<text text-anchor="middle" x="626.3692" y="-76.1691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Volatility + correlations</text>
+<text text-anchor="middle" x="626.3692" y="-61.7691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">(ADCC / DCC-GARCH family)</text>
+<text text-anchor="middle" x="626.3692" y="-47.3691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">+ mean reversion</text>
+</g>
+<!-- blocks&#45;&gt;dynamics -->
+<g id="edge2" class="edge">
+<title>blocks-&gt;dynamics</title>
+<path fill="none" stroke="#444444" stroke-width="1.4" d="M498.5367,-79.5691C509.0698,-79.5691 519.6028,-79.5691 529.8499,-79.5691"></path>
+<polygon fill="#444444" stroke="#444444" stroke-width="1.4" points="529.8838,-82.5442 538.3838,-79.5691 529.8838,-76.5942 529.8838,-82.5442"></polygon>
+</g>
+<!-- mc -->
+<g id="node4" class="node">
+<title>mc</title>
+<path fill="#fff3e6" stroke="#444444" d="M930.8886,-112.2695C930.8886,-112.2695 766.4994,-112.2695 766.4994,-112.2695 760.4994,-112.2695 754.4994,-106.2695 754.4994,-100.2695 754.4994,-100.2695 754.4994,-58.8688 754.4994,-58.8688 754.4994,-52.8688 760.4994,-46.8688 766.4994,-46.8688 766.4994,-46.8688 930.8886,-46.8688 930.8886,-46.8688 936.8886,-46.8688 942.8886,-52.8688 942.8886,-58.8688 942.8886,-58.8688 942.8886,-100.2695 942.8886,-100.2695 942.8886,-106.2695 936.8886,-112.2695 930.8886,-112.2695"></path>
+<text text-anchor="middle" x="848.694" y="-97.3691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Monte Carlo scenarios (Step 12)</text>
+<text text-anchor="middle" x="848.694" y="-68.9691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Simulate many joint futures</text>
+<text text-anchor="middle" x="848.694" y="-54.5691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">for block shock paths</text>
+</g>
+<!-- dynamics&#45;&gt;mc -->
+<g id="edge3" class="edge">
+<title>dynamics-&gt;mc</title>
+<path fill="none" stroke="#444444" stroke-width="1.4" d="M714.5572,-79.5691C724.7863,-79.5691 735.2868,-79.5691 745.6914,-79.5691"></path>
+<polygon fill="#444444" stroke="#444444" stroke-width="1.4" points="745.9007,-82.5442 754.4007,-79.5691 745.9007,-76.5942 745.9007,-82.5442"></polygon>
+</g>
+<!-- regimes -->
+<g id="node5" class="node">
+<title>regimes</title>
+<path fill="#fff3e6" stroke="#444444" d="M1171.0964,-116.2695C1171.0964,-116.2695 995.0228,-116.2695 995.0228,-116.2695 989.0228,-116.2695 983.0228,-110.2695 983.0228,-104.2695 983.0228,-104.2695 983.0228,-62.8688 983.0228,-62.8688 983.0228,-56.8688 989.0228,-50.8688 995.0228,-50.8688 995.0228,-50.8688 1171.0964,-50.8688 1171.0964,-50.8688 1177.0964,-50.8688 1183.0964,-56.8688 1183.0964,-62.8688 1183.0964,-62.8688 1183.0964,-104.2695 1183.0964,-104.2695 1183.0964,-110.2695 1177.0964,-116.2695 1171.0964,-116.2695"></path>
+<text text-anchor="middle" x="1083.0596" y="-101.3691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Regimes</text>
+<text text-anchor="middle" x="1083.0596" y="-72.9691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Bucket draws by severity quantiles</text>
+<text text-anchor="middle" x="1083.0596" y="-58.5691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">(baseline -&gt; adverse -&gt; crisis)</text>
+</g>
+<!-- mc&#45;&gt;regimes -->
+<g id="edge4" class="edge">
+<title>mc-&gt;regimes</title>
+<path fill="none" stroke="#444444" stroke-width="1.4" d="M943.0064,-81.1788C953.2416,-81.3535 963.7191,-81.5323 974.1098,-81.7097"></path>
+<polygon fill="#444444" stroke="#444444" stroke-width="1.4" points="974.2608,-84.6876 982.8103,-81.8582 974.3624,-78.7384 974.2608,-84.6876"></polygon>
+</g>
+<!-- reporting -->
+<g id="node7" class="node">
+<title>reporting</title>
+<path fill="#f7eef7" stroke="#444444" d="M1663.1785,-206.2695C1663.1785,-206.2695 1507.7867,-206.2695 1507.7867,-206.2695 1501.7867,-206.2695 1495.7867,-200.2695 1495.7867,-194.2695 1495.7867,-194.2695 1495.7867,-152.8688 1495.7867,-152.8688 1495.7867,-146.8688 1501.7867,-140.8688 1507.7867,-140.8688 1507.7867,-140.8688 1663.1785,-140.8688 1663.1785,-140.8688 1669.1785,-140.8688 1675.1785,-146.8688 1675.1785,-152.8688 1675.1785,-152.8688 1675.1785,-194.2695 1675.1785,-194.2695 1675.1785,-200.2695 1669.1785,-206.2695 1663.1785,-206.2695"></path>
+<text text-anchor="middle" x="1585.4826" y="-191.3691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Reporting (Step 12.1)</text>
+<text text-anchor="middle" x="1585.4826" y="-162.9691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Severity distributions + ranking</text>
+<text text-anchor="middle" x="1585.4826" y="-148.5691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Crisis drivers (block shares)</text>
+</g>
+<!-- mc&#45;&gt;reporting -->
+<g id="edge5" class="edge">
+<title>mc-&gt;reporting</title>
+<path fill="none" stroke="#444444" stroke-width="1.4" d="M943.0421,-47.6469C1066.2924,-11.5324 1286.3075,33.5057 1455.6348,-38.5691 1500.6993,-57.751 1537.682,-101.0888 1560.4945,-133.5205"></path>
+<polygon fill="#444444" stroke="#444444" stroke-width="1.4" points="1558.1524,-135.3648 1565.4247,-140.6766 1563.0522,-131.9891 1558.1524,-135.3648"></polygon>
+</g>
+<!-- regimes&#45;&gt;reporting -->
+<g id="edge6" class="edge">
+<title>regimes-&gt;reporting</title>
+<path fill="none" stroke="#444444" stroke-width="1.4" d="M1103.3782,-116.172C1126.0177,-149.0824 1165.9774,-197.9091 1215.078,-218.5691 1305.5252,-256.6266 1418.6244,-233.8893 1495.8998,-208.9791"></path>
+<polygon fill="#444444" stroke="#444444" stroke-width="1.4" points="1497.0554,-211.7309 1504.2014,-206.2503 1495.1974,-206.0784 1497.0554,-211.7309"></polygon>
+</g>
+<!-- network -->
+<g id="node8" class="node">
+<title>network</title>
+<path fill="#f7eef7" stroke="#444444" d="M1404.3564,-116.2695C1404.3564,-116.2695 1274.3564,-116.2695 1274.3564,-116.2695 1268.3564,-116.2695 1262.3564,-110.2695 1262.3564,-104.2695 1262.3564,-104.2695 1262.3564,-62.8688 1262.3564,-62.8688 1262.3564,-56.8688 1268.3564,-50.8688 1274.3564,-50.8688 1274.3564,-50.8688 1404.3564,-50.8688 1404.3564,-50.8688 1410.3564,-50.8688 1416.3564,-56.8688 1416.3564,-62.8688 1416.3564,-62.8688 1416.3564,-104.2695 1416.3564,-104.2695 1416.3564,-110.2695 1410.3564,-116.2695 1404.3564,-116.2695"></path>
+<text text-anchor="middle" x="1339.3564" y="-101.3691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Network lens</text>
+<text text-anchor="middle" x="1339.3564" y="-72.9691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Connectedness deltas</text>
+<text text-anchor="middle" x="1339.3564" y="-58.5691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">(stress regime vs median)</text>
+</g>
+<!-- regimes&#45;&gt;network -->
+<g id="edge7" class="edge">
+<title>regimes-&gt;network</title>
+<path fill="none" stroke="#444444" stroke-width="1.4" d="M1183.2518,-83.5691C1206.5321,-83.5691 1231.1064,-83.5691 1253.6947,-83.5691"></path>
+<polygon fill="#444444" stroke="#444444" stroke-width="1.4" points="1253.7479,-86.5442 1262.2478,-83.5691 1253.7478,-80.5942 1253.7479,-86.5442"></polygon>
+</g>
+<!-- realized -->
+<g id="node6" class="node">
+<title>realized</title>
+<path fill="#ebf5ff" stroke="#444444" d="M1443.4136,-206.2695C1443.4136,-206.2695 1235.2992,-206.2695 1235.2992,-206.2695 1229.2992,-206.2695 1223.2992,-200.2695 1223.2992,-194.2695 1223.2992,-194.2695 1223.2992,-152.8688 1223.2992,-152.8688 1223.2992,-146.8688 1229.2992,-140.8688 1235.2992,-140.8688 1235.2992,-140.8688 1443.4136,-140.8688 1443.4136,-140.8688 1449.4136,-140.8688 1455.4136,-146.8688 1455.4136,-152.8688 1455.4136,-152.8688 1455.4136,-194.2695 1455.4136,-194.2695 1455.4136,-200.2695 1449.4136,-206.2695 1443.4136,-206.2695"></path>
+<text text-anchor="middle" x="1339.3564" y="-191.3691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Realized overlay</text>
+<text text-anchor="middle" x="1339.3564" y="-162.9691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">Compute "Today" from the latest window</text>
+<text text-anchor="middle" x="1339.3564" y="-148.5691" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">(in comparable sigma units)</text>
+</g>
+<!-- realized&#45;&gt;reporting -->
+<g id="edge8" class="edge">
+<title>realized-&gt;reporting</title>
+<path fill="none" stroke="#444444" stroke-width="1.4" d="M1455.5725,-173.5691C1466.0743,-173.5691 1476.6429,-173.5691 1486.9711,-173.5691"></path>
+<polygon fill="#444444" stroke="#444444" stroke-width="1.4" points="1487.0834,-176.5442 1495.5834,-173.5691 1487.0833,-170.5942 1487.0834,-176.5442"></polygon>
+</g>
+</g>
+</svg>

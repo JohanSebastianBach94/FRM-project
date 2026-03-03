@@ -1,0 +1,4 @@
+name,description,persistence_threshold,a,b,a_plus_b,dcc_best_ll,adcc_best_ll,update_success_rate,smoothness_mean,smoothness_75pct,successful_updates,total_updates,avg_improvement,persistence_rate,ljungbox_fail_rate,ljungbox_tested,dcc_reg_penalty,dcc_stationarity_target,dcc_max_a_plus_b
+heavy_smooth,"High shrinkage, strong winsorization, strict cleaning",0.0018,0.03,0.9,0.93,-inf,-inf,1.0,0.0027804723984811474,0.001720033466977841,9318,9318,-28.02530697111544,0.6377151799687011,0.8888888888888888,72,1400.0,0.92,0.95
+balanced,Default smoothing with moderate winsorization,0.0015,0.03,0.9,0.93,-inf,-inf,1.0,0.003082662806249661,0.0018858288943420475,9318,9318,-32.246831613516704,0.559076682316119,0.8888888888888888,72,800.0,0.9,0.97
+light_smooth,"Looser regularization, minimal winsorization/trimming",0.0012,0.03,0.9,0.93,-inf,-inf,1.0,0.0029442814859613957,0.001737123403321713,9318,9318,-9688172.05276062,0.4753521126760563,0.8888888888888888,72,100.0,0.88,0.99

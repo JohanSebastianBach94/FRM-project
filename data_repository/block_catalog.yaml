@@ -1,0 +1,854 @@
+blocks:
+  - key: macro
+    name: Macro Block (essential + optional)
+    description: "Growth, activity, prices, and credit series sourced from OECD/IMF/World Bank/FRED/Eurostat; used for macro stress calibration."
+    sub_blocks:
+      - key: growth_activity
+        name: Growth & Activity
+        indicators:
+          - metric: Real GDP (level)
+            series_code: GDPC1
+            risk_indicator: macro_real_gdp
+            source: FRED GDPC1 via `data_repository/raw/risk_indicators/pipeline/stress_indicators_expanded.csv`
+            coverage: 1990-01 through 2025-10 (FRED public release; raw extends to 1947)
+            frequency: quarterly
+            status: ingested
+            notes: "Used for level and YoY growth; derived from `config.stress_indicators_config.GDP_GROWTH`."
+          - metric: Real GDP YoY
+            series_code: NAEXKP01<COUNTRY>Q661S (Italy, France, Germany, Spain) and GDPC1
+            risk_indicator: macro_gdp_growth
+            source: Eurostat/FRED via expanded stress indicator pack
+            coverage: 1990-01 through 2025-10 (country coverage varies but stretched to 1990)
+            frequency: quarterly
+            status: ingested
+          - metric: Nominal GDP
+            series_code: NY.GDP.MKTP.CD_<ISO>
+            risk_indicator: macro_nominal_gdp
+            source: World Bank WDI JSON (files under `data_repository/raw/macro/wb_NY.GDP.MKTP.CD_<ISO>.json`)
+            coverage: 1990-present (country-dependent)
+            frequency: annual
+            status: ingested
+            notes: "Canonical nominal level feed used for denominators and conversions."
+          - metric: GDP deflator
+            series_code: gdp_implied_deflator_<ISO>.csv
+            risk_indicator: macro_gdp_deflator
+            source: Derived from NGDP and RGDP (stored in `data_repository/raw/macro/gdp_implied_deflator_<ISO>.csv`)
+            coverage: 1990-present
+            frequency: annual
+            status: ingested
+          - metric: GDP components (C, I, G, NX)
+            series_code: OECD/IMF SDMX (pending)
+            risk_indicator: macro_gdp_components
+            source: OECD national accounts / IMF SDMX endpoints (to be ingested)
+            coverage: target 1990-present
+            frequency: quarterly
+            status: planned
+            notes: "Add via `scripts/extend_fetch_structural_data.py` or new SDMX fetcher."
+          - metric: Industrial production index
+            series_code: NAEXKP01<COUNTRY>Q661S or INDPRO_<COUNTRY>
+            risk_indicator: macro_industrial_production
+            source: Eurostat industrial production indices (records exist in stress pack)
+            coverage: 1990-01 through 2025-10
+            frequency: monthly/quarterly
+            status: ingested
+          - metric: Manufacturing PMI
+            series_code: PMI_MANUFACTURING_<ISO>
+            risk_indicator: macro_pmi_manufacturing
+            source: IHS Markit / S&P Global PMI releases (requires fresh ingestion)
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Services PMI
+            series_code: PMI_SERVICES_<ISO>
+            risk_indicator: macro_pmi_services
+            source: IHS Markit / S&P Global — pending ingestion
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Composite PMI
+            series_code: PMI_COMPOSITE_<ISO>
+            risk_indicator: macro_pmi_composite
+            source: IHS Markit / S&P Global — planned
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Retail sales volume index
+            series_code: RETAIL_SALES_<ISO>
+            risk_indicator: macro_retail_sales
+            source: Eurostat / national agencies — ingestion needed
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Unemployment rate
+            series_code: LRHUTTTT<ISO> / UNRATE
+            risk_indicator: macro_unemployment
+            source: Eurostat/FRED via expanded pack
+            coverage: 1990-01 through 2025-10
+            frequency: monthly
+            status: ingested
+          - metric: Labor force participation
+            series_code: LFPR_<ISO>
+            risk_indicator: macro_labor_force_participation
+            source: IMF IFS / OECD (to be fetched via SDMX)
+            coverage: target 1990-present
+            frequency: quarterly/monthly (where available)
+            status: planned
+          - metric: Wage growth (total economy or manufacturing)
+            series_code: WAGE_GROWTH_<ISO>
+            risk_indicator: macro_wage_growth
+            source: OECD/Eurostat wage tables (pending ingestion)
+            coverage: target 1990-present
+            frequency: quarterly/monthly
+            status: planned
+      - key: prices
+        name: Prices
+        indicators:
+          - metric: CPI headline YoY
+            series_code: CPIAUCSL (USA), FRACPIALLMINMEI (FRA), DEUCPIALLMINMEI (DEU), ESPCPIALLMINMEI (ESP), ITACPIALLMINMEI (ITA)
+            risk_indicator: inflation_headline
+            source: FRED & Eurostat via expanded stress pack
+            coverage: 1990-01 through 2025-10
+            frequency: monthly
+            status: ingested
+          - metric: CPI core YoY
+            series_code: Derived core CPI (pending explicit series)
+            risk_indicator: inflation_core
+            source: Derived from headline series / IMF core CPI tables
+            coverage: target 1990-present once computed
+            frequency: monthly
+            status: planned
+          - metric: PPI YoY
+            series_code: PPI_<ISO> (pending, e.g., WPTPI_<ISO>)
+            risk_indicator: inflation_ppi
+            source: Eurostat/FRED PPI tables (pending ingestion)
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Inflation expectations (5y breakeven or survey)
+            series_code: BE5Y_<COUNTRY> / SPF expectations
+            risk_indicator: inflation_expectations
+            source: Fed 5Y breakeven, ECB Survey of Professional Forecasters (pending ingestion)
+            coverage: target 1990-present
+            frequency: monthly/quarterly
+            status: optional
+      - key: credit_to_economy
+        name: Credit-to-Economy
+        indicators:
+          - metric: Credit to private non-financial sector (stock)
+            series_code: BIS LBS public (loans to NFC + households)
+            risk_indicator: credit_private_nfc
+            source: `data_repository/raw/structural/bis_lbs_d_pub.csv`
+            coverage: 1990-Q1 onward (Euro area and major economies)
+            frequency: quarterly
+            status: ingested
+          - metric: Credit-to-GDP gap
+            series_code: Derived (credit stock minus trend/GDP ratio)
+            risk_indicator: credit_gap
+            source: Planned derivation using BIS and IMF GDP
+            coverage: target 1990-present
+            frequency: quarterly
+            status: planned
+          - metric: Household credit outstanding
+            series_code: BIS LBS household loans
+            risk_indicator: credit_household_stock
+            source: `data_repository/raw/structural/bis_lbs_d_pub.csv`
+            coverage: 1990-Q1 onward
+            frequency: quarterly
+            status: ingested
+          - metric: Corporate credit outstanding
+            series_code: BIS LBS NFC loans
+            risk_indicator: credit_corporate_stock
+            source: same BIS file
+            coverage: 1990-Q1 onward
+            frequency: quarterly
+            status: ingested
+          - metric: Credit growth YoY
+            series_code: Derived from BIS credit stock
+            risk_indicator: credit_growth
+            source: Derived script (pending)
+            coverage: target 1990-present
+            frequency: quarterly
+            status: planned
+          - metric: Debt service ratios (household + corporate)
+            series_code: BIS DSR table (requires additional download)
+            risk_indicator: credit_dsr
+            source: BIS database (pending ingestion)
+            coverage: target 1990-present
+            frequency: quarterly
+            status: planned
+  - key: real_estate
+    name: Real Estate Block
+    description: "House price, mortgage, housing activity, and derived stress proxies."
+    indicators:
+      - metric: House Price Index (nominal)
+        series_code: CSUSHPISA (USA), ITALRPPPPLOPM (ITA), other national HPI
+        risk_indicator: realestate_hpi_nominal
+        source: FRED / national price releases via stress pack
+        coverage: 1990-01 through 2025-10 (USA) and similar windows for EU countries
+        frequency: monthly/quarterly
+        status: ingested
+      - metric: House Price Index (real)
+        series_code: Derived nominal HPI deflated by GDP deflator
+        risk_indicator: realestate_hpi_real
+        source: Derived (planned)
+        coverage: target 1990-present
+        frequency: monthly/quarterly
+        status: planned
+      - metric: Residential mortgage rates
+        series_code: MORTGAGE30US (USA), pending ECB/national data
+        risk_indicator: realestate_mortgage_rate
+        source: Freddie Mac (USA) and future Eurozone proxies
+        coverage: 1990-present (USA), planned for additional countries
+        frequency: weekly/monthly
+        status: ingested (USA)
+      - metric: Housing permits / housing starts
+        series_code: PERMITS_<ISO>, HSTARTS_<ISO>
+        risk_indicator: realestate_permits
+        source: U.S. Census, Eurostat building permits (pending)
+        coverage: target 1990-present
+        frequency: monthly
+        status: planned
+      - metric: Rental index / rent inflation
+        series_code: RENT_INDEX_<ISO>
+        risk_indicator: realestate_rent
+        source: Eurostat or national data (pending)
+        coverage: target 1990-present
+        frequency: monthly/quarterly
+        status: planned
+      - metric: Household mortgage debt (stock)
+        series_code: BIS LBS household loans (proxy)
+        risk_indicator: realestate_mortgage_debt
+        source: `data_repository/raw/structural/bis_lbs_d_pub.csv`
+        coverage: 1990-Q1 onward
+        frequency: quarterly
+        status: ingested
+      - metric: Mortgage NPL ratio
+        series_code: NPL_HOUSEHOLD_<ISO>
+        risk_indicator: realestate_npl_ratio
+        source: Supervisory releases (limited)
+        coverage: patchy
+        frequency: quarterly/annual
+        status: optional
+      - metric: Price-to-income
+        series_code: Derived (HPI / median income)
+        risk_indicator: realestate_price_income
+        source: Derived from HPI and income proxies
+        coverage: target 1990-present
+        frequency: quarterly
+        status: planned
+      - metric: Price-to-rent
+        series_code: Derived (HPI / rent index)
+        risk_indicator: realestate_price_rent
+        source: Derived once rent data in place
+        coverage: target 1990-present
+        frequency: quarterly
+        status: planned
+      - metric: Real house price growth
+        series_code: Derived (real HPI change)
+        risk_indicator: realestate_real_growth
+        source: Derived after real HPI available
+        coverage: target 1990-present
+        frequency: monthly/quarterly
+        status: planned
+  - key: public_finance
+    name: Public Finance Block
+    description: "Sovereign fiscal metrics tied to stress pricing (yields, spreads, debt, balances)."
+    indicators:
+      - metric: 10Y government bond yield
+        series_code: IRLTLT01<ISO>M156N (FRED) / `data_repository/raw/market_data/BOND_<country>_10Y.csv`
+        risk_indicator: fiscal_10y_yield
+        source: NSS beta-form yield outputs (see `nss_models`) recalibrated to align with FRED/Investing.com archives
+        coverage: 1990-present (beta series tracks back to NSS estimation window)
+        frequency: daily/monthly
+        status: ingested
+      - metric: 2Y government bond yield
+        series_code: IRLTLT02<ISO>M156N / `data_repository/raw/market_data/BOND_<country>_2Y.csv`
+        risk_indicator: fiscal_2y_yield
+        source: NSS beta-form yield outputs (published via `nss_models`) with FRED/Investing.com used for alignment
+        coverage: 1990-present / 2000-present
+        frequency: daily/monthly
+        status: ingested
+      - metric: Yield curve tenors (1M, 3M, 6M, 1Y, 2Y, 5Y, 10Y, 30Y)
+        series_code: `BOND_<country>_<tenor>.csv`
+        risk_indicator: fiscal_yield_curve
+        source: Investing.com CSVs under `data_repository/raw/market_data/`
+        coverage: 2000-present per tenor
+        frequency: daily
+        status: ingested
+      - metric: CDS sovereign 5Y
+        series_code: CDS_5Y_<ISO> (proxy via computed spreads)
+        risk_indicator: fiscal_cds_5y
+        source: Derived by approximating with BTP_Bund, Bonos_Bund, OAT_Bund
+        coverage: 2000-present (derived)
+        frequency: daily/monthly
+        status: ingested (proxy)
+      - metric: Debt-to-GDP (general government)
+        series_code: GC.DOD.TOTL.GD.ZS_<ISO>
+        risk_indicator: fiscal_debt_to_gdp
+        source: World Bank WDI (`data_repository/raw/macro/wb_GC.DOD.TOTL.GD.ZS_<ISO>.json`)
+        coverage: 1990-present
+        frequency: annual
+        status: ingested
+      - metric: Deficit-to-GDP
+        series_code: GOVDEF_<ISO> (IMF GFS pending)
+        risk_indicator: fiscal_deficit_to_gdp
+        source: IMF GFS / OECD (pending ingestion)
+        coverage: target 1990-present
+        frequency: annual/quarterly
+        status: planned
+      - metric: Primary balance
+        series_code: PRIM_BAL_<ISO>
+        risk_indicator: fiscal_primary_balance
+        source: IMF GFS (pending)
+        coverage: target 1990-present
+        frequency: annual
+        status: planned
+      - metric: Interest payments-to-GDP
+        series_code: INT_PAYMENT_GDP_<ISO>
+        risk_indicator: fiscal_interest_burden
+        source: IMF GFS (planned)
+        coverage: target 1990-present
+        frequency: annual
+        status: planned
+      - metric: Public consumption YoY
+        series_code: GOV_CONS_<ISO>
+        risk_indicator: fiscal_public_consumption
+        source: IMF/OECD national accounts (pending)
+        coverage: target 1990-present
+        frequency: quarterly
+        status: planned
+      - metric: Public investment YoY
+        series_code: GOV_INV_<ISO>
+        risk_indicator: fiscal_public_investment
+        source: IMF/OECD (pending)
+        coverage: target 1990-present
+        frequency: quarterly
+        status: planned
+      - metric: Auction bid-to-cover ratios
+        series_code: BID_COVER_<ISO>
+        risk_indicator: fiscal_auction_bid_cover
+        source: National treasury auctions (data varies)
+        coverage: patchy per sovereign
+        frequency: monthly/quarterly
+        status: optional
+      - metric: Term spread (10Y–2Y)
+        series_code: Derived (10Y yield − 2Y yield)
+        risk_indicator: fiscal_term_spread
+        source: Derived via `SRESS TEST PIPELINE/3.1_clean_panel.py`
+        coverage: 1990-01 through 2025-10
+        frequency: monthly
+        status: ingested (derived)
+      - metric: Short rate (3M interbank)
+        series_code: USD3MTD156N, EUR3MTD156N
+        risk_indicator: fiscal_short_rate
+        source: FRED & ECB (daily)
+        coverage: 1990-present (USD), 1999-present (EUR)
+        frequency: daily
+        status: ingested
+      - metric: Sovereign risk premium
+        series_code: Derived (CDS or bond yield minus short rate)
+        risk_indicator: fiscal_sovereign_premium
+        source: Derived via clean panel spread calculations
+        coverage: 1990-01 through 2025-10
+        frequency: monthly
+        status: ingested (derived)
+  - key: external_fx
+    name: External & FX Block
+    description: "Trade, FX, and balance-of-payments indicators from BIS/IMF/ECB/national sources."
+    sub_blocks:
+      - key: trade
+        name: Trade
+        indicators:
+          - metric: Exports (total)
+            series_code: EXP_<ISO> (IMF IFS)
+            risk_indicator: external_exports
+            source: IMF IFS SDMX (pending ingestion)
+            coverage: target 1990-present
+            frequency: quarterly/monthly
+            status: planned
+          - metric: Imports (total)
+            series_code: IMP_<ISO> (IMF IFS)
+            risk_indicator: external_imports
+            source: IMF IFS (pending)
+            coverage: target 1990-present
+            frequency: quarterly/monthly
+            status: planned
+          - metric: Trade balance
+            series_code: Derived (exports − imports)
+            risk_indicator: external_trade_balance
+            source: Derived once trades ingested
+            coverage: target 1990-present
+            frequency: quarterly/monthly
+            status: planned
+          - metric: Export volume index
+            series_code: EXP_VOL_<ISO>
+            risk_indicator: external_export_volume
+            source: Eurostat volume indexes (pending)
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Import volume index
+            series_code: IMP_VOL_<ISO>
+            risk_indicator: external_import_volume
+            source: Eurostat (pending)
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+      - key: fx
+        name: FX
+        indicators:
+          - metric: Nominal exchange rate vs USD
+            series_code: EUR_USD (Investing.com, ECB reference rate)
+            risk_indicator: fx_nominal_usd
+            source: Data in `data_repository/raw/market_data/FX_EURUSD_EURUSD_X.csv` plus ECB SDW
+            coverage: 1999-present (ECB), 2000-present (Investing); plan to extend to 1990 via ECB official data
+            frequency: daily
+            status: ingested (post-2003 via raw) / extension planned
+          - metric: Nominal exchange rate vs EUR
+            series_code: FX_<ISO>_EUR (derived cross rate)
+            risk_indicator: fx_nominal_eur
+            source: Derived once FX cross matrix available
+            coverage: target 1990-present
+            frequency: daily/monthly
+            status: planned
+          - metric: NEER
+            series_code: NEER_<ISO>
+            risk_indicator: fx_neer
+            source: BIS / OECD NEER tables (pending ingestion)
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+          - metric: REER
+            series_code: REER_<ISO>
+            risk_indicator: fx_reer
+            source: BIS / OECD REER tables (pending)
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+      - key: balance_of_payments
+        name: Balance of Payments
+        indicators:
+          - metric: Current account balance
+            series_code: CAB_<ISO>
+            risk_indicator: external_current_account
+            source: IMF BOP / IFS (pending ingestion)
+            coverage: target 1990-present
+            frequency: quarterly
+            status: planned
+          - metric: FDI inflows/outflows
+            series_code: FDI_<ISO>
+            risk_indicator: external_fdi
+            source: IMF IFS / UNCTAD (pending)
+            coverage: target 1990-present
+            frequency: annual/quarterly
+            status: planned
+          - metric: Portfolio flows
+            series_code: PORTFLOWS_<ISO>
+            risk_indicator: external_portfolio_flows
+            source: IIF / national releases (optional)
+            coverage: limited
+            frequency: monthly/quarterly
+            status: optional
+          - metric: FX reserves (stock + months of imports)
+            series_code: FXRES_<ISO>
+            risk_indicator: external_fx_reserves
+            source: IMF IFS reserves table (pending) / national central bank data
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Reserve adequacy indicators
+            series_code: Derived (reserves / imports or short-term debt)
+            risk_indicator: external_reserve_adequacy
+            source: Derived after reserves/trade data ingested
+            coverage: target 1990-present
+            frequency: monthly/quarterly
+            status: planned
+          - metric: FX depreciation rates
+            series_code: Derived (monthly percent change of FX rate)
+            risk_indicator: external_fx_depreciation
+            source: Derived
+            coverage: 1990-present once FX history covers period
+            frequency: monthly
+            status: planned
+  - key: financial_markets
+    name: Financial Markets Block
+    description: "Equity, rates, credit, commodity, and global risk appetite indicators for factor construction."
+    sub_blocks:
+      - key: equity
+        name: Equity
+        indicators:
+          - metric: Country equity index
+            series_code: ^GSPC (USA), ^GDAXI (DEU), ^IBEX (ESP), ^FCHI (FRA), FTSEMIB/ITA proxies
+            risk_indicator: market_equity_index
+            source: Yahoo Finance / Investing.com (`data_repository/raw/market_data/EQUITY_*`)
+            coverage: 1990-present (Yahoo) / 2003-present (Investing)
+            frequency: daily
+            status: ingested
+          - metric: Sector financials index
+            series_code: XLF, XLF proxies
+            risk_indicator: market_financials_index
+            source: ETF proxies in `stress_indicators_expanded`
+            coverage: 1990-present
+            frequency: daily/monthly
+            status: ingested
+          - metric: Bank equity index
+            series_code: BANK_INDEX_<ISO> (derived)
+            risk_indicator: market_bank_equity
+            source: Derived from bank equity ETFs (planned)
+            coverage: target 1990-present
+            frequency: daily
+            status: planned
+          - metric: Rolling equity volatility (30D/90D)
+            series_code: VOL_<COUNTRY>_<horizon>
+            risk_indicator: market_equity_volatility
+            source: `Volatility_MeanReversion/run_pipeline.py` outputs in `data_repository/raw/market_data/VOL_*`
+            coverage: 2005-present
+            frequency: daily
+            status: ingested
+          - metric: Implied volatility proxy
+            series_code: VIXCLS (VIX), VSTOXX (pending)
+            risk_indicator: market_implied_vol
+            source: CBOE VIX index and future VSTOXX addition
+            coverage: 1990-01 through 2025-10 (VIX)
+            frequency: daily/monthly
+            status: ingested (VIX)
+      - key: rates
+        name: Rates
+        indicators:
+          - metric: Short-term rates (1M, 3M)
+            series_code: USD3MTD156N, EUR3MTD156N, MABMM301EZM189S for EUR M3 as proxy
+            risk_indicator: market_short_rates
+            source: FRED/ECB (daily)
+            coverage: 1990-present (USD), 1999-present (EUR)
+            frequency: daily
+            status: ingested
+          - metric: Interbank spread (3M interbank − 3M govt)
+            series_code: Derived from short-term interbank and government yields
+            risk_indicator: market_interbank_spread
+            source: Derived by subtracting government yield from interbank rate
+            coverage: 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Swap rates (2Y, 5Y, 10Y)
+            series_code: DSWP10 (US) and other swap items (planned)
+            risk_indicator: market_swap_rates
+            source: FRED / BIS (US data ingested; others pending)
+            coverage: 1990-present (US)
+            frequency: daily
+            status: ingested (US) / planned (others)
+          - metric: Term structure via government bond curves
+            series_code: `BOND_<country>_<tenor>.csv`
+            risk_indicator: market_yield_curve
+            source: Investing.com raw files
+            coverage: 2000-present per tenor
+            frequency: daily
+            status: ingested
+      - key: credit
+        name: Credit
+        indicators:
+          - metric: Corporate bond yield (IG/HY)
+            series_code: BAMLH0A0HYM2, BAMLH0A1HYBB, BAMLC0A0CM, BAMLC0A1CAAAEY, BAMLC0A3CAEY, BAMLC0A4CBBB
+            risk_indicator: market_corporate_yield
+            source: BofA Merrill Lynch indices from `stress_indicators_config`/`data_repository/raw/risk_indicators`
+            coverage: 2000-01 through 2025-10
+            frequency: monthly/daily
+            status: ingested
+          - metric: Corporate spread (corporate yield − benchmark)
+            series_code: Derived (BAML indices minus sovereign yield)
+            risk_indicator: market_corporate_spread
+            source: Derived in `clean_panel` and expanded packages
+            coverage: 1990-present once underlying yields align
+            frequency: monthly
+            status: ingested (derived)
+          - metric: Financial corporate spread
+            series_code: Derived (financial sub-index)
+            risk_indicator: market_financial_spread
+            source: Derived once sub-index defined
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Default swap indices (CDX/iTraxx proxies)
+            series_code: CDX_INDEX, ITRAXX_INDEX
+            risk_indicator: market_cds_indices
+            source: Vendor data (not yet ingested)
+            coverage: 2000-present when added
+            frequency: daily/monthly
+            status: optional
+      - key: commodities
+        name: Commodities
+        indicators:
+          - metric: Oil price (Brent/WTI)
+            series_code: DCOILBRENTEU, DCOILWTICO
+            risk_indicator: commodity_oil
+            source: EIA/FRED via `stress_indicators_expanded`
+            coverage: 1990-01 through 2025-10
+            frequency: monthly/daily
+            status: ingested
+          - metric: Gas price
+            series_code: DHHNGSP
+            risk_indicator: commodity_gas
+            source: FRED Henry Hub (in expanded CSV)
+            coverage: 1990-present
+            frequency: daily
+            status: ingested
+          - metric: Coal price
+            series_code: PIORECRUSDM or similar
+            risk_indicator: commodity_coal
+            source: FRED commodity indexes
+            coverage: 1990-present
+            frequency: weekly/monthly
+            status: ingested
+          - metric: Food-price index
+            series_code: PMAIZMTUSDM, PSOYBUSDQ, PALUMUSDM, PCOPPUSDM
+            risk_indicator: commodity_food
+            source: FRED price indexes
+            coverage: 1990-present
+            frequency: monthly
+            status: ingested
+      - key: global_risk_appetite
+        name: Global Risk Appetite
+        indicators:
+          - metric: VIX
+            series_code: VIXCLS
+            risk_indicator: global_vix
+            source: CBOE VIX via `stress_indicators_expanded`
+            coverage: 1990-01 through 2025-10
+            frequency: daily
+            status: ingested
+          - metric: MOVE index (rates volatility)
+            series_code: MOVE_INDEX (pending addition)
+            risk_indicator: global_move
+            source: Bloomberg / ICE (not yet ingested)
+            coverage: target 1990-present
+            frequency: daily
+            status: planned
+          - metric: Global Financial Stress Index
+            series_code: FSI_STL, IMF_FSI_PROXY
+            risk_indicator: global_fsi
+            source: St. Louis Fed / IMF (pending ingestion)
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Global risk-on/off dummy
+            series_code: Derived (PCA on VIX + IG spread + EM CDS)
+            risk_indicator: global_risk_dummy
+            source: Derived from base signals
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+  - key: banking_system
+    name: Banking System Block
+    description: "System aggregates (deposits, loans, profitability) and synthetic proxies for stress."
+    sub_blocks:
+      - key: public_aggregates
+        name: Publicly Available Aggregates
+        indicators:
+          - metric: Bank stock index / financial sector equity
+            series_code: BANK_INDEX_<ISO>
+            risk_indicator: banking_stock_index
+            source: Derived from regional bank ETFs / equity proxies (planned)
+            coverage: target 1990-present
+            frequency: daily
+            status: planned
+          - metric: Bank CDS spreads
+            series_code: BANK_CDS_<ISO>
+            risk_indicator: banking_cds_spread
+            source: Vendor data (not captured yet)
+            coverage: patchy
+            frequency: daily/monthly
+            status: optional
+          - metric: Banking sector ROE/ROA
+            series_code: ROE_BANKS_<ISO>
+            risk_indicator: banking_profitability
+            source: IMF IFS / ECB supervisory reports (pending)
+            coverage: target 1990-present (limited availability)
+            frequency: annual
+            status: planned
+          - metric: Total deposits (M2/M3 proxy)
+            series_code: M2_<ISO>, Euro area M3 (MABMM301EZM189S)
+            risk_indicator: banking_total_deposits
+            source: ECB / FRED monetary aggregates
+            coverage: 1990-present for USA, 1999+ for ECB M3
+            frequency: monthly
+            status: ingested (Euro area) / planned (country granularity)
+          - metric: Total loans (stock)
+            series_code: BIS LBS household + NFC loans
+            risk_indicator: banking_total_loans
+            source: `data_repository/raw/structural/bis_lbs_d_pub.csv`
+            coverage: 1990-Q1 onward
+            frequency: quarterly
+            status: ingested
+          - metric: Loan growth YoY
+            series_code: Derived from BIS loan stock
+            risk_indicator: banking_loan_growth
+            source: Derived script (pending)
+            coverage: target 1990-present
+            frequency: quarterly
+            status: planned
+          - metric: Deposit growth YoY
+            series_code: Derived from monetary aggregates
+            risk_indicator: banking_deposit_growth
+            source: Derived (pending)
+            coverage: 1990-present once cleaned
+            frequency: quarterly
+            status: planned
+          - metric: Interest rate on new loans
+            series_code: BANK_NEW_LOAN_RATE_<ISO>
+            risk_indicator: banking_new_loan_rate
+            source: ECB/national releases (pending)
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Interest rate on new deposits
+            series_code: BANK_NEW_DEPOSIT_RATE_<ISO>
+            risk_indicator: banking_new_deposit_rate
+            source: ECB/national data (pending)
+            coverage: target 1990-present
+            frequency: monthly
+            status: planned
+      - key: occasional_metrics
+        name: Occasionally Available Metrics
+        indicators:
+          - metric: System-wide NPL ratio
+            series_code: NPL_RATIO_<ISO>
+            risk_indicator: banking_npl_ratio
+            source: Supervisory surveys (limited)
+            coverage: patchy
+            frequency: quarterly/annual
+            status: optional
+          - metric: Provisions-to-loans ratio
+            series_code: COVERAGE_RATIO_<ISO>
+            risk_indicator: banking_coverage_ratio
+            source: ECB/IMF releases (optional)
+            coverage: patchy
+            frequency: quarterly
+            status: optional
+          - metric: CET1 / CAR
+            series_code: CET1_CAR_<ISO>
+            risk_indicator: banking_cet1_car
+            source: EBA/ECB transparency (EU) and national supervisors
+            coverage: annual (2000-present for EU)
+            frequency: annual
+            status: planned
+          - metric: Profitability metrics (NIM, cost-to-income)
+            series_code: BANK_NIM_<ISO>
+            risk_indicator: banking_profitability_metrics
+            source: Supervisory/IMF reports (limited)
+            coverage: patchy
+            frequency: annual
+            status: optional
+      - key: derived_proxies
+        name: Derived Banking Proxies
+        indicators:
+          - metric: Funding stress proxy
+            series_code: Derived (3M interbank − 3M govt)
+            risk_indicator: banking_funding_stress
+            source: Derived using short-term rates (USD3MTD156N vs IRLTLT01USM156N)
+            coverage: 1990-01 through 2025-10
+            frequency: monthly
+            status: ingested (derived)
+          - metric: Liquidity stress proxy
+            series_code: Derived (bank equity volatility)
+            risk_indicator: banking_liquidity_stress
+            source: `Volatility_MeanReversion/run_pipeline.py` outputs (VOL_* files)
+            coverage: 2005-present
+            frequency: monthly
+            status: ingested (derived)
+            notes: "Linked to `Volatility_MeanReversion/run_pipeline.py`; `Volatility_MeanReversion/outputs/summary_table_by_model.csv` documents the HAR/GARCH/FIGARCH fits that feed this equity-volatility-based liquidity stress proxy."
+          - metric: Credit deterioration proxy
+            series_code: Derived (corporate spread minus 1Y median)
+            risk_indicator: banking_credit_deterioration
+            source: Derived from corporate spreads
+            coverage: 1990-present once spreads computed
+            frequency: monthly
+            status: planned
+          - metric: Sovereign-bank nexus
+            series_code: Derived correlation between bank equity and 10Y yield
+            risk_indicator: banking_sovereign_nexus
+            source: `DCC GARCH MODEL` correlation outputs
+            coverage: 1999-present
+            frequency: monthly
+            status: ingested (from DCC outputs)
+          - metric: Deposit flight proxy
+            series_code: Derived (deposit growth − trend)
+            risk_indicator: banking_deposit_flight
+            source: Derived when deposit growth series finalized
+            coverage: 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Asset-quality proxy
+            series_code: Derived (household DSR × unemployment)
+            risk_indicator: banking_asset_quality_proxy
+            source: Derived from BIS DSR plus unemployment
+            coverage: 1990-present
+            frequency: monthly/quarterly
+            status: planned
+          - metric: Synthetic NPL stress indicator
+            series_code: Composite proxy (coverage + DSR + unemployment)
+            risk_indicator: banking_synthetic_npl
+            source: Derived composite formula
+            coverage: 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Synthetic CET1 vulnerability index
+            series_code: Derived CET1 vulnerability composite
+            risk_indicator: banking_synthetic_cet1
+            source: Derived (public aggregates + risk proxies)
+            coverage: 1990-present
+            frequency: monthly
+            status: planned
+          - metric: Synthetic LCR/NSFR proxies
+            series_code: Derived HQLA-to-short-term liabilities ratios
+            risk_indicator: banking_liquidity_ratios
+            source: Derived using deposits/loans/short-term asset proxies
+            coverage: 1990-present
+            frequency: monthly
+            status: planned
+  - key: derived_variables
+    name: Cross-Section Derived Variables for Stress Modeling
+    description: "Volatility, correlation, and spread indicators that feed factor preparation and PCA."
+    indicators:
+      - metric: Rolling volatility (30D/90D/180D)
+        series_code: VOL_<ASSET>_<horizon>
+        risk_indicator: derived_volatility
+        source: `Volatility_MeanReversion/run_pipeline.py` outputs stored in `data_repository/raw/market_data/VOL_*`
+        coverage: 2005-present (pipeline output)
+        frequency: daily
+        status: ingested
+        notes: "Derived from `Volatility_MeanReversion/run_pipeline.py`; summary metrics in `Volatility_MeanReversion/outputs/summary_table_by_model.csv` capture HAR/GARCH/FIGARCH fits for US 10Y, France OAT, and Italy BTP volatility targets."
+      - metric: GARCH-implied volatility (equity, FX, CDS, yields)
+        series_code: GARCH_VOL_<ASSET>
+        risk_indicator: derived_garch_vol
+        source: `DCC GARCH MODEL` + `Volatility_MeanReversion`
+        coverage: 2005-present
+        frequency: daily/monthly
+        status: ingested
+      - metric: Rolling correlations (60D/120D)
+        series_code: CORR_<PAIR>_60D, CORR_<PAIR>_120D
+        risk_indicator: derived_corr_rolling
+        source: `data_repository/raw/correlation_inputs/*` and ADCC outputs
+        coverage: 1999-present
+        frequency: monthly
+        status: ingested
+      - metric: ADCC dynamic correlations
+        series_code: ADCC_<PAIR>
+        risk_indicator: derived_corr_adcc
+        source: `DCC GARCH MODEL/results` and `analysis_outputs`
+        coverage: 1999-present
+        frequency: monthly
+        status: ingested
+      - metric: Spreads (sovereign / corporate / interbank / swap)
+        series_code: SPREAD_<TYPE>
+        risk_indicator: derived_spread
+        source: Derived via `SRESS TEST PIPELINE/3.1_clean_panel.py` and `stress_indicators_expanded`
+        coverage: 1990-present (per underlying yields)
+        frequency: monthly
+        status: ingested
+        notes: "Clean panel rebuild on 2025-11-24T14:19:03Z (`data/cleaned_monthly_panel.parquet` with QC at `outputs/panel_qc_summary.json`) kept 39 series after the 0.7 coverage filter (only `EUR_USD` dropped)."
+      - metric: Equity risk premium proxy
+        series_code: EQ_RISK_PREM_<COUNTRY>
+        risk_indicator: derived_equity_risk_premium
+        source: Derived (equity volatility × −1 or equity return minus short rate)
+        coverage: 1990-present once base series aligned
+        frequency: monthly
+        status: planned

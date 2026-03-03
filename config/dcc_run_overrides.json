@@ -1,0 +1,9 @@
+{
+  "dcc": {
+    "dcc_max_a": 0.2,
+    "dcc_large_a_penalty_lambda": 0.0,
+    "dcc_large_a_penalty_threshold": 0.2,
+    "garch_quality_gate_min_convergence_rate": 0.5,
+    "garch_quality_gate_shrinkage": 0.2
+  }
+}

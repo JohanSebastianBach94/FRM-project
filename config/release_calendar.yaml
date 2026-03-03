@@ -1,0 +1,54 @@
+# Explicit forward release calendar rules for low-frequency update scheduling.
+#
+# Purpose:
+# - Step 12 needs a forward-looking set of "update dates" (release days) to gate
+#   low-frequency factors (macro-like) so shocks occur only on release days.
+# - These rules are *governance inputs* (not inferred from Dt). Update them when
+#   you want to change release-day assumptions.
+#
+# Rule semantics:
+# - months:
+#     - "all" means every month
+#     - otherwise list of integers 1..12 (release months)
+# - bday_of_month:
+#     - positive: 1 = 1st business day of month, 2 = 2nd, ...
+#     - negative: -1 = last business day of month, -2 = 2nd last, ...
+# - period_months:
+#     - optional explicit period for diagnostics/validation
+#
+# Precedence (most specific wins):
+#   factor_overrides[factor] > block_overrides[block] > iso_overrides[ISO] > defaults
+
+release_calendar:
+  defaults:
+    # Monthly releases: first business day of each month.
+    monthly:
+      months: all
+      bday_of_month: 1
+      period_months: 1
+
+    # Quarterly releases: first business day of Jan/Apr/Jul/Oct.
+    quarterly:
+      months: [1, 4, 7, 10]
+      bday_of_month: 1
+      period_months: 3
+
+    # Annual releases: first business day of January.
+    annual:
+      months: [1]
+      bday_of_month: 1
+      period_months: 12
+
+    yearly:
+      months: [1]
+      bday_of_month: 1
+      period_months: 12
+
+  # Optional per-ISO overrides (keep empty unless you need country-specific release days)
+  iso_overrides: {}
+
+  # Optional per-block overrides (block name comes from factor name parsing: <ISO>_<block>_f#)
+  block_overrides: {}
+
+  # Optional exact per-factor overrides (full factor name, e.g. USA_macro_f1)
+  factor_overrides: {}

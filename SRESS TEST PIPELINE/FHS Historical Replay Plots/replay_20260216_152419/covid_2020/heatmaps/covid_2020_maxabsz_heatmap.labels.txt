@@ -1,0 +1,5 @@
+episode_id=covid_2020
+top_n_series=1
+
+full_label	short_label
+SWAPTION_VOL_USA	SWAPTION_VOL_USA

@@ -1,0 +1,52 @@
+======================================================================
+STRESS TESTING INDICATORS - DATA QUALITY REPORT
+======================================================================
+Generated: 2025-12-03 21:29:56
+Date Range: 1990-01-01 to 2025-10-31
+
+1. FRED DATA SUMMARY
+----------------------------------------------------------------------
+Total Series Fetched: 40
+Date Range: 1990-01-01 00:00:00 to 2025-10-31 00:00:00
+Total Observations: 13,088
+
+By Category:
+  Credit: 7 series
+  Sovereign: 5 series
+  Inflation: 5 series
+  Macro: 10 series
+  Monetary: 6 series
+  Commodity: 2 series
+
+Data Quality:
+  Overall Missing Data: 75.70%
+  Top 5 Series with Missing Data:
+    Spain_GDP_Growth: 99.1%
+    Germany_GDP_Growth: 99.0%
+    France_GDP_Growth: 99.0%
+    Italy_GDP_Growth: 99.0%
+    USA_GDP: 98.9%
+
+2. YAHOO FINANCE DATA SUMMARY
+----------------------------------------------------------------------
+Total Series Fetched: 9
+Date Range: 1990-01-02 00:00:00 to 2025-10-30 00:00:00
+Total Observations: 9,320
+Overall Missing Data: 25.76%
+
+3. COMPUTED SOVEREIGN SPREADS
+----------------------------------------------------------------------
+Total Spreads Computed: 3
+
+Latest Values:
+
+======================================================================
+COVERAGE ASSESSMENT
+======================================================================
+Target Indicators: 47
+Successfully Fetched: 49
+Coverage: 104.3%
+
+[OK] EXCELLENT - Ready for stress testing!
+
+======================================================================

@@ -1,0 +1,100 @@
+{
+  "date_created": "2025-10-30",
+  "n_series": 55,
+  "n_dates": 9320,
+  "date_range": {
+    "start": "1990-02-01",
+    "end": "2025-10-22"
+  },
+  "removed_series": [
+    "Gold_Futures",
+    "USA_beta3",
+    "ECBDFR",
+    "GOLDAMGBD228NLBM",
+    "FRA_beta3",
+    "IRLTLT01ESM156N",
+    "WALCL",
+    "Brent_Crude_Futures",
+    "BAMLHE00EHYIEY",
+    "IRLTLT01DEM156N",
+    "IRLTLT01ITM156N",
+    "WTI_Crude_Futures",
+    "EUR_GBP",
+    "EUR3MTD156N",
+    "DSWP10",
+    "ESP_beta3",
+    "ECBESTRVOLWGTTRMDMNRT",
+    "DEU_beta3",
+    "IRLTLT01FRM156N",
+    "EUR_JPY",
+    "DCOILWTICO",
+    "ITA_beta3",
+    "EUR_CHF",
+    "ECBASSETS"
+  ],
+  "added_series": {
+    "ITA_Equity": "Synthetic (Generali+TIT 1990-1998) + FTSEMIB (1998+)",
+    "FRA_Equity": "CAC40 (^FCHI)",
+    "EUR_USD": "EUR/USD FX rate"
+  },
+  "categories": {
+    "Global_Risk": [
+      "TEDRATE",
+      "VIXCLS"
+    ],
+    "Global_Credit": [
+      "BAMLC0A0CM",
+      "BAMLC0A1CAAAEY",
+      "BAMLC0A3CAEY",
+      "BAMLC0A4CBBB",
+      "BAMLH0A0HYM2",
+      "BAMLH0A1HYBB"
+    ],
+    "Global_Equity": [
+      "SP500"
+    ],
+    "Global_Commodities": [
+      "DCOILBRENTEU"
+    ],
+    "Global_Rates": [
+      "DFF",
+      "IRLTLT01USM156N"
+    ],
+    "Regional_EUR": [
+      "EUR_USD"
+    ],
+    "NSS_Betas": [
+      "ITA_beta0",
+      "ITA_beta1",
+      "ITA_beta2",
+      "FRA_beta0",
+      "FRA_beta1",
+      "FRA_beta2",
+      "DEU_beta0",
+      "DEU_beta1",
+      "DEU_beta2",
+      "ESP_beta0",
+      "ESP_beta1",
+      "ESP_beta2",
+      "USA_beta0",
+      "USA_beta1",
+      "USA_beta2"
+    ],
+    "Sovereign_Spreads": [
+      "BTP_Bund_Spread",
+      "Bonos_Bund_Spread",
+      "OAT_Bund_Spread"
+    ],
+    "Country_Equity": [
+      "DAX",
+      "IBEX_35",
+      "ITA_Equity",
+      "FRA_Equity"
+    ]
+  },
+  "literature_basis": [
+    "Longstaff et al. (2011) - Global factors dominate sovereign risk",
+    "Ang & Longstaff (2013) - Optimal 9-10 factors per country",
+    "De Santis (2012) - Euro area sovereign risk factors"
+  ]
+}

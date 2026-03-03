@@ -1,0 +1,106 @@
+{
+  "merge_date": "2026-02-23T11:43:15.413742",
+  "input_files": {
+    "existing": "stress_indicators.csv",
+    "industry": "industry_data_raw.csv"
+  },
+  "output_file": "stress_indicators_expanded.csv",
+  "series_counts": {
+    "existing": 80,
+    "industry_new": 135,
+    "total": 230,
+    "overlapping_removed": 21
+  },
+  "date_range": {
+    "start": "1954-03-01 00:00:00",
+    "end": "2026-01-31 00:00:00",
+    "n_dates": 18232
+  },
+  "correlation_pairs": 26335,
+  "data_quality": {
+    "series_with_high_missing": 141,
+    "threshold": "50%"
+  },
+  "optional_series_status": {
+    "optional_present": 0,
+    "optional_missing": 0,
+    "required_present": 154,
+    "required_missing": 1,
+    "missing_optional_list": [],
+    "missing_required_list": [
+      "Price_to_income_USA"
+    ]
+  },
+  "alias_summary": {
+    "applied_count": 7,
+    "applied_pairs": [
+      {
+        "source": "SP500",
+        "target": "^GSPC"
+      },
+      {
+        "source": "DAX",
+        "target": "^GDAXI"
+      },
+      {
+        "source": "IBEX_35",
+        "target": "^IBEX"
+      },
+      {
+        "source": "MORTGAGE30US",
+        "target": "Mortgage_rate_USA"
+      },
+      {
+        "source": "BTP_Bund_Spread",
+        "target": "Sovereign_spread_vs_Germany_ITA"
+      },
+      {
+        "source": "Bonos_Bund_Spread",
+        "target": "Sovereign_spread_vs_Germany_ESP"
+      },
+      {
+        "source": "OAT_Bund_Spread",
+        "target": "Sovereign_spread_vs_Germany_FRA"
+      }
+    ],
+    "missing_sources": [
+      "MIR.M.FR.B.A2C.A.R.A.2250.EUR.N",
+      "MIR.M.IT.B.A2C.A.R.A.2250.EUR.N",
+      "MIR.M.DE.B.A2C.A.R.A.2250.EUR.N",
+      "MIR.M.ES.B.A2C.A.R.A.2250.EUR.N",
+      "TTF_GAS / PNGASEUUSDM"
+    ],
+    "collisions": [
+      {
+        "source": "CSUSHPISA",
+        "target": "USA_HPI_REAL",
+        "action": "skipped_existing_target"
+      },
+      {
+        "source": "Treasury_Bund_Spread",
+        "target": "Sovereign_spread_vs_Germany_USA",
+        "action": "skipped_existing_target"
+      },
+      {
+        "source": "DEXUSEU",
+        "target": "EUR_USD",
+        "action": "skipped_existing_target"
+      },
+      {
+        "source": "DEXJPUS",
+        "target": "USD_JPY",
+        "action": "skipped_existing_target"
+      },
+      {
+        "source": "DEXUSUK",
+        "target": "GBP_USD",
+        "action": "skipped_existing_target"
+      },
+      {
+        "source": "DEXCHUS",
+        "target": "USD_CNY",
+        "action": "skipped_existing_target"
+      }
+    ]
+  }
+}

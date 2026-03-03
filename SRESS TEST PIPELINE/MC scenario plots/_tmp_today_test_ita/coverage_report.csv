@@ -1,0 +1,9 @@
+iso,block,expected_series,present_expected,missing_expected,missing_expected_list
+ITA,banking_system,2,2,0,
+ITA,commodities,2,2,0,
+ITA,external_fx,2,2,0,
+ITA,financial_markets,2,2,0,
+ITA,macro,2,2,0,
+ITA,public_finance,2,2,0,
+ITA,real_estate,2,2,0,
+ITA,systemic_stress,3,3,0,

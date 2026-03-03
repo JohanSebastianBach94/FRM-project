@@ -1,0 +1,682 @@
+{
+  "check_date": "2025-12-15T11:31:52.884974",
+  "total_available_series": 190,
+  "canonical_dataset": "stress_indicators_expanded.csv",
+  "countries": [
+    {
+      "country": "USA",
+      "iso_code": "USA",
+      "blocks": [
+        {
+          "key": "macro",
+          "required_series": 4,
+          "required_present": 3,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 75.0,
+          "status": "PARTIAL",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "NOMINAL_GDP_USA"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "real_estate",
+          "required_series": 5,
+          "required_present": 3,
+          "required_missing": 1,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 60.0,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [
+            "Price_to_income_USA"
+          ],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "BIS_LBS_Household_Loans"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "public_finance",
+          "required_series": 6,
+          "required_present": 5,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 83.3,
+          "status": "PARTIAL",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "GC.DOD.TOTL.GD.ZS_USA"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "external_fx",
+          "required_series": 6,
+          "required_present": 4,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 66.7,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "GBP_USD",
+            "USD_CNY"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "financial_markets",
+          "required_series": 6,
+          "required_present": 5,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 83.3,
+          "status": "PARTIAL",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "MOVE"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "banking_system",
+          "required_series": 4,
+          "required_present": 1,
+          "required_missing": 0,
+          "optional_series": 1,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 25.0,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "BIS_LBS_Household_Loans",
+            "BIS_LBS_Private_NFC_Total",
+            "SOFR_3m"
+          ],
+          "insufficient_optional_list": [
+            "NPL_PROXY_USA"
+          ]
+        },
+        {
+          "key": "market_stress",
+          "required_series": 3,
+          "required_present": 2,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 66.7,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "MOVE"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "commodities",
+          "required_series": 6,
+          "required_present": 5,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 83.3,
+          "status": "PARTIAL",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "TTF_GAS"
+          ],
+          "insufficient_optional_list": []
+        }
+      ]
+    },
+    {
+      "country": "Germany",
+      "iso_code": "DEU",
+      "blocks": [
+        {
+          "key": "macro",
+          "required_series": 5,
+          "required_present": 3,
+          "required_missing": 1,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 60.0,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [
+            "GC.DOD.TOTL.GD.ZS_DEU"
+          ],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "BIS_LBS_Private_NFC_DEU"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "real_estate",
+          "required_series": 4,
+          "required_present": 2,
+          "required_missing": 2,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 50.0,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [
+            "DEU_HPI_REAL",
+            "Price_to_income_DEU"
+          ],
+          "missing_optional_list": [],
+          "insufficient_required_list": [],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "public_finance",
+          "required_series": 5,
+          "required_present": 4,
+          "required_missing": 1,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 80.0,
+          "status": "PARTIAL",
+          "missing_required_list": [
+            "GC.DOD.TOTL.GD.ZS_DEU"
+          ],
+          "missing_optional_list": [],
+          "insufficient_required_list": [],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "external_fx",
+          "required_series": 6,
+          "required_present": 4,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 66.7,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "GBP_USD",
+            "USD_CNY"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "financial_markets",
+          "required_series": 4,
+          "required_present": 4,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 100.0,
+          "status": "READY",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "banking_system",
+          "required_series": 3,
+          "required_present": 2,
+          "required_missing": 0,
+          "optional_series": 1,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 66.7,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "BIS_LBS_Household_Loans"
+          ],
+          "insufficient_optional_list": [
+            "NPL_PROXY_DEU"
+          ]
+        },
+        {
+          "key": "market_stress",
+          "required_series": 4,
+          "required_present": 4,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 100.0,
+          "status": "READY",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "commodities",
+          "required_series": 5,
+          "required_present": 4,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 80.0,
+          "status": "PARTIAL",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "TTF_GAS"
+          ],
+          "insufficient_optional_list": []
+        }
+      ]
+    },
+    {
+      "country": "France",
+      "iso_code": "FRA",
+      "blocks": [
+        {
+          "key": "macro",
+          "required_series": 4,
+          "required_present": 3,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 75.0,
+          "status": "PARTIAL",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "GC.DOD.TOTL.GD.ZS_FRA"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "real_estate",
+          "required_series": 4,
+          "required_present": 2,
+          "required_missing": 2,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 50.0,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [
+            "FRA_HPI_REAL",
+            "Price_to_income_FRA"
+          ],
+          "missing_optional_list": [],
+          "insufficient_required_list": [],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "public_finance",
+          "required_series": 6,
+          "required_present": 5,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 83.3,
+          "status": "PARTIAL",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "GC.DOD.TOTL.GD.ZS_FRA"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "external_fx",
+          "required_series": 5,
+          "required_present": 3,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 60.0,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "GBP_USD",
+            "USD_CNY"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "financial_markets",
+          "required_series": 5,
+          "required_present": 5,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 100.0,
+          "status": "READY",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "banking_system",
+          "required_series": 3,
+          "required_present": 2,
+          "required_missing": 0,
+          "optional_series": 1,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 66.7,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "BIS_LBS_Household_Loans"
+          ],
+          "insufficient_optional_list": [
+            "NPL_PROXY_FRA"
+          ]
+        },
+        {
+          "key": "commodities",
+          "required_series": 5,
+          "required_present": 4,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 80.0,
+          "status": "PARTIAL",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "TTF_GAS"
+          ],
+          "insufficient_optional_list": []
+        }
+      ]
+    },
+    {
+      "country": "Italy",
+      "iso_code": "ITA",
+      "blocks": [
+        {
+          "key": "macro",
+          "required_series": 5,
+          "required_present": 3,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 60.0,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "GC.DOD.TOTL.GD.ZS_ITA",
+            "BIS_LBS_Private_NFC_ITA"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "real_estate",
+          "required_series": 4,
+          "required_present": 2,
+          "required_missing": 2,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 50.0,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [
+            "ITA_HPI_REAL",
+            "Price_to_income_ITA"
+          ],
+          "missing_optional_list": [],
+          "insufficient_required_list": [],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "public_finance",
+          "required_series": 6,
+          "required_present": 5,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 83.3,
+          "status": "PARTIAL",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "GC.DOD.TOTL.GD.ZS_ITA"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "external_fx",
+          "required_series": 5,
+          "required_present": 3,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 60.0,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "GBP_USD",
+            "USD_CNY"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "financial_markets",
+          "required_series": 5,
+          "required_present": 5,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 100.0,
+          "status": "READY",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "banking_system",
+          "required_series": 3,
+          "required_present": 2,
+          "required_missing": 0,
+          "optional_series": 1,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 66.7,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "BIS_LBS_Household_Loans"
+          ],
+          "insufficient_optional_list": [
+            "NPL_PROXY_ITA"
+          ]
+        },
+        {
+          "key": "commodities",
+          "required_series": 5,
+          "required_present": 4,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 80.0,
+          "status": "PARTIAL",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "TTF_GAS"
+          ],
+          "insufficient_optional_list": []
+        }
+      ]
+    },
+    {
+      "country": "Spain",
+      "iso_code": "ESP",
+      "blocks": [
+        {
+          "key": "macro",
+          "required_series": 4,
+          "required_present": 3,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 75.0,
+          "status": "PARTIAL",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "GC.DOD.TOTL.GD.ZS_ESP"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "real_estate",
+          "required_series": 4,
+          "required_present": 2,
+          "required_missing": 2,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 50.0,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [
+            "ESP_HPI_REAL",
+            "Price_to_income_ESP"
+          ],
+          "missing_optional_list": [],
+          "insufficient_required_list": [],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "public_finance",
+          "required_series": 6,
+          "required_present": 5,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 83.3,
+          "status": "PARTIAL",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "GC.DOD.TOTL.GD.ZS_ESP"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "external_fx",
+          "required_series": 5,
+          "required_present": 3,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 60.0,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "GBP_USD",
+            "USD_CNY"
+          ],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "financial_markets",
+          "required_series": 5,
+          "required_present": 5,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 100.0,
+          "status": "READY",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [],
+          "insufficient_optional_list": []
+        },
+        {
+          "key": "banking_system",
+          "required_series": 3,
+          "required_present": 2,
+          "required_missing": 0,
+          "optional_series": 1,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 66.7,
+          "status": "INSUFFICIENT",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "BIS_LBS_Household_Loans"
+          ],
+          "insufficient_optional_list": [
+            "NPL_PROXY_ESP"
+          ]
+        },
+        {
+          "key": "commodities",
+          "required_series": 5,
+          "required_present": 4,
+          "required_missing": 0,
+          "optional_series": 0,
+          "optional_present": 0,
+          "optional_missing": 0,
+          "coverage_percentage": 80.0,
+          "status": "PARTIAL",
+          "missing_required_list": [],
+          "missing_optional_list": [],
+          "insufficient_required_list": [
+            "TTF_GAS"
+          ],
+          "insufficient_optional_list": []
+        }
+      ]
+    }
+  ]
+}

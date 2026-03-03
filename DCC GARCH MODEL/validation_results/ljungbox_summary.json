@@ -1,0 +1,6 @@
+{
+  "lag": 10,
+  "tested": 72,
+  "failures": 45,
+  "fail_rate": 0.625
+}

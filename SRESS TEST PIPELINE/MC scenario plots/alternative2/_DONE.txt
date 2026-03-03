@@ -1,0 +1,7 @@
+bundle=alternative2
+input_run=latest
+source=C:\Users\frank\Documents\FRM project\analysis_outputs\scenarios\latest\monte_carlo\daily_draws
+draw_ids=[74, 518, 699, 1193, 1933, 2914, 3166, 3529, 4227, 4254]
+block_def=C:\Users\frank\Documents\FRM project\analysis_outputs\literature_factors\country_block_definition.within_block.json
+block_aggregate_style=quantile_bands
+factor_space=z

@@ -1,0 +1,19 @@
+{
+  "project": {
+    "base_dir": "C:/Users/frank/Documents/FRM project",
+    "output_dir": "output",
+    "data": {
+      "fred_countries": ["ITA", "FRA", "DEU", "ESP", "USA"],
+      "investing_countries": ["ITA", "FRA", "USA"]
+    },
+    "date_range": {
+      "start": "1990-01-01",
+      "end": "2025-10-22"
+    },
+    "sources": {
+      "fred_glob_pattern": "*historical_strips*.csv",
+      "treasury_glob_pattern": "*treasury*.csv",
+      "investing_glob_pattern": "*.csv"
+    }
+  }
+}

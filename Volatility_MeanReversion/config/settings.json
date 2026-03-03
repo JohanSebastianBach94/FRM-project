@@ -1,0 +1,83 @@
+{
+  "input_csv": "data/benchmark_returns.csv",
+  "date_column": "date",
+  "asset_columns": [
+    "US_10Y",
+    "France_OAT_Bund",
+    "Italy_BTP_Bund"
+  ],
+  "factor_preparation_dir": "../analysis_outputs/factor_preparation",
+  "factor_isos": [
+    "USA",
+    "DEU",
+    "FRA",
+    "ITA",
+    "ESP"
+  ],
+  "frequency": "D",
+  "split": {
+    "train_ratio": 0.75,
+    "min_train_points": 300,
+    "test_start_date": "2018-01-01"
+  },
+  "backtest": {
+    "mode": "expanding",
+    "forecast_horizon": 1,
+    "window": 252
+  },
+  "outputs_dir": "outputs",
+  "correlations": {
+    "window": 60,
+    "har": {
+      "output_dir": "../Output/har_correlations",
+      "filename": "dynamic_correlations_har.csv"
+    },
+    "garch": {
+      "output_dir": "../Output/garch_correlations",
+      "filename": "dynamic_correlations_garch.csv"
+    },
+    "figarch": {
+      "output_dir": "../Output/figarch_correlations",
+      "filename": "dynamic_correlations_figarch.csv"
+    }
+  },
+  "diagnostics": {
+    "long_memory_lags": 60,
+    "variance_break_penalty": "bic"
+  },
+  "rv_method": "bipower",
+  "enforce_return_like_inputs": true,
+  "stationarity_alpha": 0.05,
+  "nonstationary_transform": "diff",
+  "har": {
+    "lags": {
+      "daily": 1,
+      "weekly": 5,
+      "monthly": 22
+    },
+    "use_log": true,
+    "log_epsilon": 1e-08,
+    "refit_interval": 21,
+    "max_forecasts": null
+  },
+  "garch": {
+    "p": 1,
+    "o": 0,
+    "q": 1,
+    "power": 2.0,
+    "refit_interval": 21,
+    "max_forecasts": null,
+    "variance_cap_quantile": 0.995,
+    "variance_cap_multiplier": 5.0
+  },
+  "figarch": {
+    "p": 1,
+    "d": 0.4,
+    "q": 1,
+    "input_scale": 10,
+    "refit_interval": 84,
+    "max_forecasts": 84,
+    "variance_cap_quantile": 0.995,
+    "variance_cap_multiplier": 5.0
+  }
+}

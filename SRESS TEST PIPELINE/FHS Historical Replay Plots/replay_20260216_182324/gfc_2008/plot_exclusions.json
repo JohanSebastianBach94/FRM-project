@@ -1,0 +1,111 @@
+{
+  "episode_id": "gfc_2008",
+  "source_episode_diagnostics": "C:/Users/frank/Documents/FRM project/analysis_outputs/scenarios/latest/historical_replay/replay_20260216_182324/episodes/gfc_2008/episode_diagnostics.json",
+  "exclude_flat_then_spike": true,
+  "exclude_stale_spike": true,
+  "stale_spike": {
+    "z_threshold": 8.0,
+    "unique_ratio_threshold": 0.15,
+    "round_decimals": 6
+  },
+  "by_block": {
+    "deu_commodities": {
+      "excluded_series": [
+        "PCOPPUSDM",
+        "PMAIZMTUSDM"
+      ]
+    },
+    "deu_macro": {
+      "excluded_series": [
+        "ECBDFR",
+        "MYAGM1EZM196N"
+      ]
+    },
+    "deu_market_stress": {
+      "excluded_series": [
+        "ECBASSETS"
+      ]
+    },
+    "deu_systemic_stress": {
+      "excluded_series": [
+        "COMM_PAPER_SPREAD_EUR",
+        "ECBASSETS"
+      ]
+    },
+    "esp_commodities": {
+      "excluded_series": [
+        "PCOPPUSDM",
+        "PMAIZMTUSDM"
+      ]
+    },
+    "esp_macro": {
+      "excluded_series": [
+        "ECBDFR",
+        "MYAGM1EZM196N"
+      ]
+    },
+    "esp_market_stress": {
+      "excluded_series": [
+        "ECBASSETS"
+      ]
+    },
+    "esp_systemic_stress": {
+      "excluded_series": [
+        "COMM_PAPER_SPREAD_EUR",
+        "ECBASSETS"
+      ]
+    },
+    "fra_commodities": {
+      "excluded_series": [
+        "PCOPPUSDM",
+        "PMAIZMTUSDM"
+      ]
+    },
+    "fra_macro": {
+      "excluded_series": [
+        "ECBDFR",
+        "MYAGM1EZM196N"
+      ]
+    },
+    "fra_market_stress": {
+      "excluded_series": [
+        "ECBASSETS"
+      ]
+    },
+    "fra_systemic_stress": {
+      "excluded_series": [
+        "COMM_PAPER_SPREAD_EUR",
+        "ECBASSETS"
+      ]
+    },
+    "ita_commodities": {
+      "excluded_series": [
+        "PCOPPUSDM",
+        "PMAIZMTUSDM"
+      ]
+    },
+    "ita_macro": {
+      "excluded_series": [
+        "ECBDFR",
+        "MYAGM1EZM196N"
+      ]
+    },
+    "ita_market_stress": {
+      "excluded_series": [
+        "ECBASSETS"
+      ]
+    },
+    "ita_systemic_stress": {
+      "excluded_series": [
+        "COMM_PAPER_SPREAD_EUR",
+        "ECBASSETS"
+      ]
+    },
+    "usa_commodities": {
+      "excluded_series": [
+        "PCOPPUSDM",
+        "PMAIZMTUSDM"
+      ]
+    }
+  }
+}

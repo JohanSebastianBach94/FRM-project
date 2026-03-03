@@ -1,0 +1,296 @@
+country_blocks:
+  - country: USA
+    iso_code: USA
+    region: USA
+    coverage_window: "1990-2025"
+    blocks:
+      - key: macro
+        coverage: "Core GDP (GDPC1), CPI, unemployment, nominal GDP, BIS credit stocks cover 1990–2025 (monthly/quarterly as noted)."
+        status_notes: "Ingested series anchored on FRED/Eurostat/WB feeds ensure continuous macro coverage."
+        series_codes:
+          - CPIAUCSL
+          - UNRATE
+        optional_series_codes:
+          - BIS_LBS_Private_NFC
+          - BIS_LBS_Household_Loans
+      - key: real_estate
+        coverage: "CSUSHPISA + BIS mortgage debt + MORTGAGE30US cover 1990–2025."
+        status_notes: "Nominal housing/credit proxies ingested; additional rent/income feeds are still being sourced for derived metrics."
+        series_codes:
+          - CSUSHPISA
+          - MORTGAGE30US
+        optional_series_codes:
+          - BIS_LBS_Household_Loans
+        local_series_files:
+          BIS_LBS_Household_Loans: data_repository/processed/BIS_LBS_Household_Loans_USA.csv
+          BIS_LBS_Private_NFC_Loans: data_repository/processed/BIS_LBS_Private_NFC_Loans_USA.csv
+          BIS_LBS_Private_NFC_Total: data_repository/processed/BIS_LBS_Private_NFC_Total_USA.csv
+      - key: public_finance
+        coverage: "NSS-derived 10y/2y yields and DNSS beta level/slope/curvature factors (reestimated monthly) pair with debt-to-GDP, derived spreads, sovereign short rate + premium to cover 1990–2025."
+        status_notes: "Derived spread metadata via SRESS TEST PIPELINE/3.1_clean_panel.py (39 sovereign spread series kept after 0.7 coverage filter); DNSS betas refreshed through `reestimate_dnss_monthly.py` and authored into the stress catalog for encoding."
+        series_codes:
+          - USA_beta0
+          - USA_beta1
+          - USA_beta2
+        optional_series_codes:
+          - GC.DOD.TOTL.GD.ZS_USA
+      - key: external_fx
+        coverage: "EUR/USD daily coverage 1999–present (Investing + ECB)."
+        status_notes: "FX coverage good post-1999; the 1990–1998 expansion is still being completed."
+        series_codes:
+          - EUR_USD
+      - key: financial_markets
+        coverage: "Equity indexes, commodity + rate series, BAML corporate yields, derived spreads/volatility/correlations cover 1990–2025 (volatility from Volatility_MeanReversion, spreads from clean panel)."
+        status_notes: "Rolling volatility outputs documented under Volatility_MeanReversion/outputs; derived spread notes reference the latest QC."
+        series_codes:
+          - ^GSPC
+          - VIXCLS
+          - BAMLH0A0HYM2
+          - BAMLC0A4CBBB
+          - DCOILBRENTEU
+          - DCOILWTICO
+      - key: banking_system
+        coverage: "BIS LBS loans/deposits plus derived funding stress (short rate spreads) and liquidity stress (volatility proxy) cover 1990–2025."
+        status_notes: "Liquidity stress note linked to the HAR/GARCH/FIGARCH fits; coverage highlighted in block catalog."
+        series_codes:
+          - M2_USA
+          - FUNDING_STRESS_USA
+          - LIQUIDITY_STRESS_USA
+        optional_series_codes:
+          - BIS_LBS_Household_Loans
+          - USD3MTD156N
+  - country: Germany
+    iso_code: DEU
+    region: EUR
+    coverage_window: "1990-2025"
+    blocks:
+      - key: macro
+        coverage: "Core GDP, CPI, unemployment, nominal GDP, BIS credit stocks cover 1990–2025."
+        status_notes: "Ingested data anchored on Eurostat/FRED/World Bank feeds provide consistent macro coverage."
+        series_codes:
+          - NAEXKP01DEQ661S
+          - DEUCPIALLMINMEI
+          - LRHUTTTTDEM156S
+          - GC.DOD.TOTL.GD.ZS_DEU
+          - BIS_LBS_Private_NFC_DEU
+      - key: real_estate
+        coverage: "CSUSHPISA proxy + BIS mortgage debt + derived domestic HPI cover 1990–2025."
+        status_notes: "Nominal housing/credit proxies ingested; additional rent/income feeds are still being sourced for derivations."
+        series_codes:
+          - DEU_HPI_REAL
+          - BIS_LBS_Household_Loans
+          - MORTGAGE_RATE_DEU
+        local_series_files:
+          BIS_LBS_Household_Loans: data_repository/processed/BIS_LBS_Household_Loans_DEU.csv
+          BIS_LBS_Private_NFC_Loans: data_repository/processed/BIS_LBS_Private_NFC_Loans_DEU.csv
+          BIS_LBS_Private_NFC_Total: data_repository/processed/BIS_LBS_Private_NFC_Total_DEU.csv
+      - key: public_finance
+        coverage: "NSS-derived 10y/2y yields and DNSS beta level/slope/curvature factors (reestimated monthly) pair with debt-to-GDP (WB), derived spreads, sovereign short rate + premium to cover 1990–2025."
+        status_notes: "Derived spreads documented via SRESS TEST PIPELINE/3.1_clean_panel.py (39 series filtered at coverage ≥0.7); country-specific DNSS betas refreshed through `reestimate_dnss_monthly.py` and integrated into the stress catalog for encoding."
+        series_codes:
+          - DEU_beta0
+          - DEU_beta1
+          - DEU_beta2
+        optional_series_codes:
+          - GC.DOD.TOTL.GD.ZS_DEU
+      - key: external_fx
+        coverage: "EUR/USD coverage 1999–present."
+        status_notes: "FX coverage linked to ECB data; the 1990–1998 expansion remains under review."
+        series_codes:
+          - EUR_USD
+      - key: financial_markets
+        coverage: "Equity indexes, commodity + rate series, BAML corporate yields, derived spreads/volatility/correlations cover 1990–2025 (volatility from Volatility_MeanReversion, spreads from clean panel)."
+        status_notes: "Derivation notes cite Volatility_MeanReversion outputs and latest QC summary for spreads."
+        series_codes:
+          - ^GDAXI
+          - VIXCLS
+          - BAMLC0A1CAAAEY
+          - BAMLC0A4CBBB
+          - DCOILBRENTEU
+          - DCOILWTICO
+      - key: banking_system
+        coverage: "BIS LBS loans/deposits plus derived funding stress and liquidity stress proxies cover 1990–2025."
+        status_notes: "Liquidity stress proxy tied to HAR/GARCH/FIGARCH fits captured in Volatility_MeanReversion/outputs/summary_table_by_model.csv."
+        series_codes:
+          - MABMM301EZM189S
+          - FUNDING_STRESS_DEU
+          - LIQUIDITY_STRESS_DEU
+        optional_series_codes:
+          - BIS_LBS_Household_Loans
+          - EUR3MTD156N
+  - country: France
+    iso_code: FRA
+    region: EUR
+    coverage_window: "1990-2025"
+    blocks:
+      - key: macro
+        coverage: "Core GDP, CPI, unemployment, nominal GDP, BIS credit stocks cover 1990–2025."
+        status_notes: "Ingested data anchored on Eurostat/FRED/WB feeds deliver consistent macro coverage."
+        series_codes:
+          - NAEXKP01FRQ661S
+          - FRACPIALLMINMEI
+          - LRHUTTTTFRM156S
+          - GC.DOD.TOTL.GD.ZS_FRA
+          - BIS_LBS_Private_NFC_FRA
+      - key: real_estate
+        coverage: "CSUSHPISA proxy + BIS mortgage debt + derived domestic HPI coverage 1990–2025."
+        status_notes: "Nominal housing and credit proxies ingested; further rent/income feeds are still being sourced for derived metrics."
+        series_codes:
+          - FRA_HPI_REAL
+          - BIS_LBS_Household_Loans
+          - BOND_France_10Y
+        local_series_files:
+          BIS_LBS_Household_Loans: data_repository/processed/BIS_LBS_Household_Loans_FRA.csv
+          BIS_LBS_Private_NFC_Loans: data_repository/processed/BIS_LBS_Private_NFC_Loans_FRA.csv
+          BIS_LBS_Private_NFC_Total: data_repository/processed/BIS_LBS_Private_NFC_Total_FRA.csv
+      - key: public_finance
+        coverage: "NSS-derived 10y/2y yields and DNSS beta level/slope/curvature factors (reestimated monthly) pair with debt-to-GDP, derived spreads, sovereign short rate + premium to cover 1990–2025."
+        status_notes: "Derived spreads documented via clean panel; 39 spread series kept after coverage filter; DNSS betas refreshed via `reestimate_dnss_monthly.py` and recorded in the stress catalog."
+        series_codes:
+          - FRA_beta0
+          - FRA_beta1
+          - FRA_beta2
+        optional_series_codes:
+          - GC.DOD.TOTL.GD.ZS_FRA
+      - key: external_fx
+        coverage: "EUR/USD 1999–present."
+        status_notes: "FX coverage reliant on ECB; pre-1999 expansion work is ongoing."
+        series_codes:
+          - EUR_USD
+      - key: financial_markets
+        coverage: "Equity indexes, commodity + rate series, BAML corporate yields, derived spreads/volatility/correlations cover 1990–2025."
+        status_notes: "Volatility outputs referenced via Volatility_MeanReversion/outputs; derived spread notes refer to QC."
+        series_codes:
+          - ^FCHI
+          - VIXCLS
+          - BAMLC0A0CM
+          - BAMLH0A1HYBB
+          - DCOILBRENTEU
+          - DCOILWTICO
+      - key: banking_system
+        coverage: "BIS LBS loans/deposits plus derived funding and liquidity stress proxies cover 1990–2025."
+        status_notes: "Liquidity stress proxy tied to HAR/GARCH/FIGARCH fits documented under Volatility_MeanReversion."
+        series_codes:
+          - EUR_M3_MABMM301EZM189S
+          - FUNDING_STRESS_FRA
+          - LIQUIDITY_STRESS_FRA
+        optional_series_codes:
+          - BIS_LBS_Household_Loans
+          - EUR3MTD156N
+  - country: Italy
+    iso_code: ITA
+    region: EUR
+    coverage_window: "1990-2025"
+    blocks:
+      - key: macro
+        coverage: "Core GDP, CPI, unemployment, nominal GDP, BIS credit stocks cover 1990–2025."
+        status_notes: "Data anchored on Eurostat/FRED/WB feeds deliver consistent macro coverage."
+        series_codes:
+          - NAEXKP01ITQ661S
+          - ITACPIALLMINMEI
+          - LRHUTTTTITM156S
+          - GC.DOD.TOTL.GD.ZS_ITA
+          - BIS_LBS_Private_NFC_ITA
+      - key: real_estate
+        coverage: "CSUSHPISA proxy + BIS mortgage debt + derived domestic HPI cover 1990–2025."
+        status_notes: "Nominal housing/credit proxies ingested; additional rent/income feeds are being sourced for derived metrics."
+        series_codes:
+          - ITA_HPI_REAL
+          - BIS_LBS_Household_Loans
+          - MORTGAGE30US
+        local_series_files:
+          BIS_LBS_Household_Loans: data_repository/processed/BIS_LBS_Household_Loans_ITA.csv
+          BIS_LBS_Private_NFC_Loans: data_repository/processed/BIS_LBS_Private_NFC_Loans_ITA.csv
+          BIS_LBS_Private_NFC_Total: data_repository/processed/BIS_LBS_Private_NFC_Total_ITA.csv
+      - key: public_finance
+        coverage: "NSS-derived 10y/2y yields and DNSS beta level/slope/curvature factors (reestimated monthly) pair with debt-to-GDP, derived spreads, sovereign short rate + premium to cover 1990–2025."
+        status_notes: "Derived spreads logged via clean panel; 39 series kept after 0.7 coverage filter; DNSS betas refreshed via `reestimate_dnss_monthly.py` (Italy-specific curve fits) and routed through downstream pipelines."
+        series_codes:
+          - ITA_beta0
+          - ITA_beta1
+          - ITA_beta2
+        optional_series_codes:
+          - GC.DOD.TOTL.GD.ZS_ITA
+      - key: external_fx
+        coverage: "EUR/USD 1999–present."
+        status_notes: "FX coverage tied to ECB; older vintages are still being incorporated."
+        series_codes:
+          - EUR_USD
+      - key: financial_markets
+        coverage: "Equity indexes, commodity + rate series, BAML corporate yields, derived spreads/volatility/correlations cover 1990–2025."
+        status_notes: "Rolling volatility documented in Volatility_MeanReversion/outputs and cleaned spread QC."
+        series_codes:
+          - FTSEMIB
+          - VIXCLS
+          - BAMLH0A0HYM2
+          - BAMLC0A0CM
+          - DCOILBRENTEU
+          - DCOILWTICO
+      - key: banking_system
+        coverage: "BIS LBS loans/deposits plus derived funding liquidity stress cover 1990–2025."
+        status_notes: "Liquidity stress proxy anchored to HAR/GARCH/FIGARCH fits captured in Volatility_MeanReversion outputs."
+        series_codes:
+          - EUR_M3_MABMM301EZM189S
+          - FUNDING_STRESS_ITA
+          - LIQUIDITY_STRESS_ITA
+        optional_series_codes:
+          - BIS_LBS_Household_Loans
+          - EUR3MTD156N
+  - country: Spain
+    iso_code: ESP
+    region: EUR
+    coverage_window: "1990-2025"
+    blocks:
+      - key: macro
+        coverage: "Core GDP, CPI, unemployment, nominal GDP, BIS credit stocks cover 1990–2025."
+        status_notes: "Eurostat/FRED/WB anchors ingested data and keep macro coverage stable."
+        series_codes:
+          - NAEXKP01ESQ661S
+          - ESPCPIALLMINMEI
+          - LRHUTTTTESM156S
+          - GC.DOD.TOTL.GD.ZS_ESP
+          - BIS_LBS_Private_NFC_ESP
+      - key: real_estate
+        coverage: "CSUSHPISA proxy + BIS mortgage debt + derived domestic HPI cover 1990–2025."
+        status_notes: "Nominal housing and credit proxies ingested while rent/income feeds continue to arrive for derivations."
+        series_codes:
+          - ESP_HPI_REAL
+          - BIS_LBS_Household_Loans
+          - MORTGAGE30US
+        local_series_files:
+          BIS_LBS_Household_Loans: data_repository/processed/BIS_LBS_Household_Loans_ESP.csv
+          BIS_LBS_Private_NFC_Loans: data_repository/processed/BIS_LBS_Private_NFC_Loans_ESP.csv
+          BIS_LBS_Private_NFC_Total: data_repository/processed/BIS_LBS_Private_NFC_Total_ESP.csv
+      - key: public_finance
+        coverage: "NSS-derived 10y/2y yields and DNSS beta level/slope/curvature factors (reestimated monthly) pair with debt-to-GDP, derived spreads, sovereign short rate + premium to cover 1990–2025."
+        status_notes: "Derived spreads captured in clean panel; 39 spread series kept after filtering; DNSS betas refreshed via `reestimate_dnss_monthly.py` and referenced in the Spanish stress catalog."
+        series_codes:
+          - ESP_beta0
+          - ESP_beta1
+          - ESP_beta2
+        optional_series_codes:
+          - GC.DOD.TOTL.GD.ZS_ESP
+      - key: external_fx
+        coverage: "EUR/USD 1999–present."
+        status_notes: "FX coverage tied to ECB; earlier vintages continue to be validated."
+        series_codes:
+          - EUR_USD
+      - key: financial_markets
+        coverage: "Equity indexes, commodity + rate series, BAML corporate yields, derived spreads/volatility/correlations cover 1990–2025."
+        status_notes: "Rolling volatility tracked in Volatility_MeanReversion outputs; derived spreads reference QC summary."
+        series_codes:
+          - ^IBEX
+          - VIXCLS
+          - BAMLH0A1HYBB
+          - DCOILBRENTEU
+          - DCOILWTICO
+      - key: banking_system
+        coverage: "BIS LBS loans/deposits plus derived funding/ liquidity stress proxies cover 1990–2025."
+        status_notes: "Liquidity stress linked to HAR/GARCH/FIGARCH fits described in Volatility_MeanReversion documentation."
+        series_codes:
+          - EUR_M3_MABMM301EZM189S
+          - FUNDING_STRESS_ESP
+          - LIQUIDITY_STRESS_ESP
+        optional_series_codes:
+          - BIS_LBS_Household_Loans
+          - EUR3MTD156N

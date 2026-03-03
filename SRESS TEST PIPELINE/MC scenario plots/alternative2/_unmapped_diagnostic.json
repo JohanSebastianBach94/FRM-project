@@ -1,0 +1,47 @@
+[
+  {
+    "iso": "DEU",
+    "series": "V2X",
+    "in_dt_factors": true,
+    "in_block_def": true,
+    "mapped_blocks": [
+      "systemic_stress"
+    ]
+  },
+  {
+    "iso": "ESP",
+    "series": "V2X",
+    "in_dt_factors": true,
+    "in_block_def": true,
+    "mapped_blocks": [
+      "systemic_stress"
+    ]
+  },
+  {
+    "iso": "FRA",
+    "series": "V2X",
+    "in_dt_factors": true,
+    "in_block_def": true,
+    "mapped_blocks": [
+      "systemic_stress"
+    ]
+  },
+  {
+    "iso": "ITA",
+    "series": "V2X",
+    "in_dt_factors": true,
+    "in_block_def": true,
+    "mapped_blocks": [
+      "systemic_stress"
+    ]
+  },
+  {
+    "iso": "USA",
+    "series": "VIXCLS",
+    "in_dt_factors": true,
+    "in_block_def": true,
+    "mapped_blocks": [
+      "systemic_stress"
+    ]
+  }
+]

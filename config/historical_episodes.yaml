@@ -1,0 +1,67 @@
+﻿# Historical episode catalog used by Step 11.1 (historical replay)
+# Dates are inclusive; they will be intersected with available DCC-GARCH residual history.
+#
+# Notes:
+# - Prefer episodes with broad cross-asset stress and known correlation spikes.
+# - Keep at least ~3 months for stable correlation estimation.
+
+episodes:
+  - id: gfc_2008
+    name: Global Financial Crisis (Lehman)
+    start: 2007-07-01
+    end: 2009-06-30
+    tags: [global, credit, banking]
+
+  - id: eurozone_2011
+    name: Eurozone Sovereign Stress
+    start: 2011-06-01
+    end: 2012-12-31
+    tags: [europe, sovereign, funding]
+
+  - id: covid_2020
+    name: COVID Shock
+    start: 2020-02-01
+    end: 2020-06-30
+    tags: [global, liquidity, risk_off]
+
+settings:
+  # Minimum number of overlapping residual observations required to run a replay.
+  min_obs: 60
+
+  # Episode slicing controls (to avoid dropping whole blocks due to one sparse series).
+  # Keep only series with at least this fraction of non-NaN observations inside the episode window.
+  min_col_coverage: 0.90
+  # After pruning sparse series, require at least this many series to replay a block.
+  min_series: 2
+
+  # How to anchor the replay in "today" time:
+  # - end_of_sample: replay ends at the last available conditional-vol date.
+  anchor: end_of_sample
+
+  # Whether to rotate episode shocks into the current correlation regime.
+  # If false, we replay standardized shocks without correlation rotation.
+  rotate_to_current_correlation: false
+
+  # Regularization for correlation-rotation (only used if rotate_to_current_correlation=true)
+  # Shrink episode correlation toward identity: R <- (1-lambda) R + lambda I
+  corr_shrinkage_lambda: 0.10
+  # Eigenvalue floor for SPD projection (prevents near-singular whitening blow-ups)
+  corr_eig_floor: 0.001
+  # Optional cap on whitened shocks u = L_ep^{-1} z (winsorize abs(u) at this quantile).
+  winsor_abs_quantile: 0.99
+
+  # Diagnostics: flag blocks with unusually large standardized shocks.
+  diagnostics_z_threshold: 8.0
+
+  # Diagnostics: detect "mostly flat then spikes" behavior in z-space (often signals
+  # data/transform issues such as stale/forward-filled series or regime breaks).
+  # If p95(|z|) is below this while max(|z|) is above diagnostics_z_threshold, we flag.
+  flat_spike_p95_abs_threshold: 0.5
+  # Also flag if the fraction of |z| below flat_spike_abs_epsilon exceeds this threshold.
+  flat_spike_near_zero_frac_threshold: 0.8
+  # Absolute value treated as "near zero" for standardized residuals.
+  flat_spike_abs_epsilon: 1.0e-6
+
+  # Whether to re-volatilize standardized shocks with the current conditional vols.
+  # If false, output stays in standardized units.
+  re_volatilize_with_current_vol: true

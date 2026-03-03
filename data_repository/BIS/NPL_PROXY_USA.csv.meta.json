@@ -1,0 +1,11 @@
+{
+  "bis_internal_id": "",
+  "bis_internal_title": "",
+  "series_key": "BORROWERS_CTY:US|DECIMALS:1|DSR_BORROWERS:N|FREQ:Q|TITLE_TS:United States - Non-financial corporations",
+  "series_key_norm": "",
+  "bis_source_file": "bis_api_bis_ws_dsr_1_0_all_20251216T142436Z.xml",
+  "catalog_series": "NPL_PROXY_USA",
+  "bis_series": "NPL_PROXY_USA",
+  "bis_title": "United States - Non-financial corporations",
+  "written_at": "2025-12-18T16:41:47.141537Z"
+}

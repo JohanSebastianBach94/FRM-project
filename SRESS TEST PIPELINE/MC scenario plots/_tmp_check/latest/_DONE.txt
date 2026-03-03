@@ -1,0 +1,6 @@
+run=latest
+source=C:\Users\frank\Documents\FRM project\analysis_outputs\scenarios\latest\monte_carlo\daily_draws
+draw_ids=[87, 254, 613, 1144, 2537, 3192, 3408, 4056, 4163, 4177]
+block_def=outputs\country_block_definition.json
+block_aggregate_style=representatives
+factor_space=z

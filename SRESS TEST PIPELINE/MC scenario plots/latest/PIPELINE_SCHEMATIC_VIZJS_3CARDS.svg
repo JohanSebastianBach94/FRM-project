@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1378pt" height="283pt" viewBox="0.00 0.00 1378.00 282.80" data-rendered="1">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 264.8)">
+<title>pipeline</title>
+<polygon fill="#ffffff" stroke="transparent" points="-18,18 -18,-264.8 1360,-264.8 1360,18 -18,18"></polygon>
+<text text-anchor="middle" x="671" y="-221.2" font-family="Helvetica,sans-Serif" font-size="24.00" fill="#000000">Stress-testing via Monte Carlo scenarios</text>
+<!-- model -->
+<g id="node1" class="node">
+<title>model</title>
+<path fill="none" stroke="#444444" d="M416,-210C416,-210 12,-210 12,-210 6,-210 0,-204 0,-198 0,-198 0,-12 0,-12 0,-6 6,0 12,0 12,0 416,0 416,0 422,0 428,-6 428,-12 428,-12 428,-198 428,-198 428,-204 422,-210 416,-210"></path>
+<polygon fill="#ffffff" stroke="transparent" points="9,-169 9,-205 419,-205 419,-169 9,-169"></polygon>
+<text text-anchor="start" x="111.6992" y="-183.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="150.6052" y="-183.4" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="14.00" fill="#000000">Model and framework</text>
+<text text-anchor="start" x="285.176" y="-183.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="#ffffff" stroke="transparent" points="9,-149 9,-169 419,-169 419,-149 9,-149"></polygon>
+<polygon fill="#ebf5ff" stroke="transparent" points="9,-101 9,-149 419,-149 419,-101 9,-101"></polygon>
+<text text-anchor="start" x="117.156" y="-127.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="156.062" y="-127.4" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="12.00" fill="#000000">Inputs &amp; prep (Step 1)</text>
+<text text-anchor="start" x="19" y="-113.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="57.906" y="-113.4" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Macro/market series -&gt; cleaning, standardization, health checks</text>
+<text text-anchor="start" x="340.464" y="-113.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="#ecf8ef" stroke="transparent" points="9,-53 9,-101 419,-101 419,-53 9,-53"></polygon>
+<text text-anchor="start" x="131.8704" y="-79.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="170.7764" y="-79.4" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="12.00" fill="#000000">Country blocks (Step 2)</text>
+<text text-anchor="start" x="18.9521" y="-65.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="57.8581" y="-65.4" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Group factors into themes (banking, FX, public finance, commodities, ...)</text>
+<text text-anchor="start" x="377.9231" y="-65.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="#ecf8ef" stroke="transparent" points="9,-5 9,-53 419,-53 419,-5 9,-5"></polygon>
+<text text-anchor="start" x="125.8834" y="-31.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="164.7894" y="-31.4" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="12.00" fill="#000000">Factor dynamics (Step 3)</text>
+<text text-anchor="start" x="19" y="-17.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="57.906" y="-17.4" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Volatility + correlations (ADCC / DCC-GARCH family) + mean reversion</text>
+<text text-anchor="start" x="374.564" y="-17.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="none" stroke="#444444" points="8,-4 8,-206 420,-206 420,-4 8,-4"></polygon>
+</g>
+<!-- mc -->
+<g id="node2" class="node">
+<title>mc</title>
+<path fill="none" stroke="#444444" d="M869,-186C869,-186 498,-186 498,-186 492,-186 486,-180 486,-174 486,-174 486,-36 486,-36 486,-30 492,-24 498,-24 498,-24 869,-24 869,-24 875,-24 881,-30 881,-36 881,-36 881,-174 881,-174 881,-180 875,-186 869,-186"></path>
+<polygon fill="#ffffff" stroke="transparent" points="495.5,-145 495.5,-181 872.5,-181 872.5,-145 495.5,-145"></polygon>
+<text text-anchor="start" x="583.6452" y="-159.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="622.5512" y="-159.4" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="14.00" fill="#000000">MC scenario building</text>
+<text text-anchor="start" x="753.23" y="-159.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="#ffffff" stroke="transparent" points="495.5,-125 495.5,-145 872.5,-145 872.5,-125 495.5,-125"></polygon>
+<polygon fill="#fff3e6" stroke="transparent" points="495.5,-77 495.5,-125 872.5,-125 872.5,-77 495.5,-77"></polygon>
+<text text-anchor="start" x="546.6851" y="-103.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="585.5911" y="-103.4" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="12.00" fill="#000000">Monte Carlo scenarios (Step 4)</text>
+<text text-anchor="start" x="505.5" y="-89.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="544.406" y="-89.4" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Simulate many joint futures for block shock paths</text>
+<text text-anchor="start" x="761.675" y="-89.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="#fff3e6" stroke="transparent" points="495.5,-29 495.5,-77 872.5,-77 872.5,-29 495.5,-29"></polygon>
+<text text-anchor="start" x="617.876" y="-55.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="656.782" y="-55.4" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="12.00" fill="#000000">Regimes (Step 5)</text>
+<text text-anchor="start" x="505.0756" y="-41.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="543.9816" y="-41.4" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Bucket draws by severity quantiles (baseline -&gt; adverse -&gt; crisis)</text>
+<text text-anchor="start" x="831.7996" y="-41.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="none" stroke="#444444" points="494,-28 494,-182 873,-182 873,-28 494,-28"></polygon>
+</g>
+<!-- model&#45;&gt;mc -->
+<g id="edge1" class="edge">
+<title>model-&gt;mc</title>
+<path fill="none" stroke="#444444" stroke-width="2" d="M428.1413,-105C444.0635,-105 460.1132,-105 475.9943,-105"></path>
+<polygon fill="#444444" stroke="#444444" stroke-width="2" points="476.3581,-108.3251 485.8581,-105 476.358,-101.6751 476.3581,-108.3251"></polygon>
+</g>
+<!-- report -->
+<g id="node3" class="node">
+<title>report</title>
+<path fill="none" stroke="#444444" d="M1330,-210C1330,-210 951,-210 951,-210 945,-210 939,-204 939,-198 939,-198 939,-12 939,-12 939,-6 945,0 951,0 951,0 1330,0 1330,0 1336,0 1342,-6 1342,-12 1342,-12 1342,-198 1342,-198 1342,-204 1336,-210 1330,-210"></path>
+<polygon fill="#ffffff" stroke="transparent" points="948.5,-169 948.5,-205 1333.5,-205 1333.5,-169 948.5,-169"></polygon>
+<text text-anchor="start" x="1034.4096" y="-183.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="1073.3156" y="-183.4" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="14.00" fill="#000000">Reporting and Ranking</text>
+<text text-anchor="start" x="1216.4656" y="-183.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="#ffffff" stroke="transparent" points="948.5,-149 948.5,-169 1333.5,-169 1333.5,-149 948.5,-149"></polygon>
+<polygon fill="#ebf5ff" stroke="transparent" points="948.5,-101 948.5,-149 1333.5,-149 1333.5,-101 948.5,-101"></polygon>
+<text text-anchor="start" x="1077.2088" y="-127.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="1116.1148" y="-127.4" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="12.00" fill="#000000">Realized overlay</text>
+<text text-anchor="start" x="958.2486" y="-113.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="997.1546" y="-113.4" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Compute "Today" from the latest window (comparable sigma units)</text>
+<text text-anchor="start" x="1292.6266" y="-113.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="#f7eef7" stroke="transparent" points="948.5,-53 948.5,-101 1333.5,-101 1333.5,-53 948.5,-53"></polygon>
+<text text-anchor="start" x="1079.5933" y="-79.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="1118.4993" y="-79.4" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="12.00" fill="#000000">Reporting</text>
+<text text-anchor="start" x="958.5" y="-65.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="997.406" y="-65.4" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Severity distributions + ranking; crisis drivers (block shares)</text>
+<text text-anchor="start" x="1260.477" y="-65.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="#f7eef7" stroke="transparent" points="948.5,-5 948.5,-53 1333.5,-53 1333.5,-5 948.5,-5"></polygon>
+<text text-anchor="start" x="1047.7459" y="-31.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="1086.6519" y="-31.4" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="12.00" fill="#000000">Network lens</text>
+<text text-anchor="start" x="958.5" y="-17.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="997.406" y="-17.4" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Connectedness deltas (stress regime vs median)</text>
+<text text-anchor="start" x="1214.109" y="-17.4" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="none" stroke="#444444" points="947,-4 947,-206 1334,-206 1334,-4 947,-4"></polygon>
+</g>
+<!-- mc&#45;&gt;report -->
+<g id="edge2" class="edge">
+<title>mc-&gt;report</title>
+<path fill="none" stroke="#444444" stroke-width="2" d="M881.2889,-105C897.0706,-105 913.0514,-105 928.9226,-105"></path>
+<polygon fill="#444444" stroke="#444444" stroke-width="2" points="929.2879,-108.3251 938.7878,-105 929.2878,-101.6751 929.2879,-108.3251"></polygon>
+</g>
+</g>
+</svg>

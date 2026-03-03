@@ -1,0 +1,45 @@
+# Step 5 shortlist + collinearity configuration (governed)
+# This config makes Step 5 runs comparable across time and environments.
+# Step 5 is intentionally *downstream of Step 4*; the Step 4 outputs define
+# the candidate feature universe (we do not introduce new features here).
+
+monthly:
+  selection:
+    min_features: 8
+    max_features: 12
+
+  # Ranking signal weights (normalized internally; stability weight is auto-dropped
+  # if no stability-selection outputs exist).
+  ranking_weights:
+    contribution: 0.45
+    stability: 0.30
+    coverage: 0.15
+    oos_contribution: 0.10
+
+  # Out-of-sample contribution uses Step 4 per-target test R^2 as a quality weight.
+  # We clip test R^2 to this range before weighting.
+  performance_weighting:
+    test_r2_clip_low: 0.0
+    test_r2_clip_high: 1.0
+
+  # Collinearity control
+  pruning:
+    # Build correlation clusters (graph connected-components) using abs correlation.
+    # Keep 1 representative per cluster, preferring forced features and higher rank.
+    correlation_cluster_threshold: 0.85
+
+    # Optional global VIF pruning after clustering (useful when clusters still have
+    # multivariate collinearity). Set to null to disable.
+    vif_threshold: 8.0
+
+    # Correlation matrix diagnostics are computed on rows with complete data for the
+    # candidate columns, to avoid spurious correlations from sparse overlap.
+    dropna_for_corr: true
+
+# Daily shortlist config (lighter-weight; Step 4 daily outputs do not always carry
+# the same diagnostics signals as monthly).
+daily:
+  selection:
+    max_features_default: 12
+  pruning:
+    correlation_cluster_threshold: 0.95

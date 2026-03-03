@@ -1,0 +1,22 @@
+{
+  "run_id": "replay_20260212_152321",
+  "created_utc": "2026-02-12T15:23:21.859880Z",
+  "episodes_config": "C:/Users/frank/Documents/FRM project/config/historical_episodes.yaml",
+  "n_episodes": 3,
+  "n_blocks": 6,
+  "scenario_run_id": "latest",
+  "settings": {
+    "min_obs": 60,
+    "anchor": "end_of_sample",
+    "rotate_to_current_correlation": false,
+    "re_volatilize_with_current_vol": true
+  },
+  "blocks": [
+    "deu_banking_system",
+    "deu_commodities",
+    "esp_banking_system",
+    "fra_banking_system",
+    "ita_banking_system",
+    "usa_systemic_stress"
+  ]
+}

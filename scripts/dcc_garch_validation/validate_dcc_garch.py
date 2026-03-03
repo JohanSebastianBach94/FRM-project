@@ -38,6 +38,15 @@ class DCCGARCHDiagnostics:
         # Load results
         print("Loading DCC-GARCH results...")
         self.garch_params = pd.read_csv(self.results_dir / 'dcc_garch_parameters.csv')
+        # Normalize column names that evolved
+        if 'alpha_plus_beta' not in self.garch_params.columns:
+            if 'alpha_beta_sum' in self.garch_params.columns:
+                self.garch_params['alpha_plus_beta'] = self.garch_params['alpha_beta_sum']
+            elif 'alpha_beta' in self.garch_params.columns:
+                self.garch_params['alpha_plus_beta'] = self.garch_params['alpha_beta']
+        # Ensure we always have a variable column
+        if 'variable' not in self.garch_params.columns:
+            self.garch_params['variable'] = self.garch_params.index.astype(str)
         self.dcc_params = pd.read_csv(self.results_dir / 'dcc_parameters.csv')
         self.Qbar = pd.read_csv(
             self.results_dir / 'unconditional_correlation_matrix.csv', 
@@ -48,9 +57,31 @@ class DCCGARCHDiagnostics:
             index_col=0,
             parse_dates=True
         )
+        if 'mean_correlation' not in self.corr_ts.columns:
+            self.corr_ts['mean_correlation'] = self.corr_ts.mean(axis=1)
         
         with open(self.results_dir / 'fit_summary.json', 'r') as f:
             self.summary = json.load(f)
+
+        # Backfill legacy fields used by diagnostics
+        self.summary.setdefault('n_variables', self.summary.get('n_series', 0))
+        self.summary.setdefault('n_observations', self.summary.get('n_observations', 0))
+        date_range = self.summary.get('date_range', {})
+        self.summary.setdefault('date_start', date_range.get('start'))
+        self.summary.setdefault('date_end', date_range.get('end'))
+        dcc_params = self.summary.get('dcc_parameters', {})
+        self.summary.setdefault('dcc_a', dcc_params.get('a', 0.0))
+        self.summary.setdefault('dcc_b', dcc_params.get('b', 0.0))
+        self.summary.setdefault('dcc_a_plus_b', self.summary['dcc_a'] + self.summary['dcc_b'])
+        convergence = self.summary.get('garch_convergence', {})
+        converged = convergence.get('converged', 0)
+        failed = convergence.get('failed', 0)
+        total = converged + failed if (converged + failed) > 0 else 1
+        self.summary.setdefault('garch_convergence_rate', converged / total)
+        # Compute mean unconditional correlation for reporting
+        off_diag = self.Qbar.values.copy()
+        np.fill_diagonal(off_diag, np.nan)
+        self.summary.setdefault('mean_unconditional_corr', float(np.nanmean(off_diag)))
         
         print(f"✓ Loaded results for {self.summary['n_variables']} variables")
         print(f"  Date range: {self.summary['date_start']} to {self.summary['date_end']}")
@@ -245,7 +276,7 @@ class DCCGARCHDiagnostics:
         report.append("- Phase 1.5: Out-of-sample forecasting\n")
         
         report_path = self.results_dir / 'dcc_diagnostics_report.md'
-        with open(report_path, 'w') as f:
+        with open(report_path, 'w', encoding='utf-8') as f:
             f.writelines(report)
         
         print(f"✓ Report saved: {report_path}")

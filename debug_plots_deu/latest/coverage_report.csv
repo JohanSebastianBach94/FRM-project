@@ -1,0 +1,9 @@
+iso,block,expected_series,present_expected,missing_expected,missing_expected_list
+DEU,banking_system,3,1,2,Bank_equity_index_DEU;EURIBOR_3m
+DEU,commodities,14,1,13,DCOILWTICO;DHHNGSP;FAO_AG_INDEX;GOLD_SPOT;Gold_Futures;PALUMUSDM;PCOPPUSDM;PIORECRUSDM;PMAIZMTUSDM;PSOYBUSDQ;PWHEAMTUSDM;TTF_GAS;WTI_Crude_Futures
+DEU,external_fx,10,0,10,EUR_CHF;EUR_CHF_XR;EUR_CNY_XR;EUR_GBP;EUR_GBP_XR;EUR_INR;EUR_INR_XR;EUR_JPY;EUR_JPY_XR;EUR_USD
+DEU,financial_markets,3,1,2,^GDAXI;credit_spread_DEU
+DEU,macro,8,1,7,DEUCPIALLMINMEI;DEU_GDP_EUROSTAT;DEU_UNRATE_EUROSTAT;MABMM301EZM189S;MYAGM1EZM196N;MYAGM2EZM196N;NAEXKP01DEQ661S
+DEU,public_finance,7,1,6,CDS_5y_DEU;DEU_Periphery_Spread_Composite;DEU_beta0;DEU_beta1;DEU_beta2;DEU_beta3
+DEU,real_estate,5,1,4,DEU_HPI_REAL;Mortgage_rate_DEU;Price_to_income_DEU;Rent_to_income_ratio_DEU
+DEU,systemic_stress,3,0,3,COMM_PAPER_SPREAD_EUR;ECBASSETS;SWAPTION_VOL_DEU

@@ -1,0 +1,21 @@
+{
+  "label": "miscellaneous (misc:leftover)",
+  "n_series": 17,
+  "n_observations": 9319,
+  "dcc_a": 0.03,
+  "dcc_b": 0.9,
+  "a_plus_b": 0.93,
+  "adcc_gamma": 0.0,
+  "update_success_rate": 1.0,
+  "smoothness_mean": 0.0028075010751986824,
+  "smoothness_75pct": 0.0014548347224736906,
+  "successful_updates": 9318,
+  "total_updates": 9318,
+  "garch_converged": 16,
+  "garch_total": 16,
+  "garch_convergence_rate": 1.0,
+  "validation_checks_passed": 2,
+  "validation_checks_total": 3,
+  "overfitting_flag": false,
+  "status": "completed"
+}

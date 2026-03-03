@@ -1,0 +1,38 @@
+{
+  "iso": "DEU",
+  "model": "ADCC",
+  "params": {
+    "a": 0.1,
+    "b": 0.7,
+    "g": 0.2
+  },
+  "persistence": 0.8999999999999999,
+  "loglikelihood": 24509.124678857843,
+  "min_eigen": -1.2672819261828326e-15,
+  "residuals_shape": [
+    122,
+    97
+  ],
+  "pair_count": 4656,
+  "fit": {
+    "fit_method": "opt",
+    "model_type": "adcc",
+    "opt": {
+      "success": false,
+      "status": 4,
+      "message": "Inequality constraints incompatible",
+      "nit": 1,
+      "max_a": null,
+      "large_a_penalty_lambda": 0.0,
+      "large_a_threshold": 0.2
+    },
+    "fallback": "grid",
+    "corr_recursion": {
+      "spd_projection_dates": 121
+    },
+    "garch": {
+      "garch_convergence_rate": 1.0,
+      "min_garch_convergence_rate": 0.5
+    }
+  }
+}

@@ -1,0 +1,102 @@
+--- c:\Users\frank\Documents\FRM project\config\country_blocks.yaml
++++ c:\Users\frank\Documents\FRM project\proposed_patches\country_blocks_removed_tokens.yaml
+@@ -34,7 +34,6 @@
+           - USA_beta2
+         optional_series_codes:
+           - GC.DOD.TOTL.GD.ZS_USA
+-          - TERM_SPREAD_USA_10Y_2Y
+       - key: external_fx
+         coverage: "EUR/USD daily coverage 1999–present (Investing + ECB)."
+         status_notes: "FX coverage good post-1999; the 1990–1998 expansion is still being completed."
+@@ -58,10 +57,8 @@
+           - FUNDING_STRESS_USA
+           - LIQUIDITY_STRESS_USA
+         optional_series_codes:
+-          - BIS_LBS_Total_Loans
+           - BIS_LBS_Household_Loans
+           - USD3MTD156N
+-          - IRLTLT01USM156N
+   - country: Germany
+     iso_code: DEU
+     region: EUR
+@@ -96,7 +93,6 @@
+           - DEU_beta2
+         optional_series_codes:
+           - GC.DOD.TOTL.GD.ZS_DEU
+-          - TERM_SPREAD_DEU_10Y_2Y
+       - key: external_fx
+         coverage: "EUR/USD coverage 1999–present."
+         status_notes: "FX coverage linked to ECB data; the 1990–1998 expansion remains under review."
+@@ -120,10 +116,8 @@
+           - FUNDING_STRESS_DEU
+           - LIQUIDITY_STRESS_DEU
+         optional_series_codes:
+-          - BIS_LBS_Total_Loans
+-          - BIS_LBS_Household_Loans
+-          - EUR3MTD156N
+-          - IRLTLT01DEM156N
++          - BIS_LBS_Household_Loans
++          - EUR3MTD156N
+   - country: France
+     iso_code: FRA
+     region: EUR
+@@ -158,7 +152,6 @@
+           - FRA_beta2
+         optional_series_codes:
+           - GC.DOD.TOTL.GD.ZS_FRA
+-          - TERM_SPREAD_FRA_10Y_2Y
+       - key: external_fx
+         coverage: "EUR/USD 1999–present."
+         status_notes: "FX coverage reliant on ECB; pre-1999 expansion work is ongoing."
+@@ -182,10 +175,8 @@
+           - FUNDING_STRESS_FRA
+           - LIQUIDITY_STRESS_FRA
+         optional_series_codes:
+-          - BIS_LBS_Total_Loans
+-          - BIS_LBS_Household_Loans
+-          - EUR3MTD156N
+-          - IRLTLT01FRM156N
++          - BIS_LBS_Household_Loans
++          - EUR3MTD156N
+   - country: Italy
+     iso_code: ITA
+     region: EUR
+@@ -220,7 +211,6 @@
+           - ITA_beta2
+         optional_series_codes:
+           - GC.DOD.TOTL.GD.ZS_ITA
+-          - TERM_SPREAD_ITA_10Y_2Y
+       - key: external_fx
+         coverage: "EUR/USD 1999–present."
+         status_notes: "FX coverage tied to ECB; older vintages are still being incorporated."
+@@ -244,10 +234,8 @@
+           - FUNDING_STRESS_ITA
+           - LIQUIDITY_STRESS_ITA
+         optional_series_codes:
+-          - BIS_LBS_Total_Loans
+-          - BIS_LBS_Household_Loans
+-          - EUR3MTD156N
+-          - IRLTLT01ITM156N
++          - BIS_LBS_Household_Loans
++          - EUR3MTD156N
+   - country: Spain
+     iso_code: ESP
+     region: EUR
+@@ -282,7 +270,6 @@
+           - ESP_beta2
+         optional_series_codes:
+           - GC.DOD.TOTL.GD.ZS_ESP
+-          - TERM_SPREAD_ESP_10Y_2Y
+       - key: external_fx
+         coverage: "EUR/USD 1999–present."
+         status_notes: "FX coverage tied to ECB; earlier vintages continue to be validated."
+@@ -305,7 +292,5 @@
+           - FUNDING_STRESS_ESP
+           - LIQUIDITY_STRESS_ESP
+         optional_series_codes:
+-          - BIS_LBS_Total_Loans
+-          - BIS_LBS_Household_Loans
+-          - EUR3MTD156N
+-          - IRLTLT01ESM156N
++          - BIS_LBS_Household_Loans
++          - EUR3MTD156N

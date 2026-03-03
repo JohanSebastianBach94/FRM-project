@@ -1,0 +1,517 @@
+series_metadata:
+  BAMLC0A0CM:
+    frequency: daily
+    measurement_type: percent
+  BAMLC0A1CAAAEY:
+    frequency: daily
+    measurement_type: percent
+  BAMLC0A2CAAEY:
+    frequency: daily
+    measurement_type: percent
+  BAMLC0A3CAEY:
+    frequency: daily
+    measurement_type: percent
+  BAMLC0A4CBBB:
+    frequency: daily
+    measurement_type: percent
+  BAMLH0A0HYM2:
+    frequency: daily
+    measurement_type: percent
+  BAMLH0A1HYBB:
+    frequency: daily
+    measurement_type: percent
+  BAMLH0A2HYBEY:
+    frequency: daily
+    measurement_type: percent
+  BAMLHE00EHYIEY:
+    frequency: daily
+    measurement_type: percent
+  BIS_LBS_Household_Loans_DEU:
+    frequency: monthly
+    measurement_type: level
+  BIS_LBS_Household_Loans_ESP:
+    frequency: monthly
+    measurement_type: level
+  BIS_LBS_Household_Loans_FRA:
+    frequency: monthly
+    measurement_type: level
+  BIS_LBS_Household_Loans_ITA:
+    frequency: monthly
+    measurement_type: level
+  BIS_LBS_Household_Loans_USA:
+    frequency: monthly
+    measurement_type: level
+  BIS_LBS_Private_NFC_DEU:
+    frequency: monthly
+    measurement_type: level
+  BIS_LBS_Private_NFC_ESP:
+    frequency: monthly
+    measurement_type: level
+  BIS_LBS_Private_NFC_FRA:
+    frequency: monthly
+    measurement_type: level
+  BIS_LBS_Private_NFC_ITA:
+    frequency: monthly
+    measurement_type: level
+  BIS_LBS_Private_NFC_USA:
+    frequency: monthly
+    measurement_type: level
+  BTP_Bund_Spread:
+    frequency: daily
+    measurement_type: spread
+  Bank_equity_index_DEU:
+    frequency: daily
+    measurement_type: level
+  Bank_equity_index_ESP:
+    frequency: daily
+    measurement_type: level
+  Bank_equity_index_FRA:
+    frequency: daily
+    measurement_type: level
+  Bank_equity_index_ITA:
+    frequency: daily
+    measurement_type: level
+  Bank_equity_index_USA:
+    frequency: daily
+    measurement_type: level
+  Bonos_Bund_Spread:
+    frequency: daily
+    measurement_type: spread
+  Brent_Crude_Futures:
+    frequency: daily
+    measurement_type: level
+  CDS_5y_DEU:
+    frequency: daily
+    measurement_type: spread
+  CDS_5y_ESP:
+    frequency: daily
+    measurement_type: spread
+  CDS_5y_FRA:
+    frequency: daily
+    measurement_type: spread
+  CDS_5y_ITA:
+    frequency: daily
+    measurement_type: spread
+  CDS_5y_USA:
+    frequency: daily
+    measurement_type: spread
+  credit_spread_USA:
+    frequency: daily
+    measurement_type: spread
+  COMM_PAPER_SPREAD_EUR:
+    frequency: daily
+    measurement_type: spread
+  COMM_PAPER_SPREAD_USA:
+    frequency: daily
+    measurement_type: spread
+  CPIAUCSL:
+    frequency: monthly
+    measurement_type: level
+  DCOILBRENTEU:
+    frequency: monthly
+    measurement_type: level
+  DCOILWTICO:
+    frequency: monthly
+    measurement_type: level
+  DEUCPIALLMINMEI:
+    frequency: monthly
+    measurement_type: level
+  DEU_HPI_REAL:
+    frequency: monthly
+    measurement_type: level
+  DEU_beta0:
+    frequency: daily
+    measurement_type: level
+  DEU_beta1:
+    frequency: daily
+    measurement_type: level
+  DEU_beta2:
+    frequency: daily
+    measurement_type: level
+  DEU_beta3:
+    frequency: daily
+    measurement_type: level
+  DEXBZUS:
+    frequency: daily
+    measurement_type: level
+  DEXCHUS:
+    frequency: daily
+    measurement_type: level
+  DEXJPUS:
+    frequency: daily
+    measurement_type: level
+  DEXKOUS:
+    frequency: daily
+    measurement_type: level
+  DEXMXUS:
+    frequency: daily
+    measurement_type: level
+  DEXSZUS:
+    frequency: daily
+    measurement_type: level
+  DEXUSEU:
+    frequency: daily
+    measurement_type: level
+  DFF:
+    frequency: daily
+    measurement_type: percent
+  DHHNGSP:
+    frequency: monthly
+    measurement_type: level
+  DSWP10:
+    frequency: daily
+    measurement_type: level
+  DXY:
+    frequency: daily
+    measurement_type: level
+  ECBASSETS:
+    frequency: monthly
+    measurement_type: level
+  ECBDFR:
+    frequency: monthly
+    measurement_type: percent
+  ESPCPIALLMINMEI:
+    frequency: monthly
+    measurement_type: level
+  ESP_HPI_REAL:
+    frequency: monthly
+    measurement_type: level
+  ESP_beta0:
+    frequency: daily
+    measurement_type: level
+  ESP_beta1:
+    frequency: daily
+    measurement_type: level
+  ESP_beta2:
+    frequency: daily
+    measurement_type: level
+  ESP_beta3:
+    frequency: daily
+    measurement_type: level
+  EURIBOR_3m:
+    frequency: daily
+    measurement_type: percent
+  EURIBOR_ESTR_SPREAD:
+    frequency: daily
+    measurement_type: spread
+  EUR_CHF:
+    frequency: daily
+    measurement_type: level
+  EUR_CHF_XR:
+    frequency: daily
+    measurement_type: level
+  EUR_CNY_XR:
+    frequency: daily
+    measurement_type: level
+  EUR_GBP:
+    frequency: daily
+    measurement_type: level
+  EUR_GBP_XR:
+    frequency: daily
+    measurement_type: level
+  EUR_JPY:
+    frequency: daily
+    measurement_type: level
+  EUR_JPY_XR:
+    frequency: daily
+    measurement_type: level
+  EUR_USD:
+    frequency: daily
+    measurement_type: level
+  EWG:
+    frequency: daily
+    measurement_type: level
+  EWI:
+    frequency: daily
+    measurement_type: level
+  EWP:
+    frequency: daily
+    measurement_type: level
+  EWQ:
+    frequency: daily
+    measurement_type: level
+  FAO_AG_INDEX:
+    frequency: monthly
+    measurement_type: level
+  FRACPIALLMINMEI:
+    frequency: monthly
+    measurement_type: level
+  FRA_HPI_REAL:
+    frequency: monthly
+    measurement_type: level
+  FRA_beta0:
+    frequency: daily
+    measurement_type: level
+  FRA_beta1:
+    frequency: daily
+    measurement_type: level
+  FRA_beta2:
+    frequency: daily
+    measurement_type: level
+  FRA_beta3:
+    frequency: daily
+    measurement_type: level
+  GBP_USD:
+    frequency: daily
+    measurement_type: level
+  GC.DOD.TOTL.GD.ZS_DEU:
+    frequency: quarterly
+    measurement_type: percent
+  GC.DOD.TOTL.GD.ZS_ESP:
+    frequency: quarterly
+    measurement_type: percent
+  GC.DOD.TOTL.GD.ZS_FRA:
+    frequency: quarterly
+    measurement_type: percent
+  GC.DOD.TOTL.GD.ZS_ITA:
+    frequency: quarterly
+    measurement_type: percent
+  GC.DOD.TOTL.GD.ZS_USA:
+    frequency: quarterly
+    measurement_type: percent
+  GDPC1:
+    frequency: quarterly
+    measurement_type: level
+  GOLD_SPOT:
+    frequency: daily
+    measurement_type: level
+  Gold_Futures:
+    frequency: daily
+    measurement_type: level
+  ITACPIALLMINMEI:
+    frequency: monthly
+    measurement_type: level
+  ITA_HPI_REAL:
+    frequency: monthly
+    measurement_type: level
+  ITA_beta0:
+    frequency: daily
+    measurement_type: level
+  ITA_beta1:
+    frequency: daily
+    measurement_type: level
+  ITA_beta2:
+    frequency: daily
+    measurement_type: level
+  ITA_beta3:
+    frequency: daily
+    measurement_type: level
+  LME_METALS_INDEX:
+    frequency: monthly
+    measurement_type: level
+  LRHUTTTTDEM156S:
+    frequency: monthly
+    measurement_type: percent
+  LRHUTTTTESM156S:
+    frequency: monthly
+    measurement_type: percent
+  LRHUTTTTFRM156S:
+    frequency: monthly
+    measurement_type: percent
+  LRHUTTTTITM156S:
+    frequency: monthly
+    measurement_type: percent
+  M2SL:
+    frequency: monthly
+    measurement_type: level
+  MABMM301EZM189S:
+    frequency: daily
+    measurement_type: percent
+  MORTGAGE30US:
+    frequency: daily
+    measurement_type: percent
+  MOVE:
+    frequency: monthly
+    measurement_type: level
+  NAEXKP01DEQ661S:
+    frequency: quarterly
+    measurement_type: level
+  NAEXKP01ESQ661S:
+    frequency: quarterly
+    measurement_type: level
+  NAEXKP01FRQ661S:
+    frequency: quarterly
+    measurement_type: level
+  NAEXKP01ITQ661S:
+    frequency: quarterly
+    measurement_type: level
+  NAEXKP01USQ661S:
+    frequency: quarterly
+    measurement_type: level
+  NOMINAL_GDP_USA:
+    frequency: quarterly
+    measurement_type: level
+  OAT_Bund_Spread:
+    frequency: daily
+    measurement_type: spread
+  PALUMUSDM:
+    frequency: daily
+    measurement_type: level
+  PCOPPUSDM:
+    frequency: daily
+    measurement_type: level
+  PIORECRUSDM:
+    frequency: daily
+    measurement_type: level
+  PMAIZMTUSDM:
+    frequency: daily
+    measurement_type: level
+  PSOYBUSDQ:
+    frequency: daily
+    measurement_type: level
+  PWHEAMTUSDM:
+    frequency: daily
+    measurement_type: level
+  Price_to_income_DEU:
+    frequency: monthly
+    measurement_type: ratio
+  Price_to_income_ESP:
+    frequency: monthly
+    measurement_type: ratio
+  Price_to_income_FRA:
+    frequency: monthly
+    measurement_type: ratio
+  Price_to_income_ITA:
+    frequency: monthly
+    measurement_type: ratio
+  Price_to_income_USA:
+    frequency: monthly
+    measurement_type: ratio
+  Rent_to_income_ratio_DEU:
+    frequency: monthly
+    measurement_type: ratio
+  Rent_to_income_ratio_ESP:
+    frequency: monthly
+    measurement_type: ratio
+  Rent_to_income_ratio_FRA:
+    frequency: monthly
+    measurement_type: ratio
+  Rent_to_income_ratio_ITA:
+    frequency: monthly
+    measurement_type: ratio
+  Rent_to_income_ratio_USA:
+    frequency: monthly
+    measurement_type: ratio
+  SOFR_3m:
+    frequency: daily
+    measurement_type: percent
+  SWAPTION_VOL_DEU:
+    frequency: daily
+    measurement_type: level
+  SWAPTION_VOL_USA:
+    frequency: daily
+    measurement_type: level
+  Sovereign_spread_vs_Germany_USA:
+    frequency: daily
+    measurement_type: spread
+  TEDRATE:
+    frequency: monthly
+    measurement_type: percent
+  TED_SPREAD:
+    frequency: monthly
+    measurement_type: spread
+  TTF_GAS:
+    frequency: daily
+    measurement_type: percent
+  Treasury_Bund_Spread:
+    frequency: daily
+    measurement_type: spread
+  UNRATE:
+    frequency: monthly
+    measurement_type: percent
+  USA_HPI_REAL:
+    frequency: monthly
+    measurement_type: level
+  USA_beta0:
+    frequency: daily
+    measurement_type: level
+  USA_beta1:
+    frequency: daily
+    measurement_type: level
+  USA_beta2:
+    frequency: daily
+    measurement_type: level
+  USA_beta3:
+    frequency: daily
+    measurement_type: level
+  USD_BROAD_INDEX:
+    frequency: daily
+    measurement_type: level
+  USD_CNY:
+    frequency: daily
+    measurement_type: level
+  USD_JPY:
+    frequency: daily
+    measurement_type: level
+  V2X:
+    frequency: daily
+    measurement_type: level
+  VIXCLS:
+    frequency: daily
+    measurement_type: level
+  WALCL:
+    frequency: daily
+    measurement_type: percent
+  WTI_Crude_Futures:
+    frequency: daily
+    measurement_type: level
+  XLB:
+    frequency: daily
+    measurement_type: level
+  XLC:
+    frequency: daily
+    measurement_type: level
+  XLE:
+    frequency: daily
+    measurement_type: level
+  XLF:
+    frequency: daily
+    measurement_type: level
+  XLI:
+    frequency: daily
+    measurement_type: level
+  XLK:
+    frequency: daily
+    measurement_type: level
+  XLP:
+    frequency: daily
+    measurement_type: level
+  XLRE:
+    frequency: daily
+    measurement_type: level
+  XLU:
+    frequency: daily
+    measurement_type: level
+  XLV:
+    frequency: daily
+    measurement_type: level
+  XLY:
+    frequency: daily
+    measurement_type: level
+  ^FCHI:
+    frequency: daily
+    measurement_type: level
+  ^FTSEMIB:
+    frequency: daily
+    measurement_type: level
+  ^GDAXI:
+    frequency: daily
+    measurement_type: level
+  ^GSPC:
+    frequency: daily
+    measurement_type: level
+  ^IBEX:
+    frequency: daily
+    measurement_type: level
+  credit_spread_DEU:
+    frequency: daily
+    measurement_type: spread
+  credit_spread_ESP:
+    frequency: daily
+    measurement_type: spread
+  credit_spread_FRA:
+    frequency: daily
+    measurement_type: spread
+  credit_spread_ITA:
+    frequency: daily
+    measurement_type: spread

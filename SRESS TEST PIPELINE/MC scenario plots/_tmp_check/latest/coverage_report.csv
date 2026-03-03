@@ -1,0 +1,9 @@
+iso,block,expected_series,present_expected,missing_expected,missing_expected_list
+USA,banking_system,4,1,3,Bank_equity_index_USA;TEDRATE;WALCL
+USA,commodities,14,1,13,DCOILWTICO;DHHNGSP;FAO_AG_INDEX;GOLD_SPOT;Gold_Futures;PALUMUSDM;PCOPPUSDM;PIORECRUSDM;PMAIZMTUSDM;PSOYBUSDQ;PWHEAMTUSDM;TTF_GAS;WTI_Crude_Futures
+USA,external_fx,8,0,8,DEXINUS;DEXJPUS;DEXUSEU;DEXUSUK;GBP_USD;USD_CNY;USD_INR;USD_JPY
+USA,financial_markets,3,1,2,^GSPC;credit_spread_USA
+USA,macro,7,1,6,CPIAUCSL;GDPC1;M1SL;M2SL;NAEXKP01USQ661S;UNRATE
+USA,public_finance,7,1,6,CDS_5y_USA;Sovereign_spread_vs_Germany_USA;USA_beta0;USA_beta1;USA_beta2;USA_beta3
+USA,real_estate,4,0,4,MORTGAGE30US;Price_to_income_USA;Rent_to_income_ratio_USA;USA_HPI_REAL
+USA,systemic_stress,2,0,2,COMM_PAPER_SPREAD_USA;SWAPTION_VOL_USA

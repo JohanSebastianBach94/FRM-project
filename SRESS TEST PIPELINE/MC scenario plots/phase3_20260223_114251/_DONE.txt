@@ -1,0 +1,6 @@
+run=phase3_20260223_114251
+source=C:\Users\frank\Documents\FRM project\analysis_outputs\scenarios\phase3_20260223_114251\monte_carlo\daily_draws
+draw_ids=[13, 69, 71, 77, 84, 120, 128, 160, 191, 198]
+block_def=C:\Users\frank\Documents\FRM project\outputs\country_block_definition.json
+block_aggregate_style=quantile_bands
+factor_space=z

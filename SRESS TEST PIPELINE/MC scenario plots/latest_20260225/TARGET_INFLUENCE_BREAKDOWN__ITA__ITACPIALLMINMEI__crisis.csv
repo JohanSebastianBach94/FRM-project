@@ -1,0 +1,3 @@
+block,median_share,q10,q90,in_top6
+systemic_stress,1.0,1.0,1.0,True
+Other (sum of remaining),0.0,0.0,0.0,False

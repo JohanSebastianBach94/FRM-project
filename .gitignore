@@ -1,0 +1,39 @@
+﻿__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+.venv/
+.env/
+.vscode/
+.ipynb_checkpoints/
+data/
+data_repository/raw/
+data_repository/processed/
+outputs/
+backups/
+*.bak
+*.bak.csv
+
+# Logs / temp
+*.log
+temp/
+tmp*/
+tmp_*.py
+tmp_*.csv
+tmp_*.json
+tmp_*.txt
+temp_*.csv
+temp_*.json
+validation_log.txt
+
+# Generated analysis artifacts (reproducible but typically too large for git)
+analysis_outputs/
+
+# Large tuning snapshots
+DCC GARCH MODEL/results/tradeoff_snapshots/
+
+# Too large for GitHub without LFS
+DCC GARCH MODEL/results/adcc_correlation_time_series.csv
+DCC GARCH MODEL/results/blocks/**/adcc_correlation_time_series.csv

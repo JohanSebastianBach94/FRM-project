@@ -1,0 +1,9 @@
+iso,block,expected_series,present_expected,missing_expected,missing_expected_list
+USA,banking_system,2,2,0,
+USA,commodities,2,2,0,
+USA,external_fx,2,2,0,
+USA,financial_markets,2,2,0,
+USA,macro,2,2,0,
+USA,public_finance,2,2,0,
+USA,real_estate,2,2,0,
+USA,systemic_stress,3,3,0,

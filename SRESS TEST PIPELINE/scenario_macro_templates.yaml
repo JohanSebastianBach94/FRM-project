@@ -1,0 +1,168 @@
+# IMF/FSAP-style macro narrative templates (stylized unless calibrated)
+#
+# This file is an optional input to Step 10.1:
+#   python "SRESS TEST PIPELINE/10.1_macro_narrative_and_plots.py" --run-id <run_id> --macro-config "SRESS TEST PIPELINE/scenario_macro_templates.yaml"
+#
+# Semantics:
+# - Each macro variable is represented as a quarterly PATH of *deltas* vs baseline.
+# - Step 10.1 can also generate *levels* by combining baseline + deltas.
+# - Unless you provide calibrated baseline levels, baseline is treated as 0 and outputs are deltas only.
+#
+# Units convention:
+# - "pp" and "bp" are additive (level = baseline + delta)
+# - "%" is multiplicative as a percent shock on a baseline index (level = baseline * (1 + delta/100))
+#
+# WARNING:
+# - This is intentionally model-agnostic. Calibration to country macro models is a separate step.
+
+version: 1
+
+defaults:
+  horizon_quarters: 12
+  # Scenario ladder defines a shared severity axis across scenario families.
+  # Percentiles are interpreted in V2X standardized-innovation (residual) space.
+  scenario_ladder:
+    risk_on: 0.50
+    mild: 0.95
+    severe: 0.99
+  severity:
+    # Option A (default): derive a dimensionless severity scalar from Step 10 factor shocks
+    source: factor_shocks
+    reference_factor: V2X
+    normalize: scenario_median_peak_abs
+    clip: [0.5, 2.0]
+  iso_multipliers:
+    # Cross-country overlay example: periphery slightly harsher
+    ITA: 1.2
+    ESP: 1.2
+    DEU: 1.0
+    FRA: 1.0
+    USA: 0.9
+
+# Step 10.2 (macro -> factor innovations) configuration.
+#
+# This is intentionally strict:
+# - Step 10.2 will NOT guess target mappings.
+# - Step 10.2 will refuse inversion when Step 4 test_r2 is below min_test_r2.
+step10_2:
+  # Only these macro variables are used for inversion.
+  # Keep this set aligned with the Step 4 targets configured in config/step4_targets.yaml.
+  use_variables:
+    - cpi_infl_yoy
+    - unemployment_rate
+
+  # Optional per-ISO override for which macro variables are inverted.
+  # This is useful when some Step 4 macro targets remain low-quality (e.g., negative test_r2).
+  use_variables_by_iso:
+    # EU GDP mappings are currently unstable; invert only the better macro targets.
+    DEU: [unemployment_rate]
+    FRA: [unemployment_rate, cpi_infl_yoy]
+    ESP: [unemployment_rate, cpi_infl_yoy]
+    ITA: [cpi_infl_yoy]
+    # USA GDP mapping is still below the min_test_r2 gate; invert only the better targets.
+    USA: [cpi_infl_yoy, unemployment_rate]
+
+  # Minimum Step 4 out-of-sample R^2 required to permit inversion.
+  # 0.0 means: refuse any target that does worse than a constant mean forecast.
+  min_test_r2: 0.0
+
+  # Explicit mapping from macro variable -> Step 4 target column name.
+  # NOTE: targets are ISO-specific and must match analysis_outputs/feature_contributions_{ISO}.csv.
+  macro_to_target_by_iso:
+    DEU:
+      cpi_infl_yoy: DEUCPIALLMINMEI
+      unemployment_rate: DEU_UNRATE_EUROSTAT
+    FRA:
+      cpi_infl_yoy: FRACPIALLMINMEI
+      unemployment_rate: FRA_UNRATE_EUROSTAT
+    ESP:
+      cpi_infl_yoy: ESPCPIALLMINMEI
+      unemployment_rate: ESP_UNRATE_EUROSTAT
+    ITA:
+      cpi_infl_yoy: ITACPIALLMINMEI
+      unemployment_rate: ITA_UNRATE_EUROSTAT
+    USA:
+      cpi_infl_yoy: CPIAUCSL
+      unemployment_rate: UNRATE
+
+variables:
+  - variable: gdp_growth_yoy
+    units: pp
+    peak_at_severity_1: -1.5
+    shape: hump_trough_recover
+    baseline_levels:
+      DEU: 1.5
+      FRA: 1.4
+      ITA: 1.0
+      ESP: 1.2
+      USA: 2.0
+
+  - variable: cpi_infl_yoy
+    units: pp
+    peak_at_severity_1: -0.8
+    shape: hump_trough_recover
+    baseline_levels:
+      DEU: 2.0
+      FRA: 2.0
+      ITA: 2.0
+      ESP: 2.0
+      USA: 2.2
+
+  - variable: unemployment_rate
+    units: pp
+    peak_at_severity_1: 0.7
+    shape: lagged_hump
+    baseline_levels:
+      DEU: 4.0
+      FRA: 7.5
+      ITA: 8.0
+      ESP: 11.0
+      USA: 4.2
+
+  - variable: policy_rate
+    units: bp
+    peak_at_severity_1: -75
+    shape: front_loaded_revert
+    baseline_levels:
+      DEU: 350
+      FRA: 350
+      ITA: 350
+      ESP: 350
+      USA: 450
+
+  - variable: equity_price
+    units: "%"
+    peak_at_severity_1: -18
+    shape: front_loaded_partial_recover
+    baseline_levels:
+      DEU: 100
+      FRA: 100
+      ITA: 100
+      ESP: 100
+      USA: 100
+
+  - variable: sovereign_spread
+    units: bp
+    peak_at_severity_1: 180
+    shape: front_loaded_revert
+    baseline_levels:
+      DEU: 30
+      FRA: 50
+      ITA: 140
+      ESP: 110
+      USA: 40
+
+scenarios:
+  - scenario_id: risk_on
+    description: "Risk-on / baseline-like (median V2X severity)"
+    ladder_level: risk_on
+
+  - scenario_id: risk_off_global
+    description: "Global risk-off with tighter financial conditions"
+    ladder_level: severe
+
+  - scenario_id: mild_risk_off
+    description: "Milder global risk-off"
+    ladder_level: mild
+    # You can optionally scale scenario-specific severity via a multiplier
+    scenario_severity_multiplier: 0.6

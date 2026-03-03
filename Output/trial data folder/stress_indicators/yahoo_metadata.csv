@@ -1,0 +1,28 @@
+ticker,name,category,first_date,last_date,observations
+BZ=F,Brent_Crude_Futures,commodity,2007-07-30,2025-10-30,"Ticker
+BZ=F    4543
+dtype: int64"
+CL=F,WTI_Crude_Futures,commodity,2000-08-23,2025-10-30,"Ticker
+CL=F    6325
+dtype: int64"
+GC=F,Gold_Futures,commodity,2000-08-30,2025-10-30,"Ticker
+GC=F    6316
+dtype: int64"
+^GDAXI,DAX,equity_index,1990-01-02,2025-10-30,"Ticker
+^GDAXI    9067
+dtype: int64"
+^IBEX,IBEX_35,equity_index,1993-07-12,2025-10-30,"Ticker
+^IBEX    8186
+dtype: int64"
+^GSPC,SP500,equity_index,1990-01-02,2025-10-30,"Ticker
+^GSPC    9025
+dtype: int64"
+EURGBP=X,EUR_GBP,fx,1999-01-04,2025-10-30,"Ticker
+EURGBP=X    6987
+dtype: int64"
+EURCHF=X,EUR_CHF,fx,2003-01-23,2025-10-30,"Ticker
+EURCHF=X    5910
+dtype: int64"
+EURJPY=X,EUR_JPY,fx,2003-01-23,2025-10-30,"Ticker
+EURJPY=X    5912
+dtype: int64"

@@ -1,0 +1,90 @@
+{
+  "iso": "FRA",
+  "frequency": "daily",
+  "factor_space": "literature",
+  "inputs": {
+    "literature_daily": {
+      "path": "C:\\Users\\frank\\Documents\\FRM project\\analysis_outputs\\literature_factors\\FRA_block_factors_M_daily.csv",
+      "mtime_epoch": 1771868490.3525257,
+      "mtime_utc": "2026-02-23T17:41:30.352526+00:00",
+      "size_bytes": 1147570,
+      "sha256": "8ce3d0d743f52886475583b88bc8106b7505df34dba8676a32a5f5b75350f343"
+    },
+    "literature_resampled": {
+      "path": "C:\\Users\\frank\\Documents\\FRM project\\analysis_outputs\\literature_factors\\FRA_block_factors_M_resampled.csv",
+      "mtime_epoch": 1771863882.4196353,
+      "mtime_utc": "2026-02-23T16:24:42.419635+00:00",
+      "size_bytes": 53238,
+      "sha256": "c928f5079d42ed7923c8aeee360210c9e4d397a452ca2268edfb10c0740708df"
+    },
+    "literature_manifest": {
+      "path": "C:\\Users\\frank\\Documents\\FRM project\\analysis_outputs\\literature_factors\\FRA_literature_manifest.json",
+      "mtime_epoch": 1771868490.2362366,
+      "mtime_utc": "2026-02-23T17:41:30.236237+00:00",
+      "size_bytes": 12978,
+      "sha256": "2858eab3c07af8d852cafdc983be5da3b8cc44cf95ed47375786aab46c0e9460"
+    }
+  },
+  "preflight": {
+    "iso": "FRA",
+    "literature_dir": "C:\\Users\\frank\\Documents\\FRM project\\analysis_outputs\\literature_factors",
+    "literature_freq": "M",
+    "daily_path": "C:\\Users\\frank\\Documents\\FRM project\\analysis_outputs\\literature_factors\\FRA_block_factors_M_daily.csv",
+    "resampled_path": "C:\\Users\\frank\\Documents\\FRM project\\analysis_outputs\\literature_factors\\FRA_block_factors_M_resampled.csv",
+    "manifest_path": "C:\\Users\\frank\\Documents\\FRM project\\analysis_outputs\\literature_factors\\FRA_literature_manifest.json",
+    "stale_daily_detected": false,
+    "force": true
+  },
+  "model": "ADCC",
+  "fit_method": "opt",
+  "params": {
+    "a": 0.05,
+    "b": 0.9,
+    "g": 0.05
+  },
+  "persistence": 0.9750000000000001,
+  "loglikelihood": 63094.04514957508,
+  "fit_info": {
+    "fit_method": "opt",
+    "model_type": "adcc",
+    "opt": {
+      "success": true,
+      "status": 0,
+      "message": "Optimization terminated successfully",
+      "nit": 5,
+      "max_a": null,
+      "large_a_penalty_lambda": 0.0,
+      "large_a_threshold": 0.2
+    }
+  },
+  "corr_diag": {
+    "spd_projection_dates": 0
+  },
+  "columns": [
+    "FRA_macro_f1",
+    "FRA_macro_f2",
+    "FRA_real_estate_f1",
+    "FRA_real_estate_f2",
+    "FRA_public_finance_f1",
+    "FRA_public_finance_f2",
+    "FRA_external_fx_f1",
+    "FRA_external_fx_f2",
+    "FRA_financial_markets_f1",
+    "FRA_financial_markets_f2",
+    "FRA_banking_system_f1",
+    "FRA_banking_system_f2",
+    "FRA_systemic_stress_f1",
+    "FRA_systemic_stress_f2",
+    "FRA_commodities_f1",
+    "FRA_commodities_f2",
+    "V2X",
+    "Rt_daily"
+  ],
+  "start": "2000-08-31",
+  "end": "2025-09-19",
+  "residuals_shape": [
+    6422,
+    18
+  ],
+  "pair_count": 153
+}

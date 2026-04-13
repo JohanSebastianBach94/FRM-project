@@ -636,3 +636,16 @@ IMF,IFS:USA.NGDP_R,USA,annual,2026-04-12T03:09:45.525301,FAIL,<urlopen error tim
 IMF,IFS:ITA.NGDP_R,ITA,annual,2026-04-12T03:10:20.671432,FAIL,<urlopen error timed out>,IMF IFS nominal GDP (Italy)
 BIS/CDIS,BIS:LBS_D_PUB,,quarterly,2026-04-12T03:10:33.699794,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/structural/bis_lbs_d_pub.csv,BIS Locational Banking Statistics (public CSV)
 BIS/CDIS,CDIS:CDIS_D_PUB,,annual,2026-04-12T03:10:46.407022,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/structural/bis_cdis_d_pub.csv,IMF/BIS Coordinated Direct Investment Survey (public CSV)
+WorldBank,GC.DOD.TOTL.GD.ZS,FRA,annual,2026-04-13T03:10:10.752460,FAIL,The read operation timed out,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,DEU,annual,2026-04-13T03:10:45.903372,FAIL,The read operation timed out,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,ITA,annual,2026-04-13T03:11:21.060354,FAIL,The read operation timed out,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,ESP,annual,2026-04-13T03:11:56.200414,FAIL,The read operation timed out,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,USA,annual,2026-04-13T03:12:31.355761,FAIL,The read operation timed out,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,GBR,annual,2026-04-13T03:13:06.510688,FAIL,The read operation timed out,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,CHE,annual,2026-04-13T03:13:41.662588,FAIL,The read operation timed out,general government gross debt % GDP
+ECB,BSI:M.U2.N.A.A20.A.1.U2.3000.Z01.E,,monthly,2026-04-13T03:13:52.021541,FAIL,<urlopen error [Errno -2] Name or service not known>,"ECB BSI - Loans to NFCs (Euro area), SDMX guideline syntax (last error: <urlopen error [Errno -2] Name or service not known>)"
+ECB,BSI:M.U2.N.A.A20.A.1.U2.1000.Z01.E,,monthly,2026-04-13T03:14:02.555603,FAIL,<urlopen error [Errno -2] Name or service not known>,ECB BSI - Loans to households (Euro area) (last error: <urlopen error [Errno -2] Name or service not known>)
+IMF,IFS:USA.NGDP_R,USA,annual,2026-04-13T03:14:37.678045,FAIL,<urlopen error timed out>,IMF IFS nominal GDP (guideline CompactData syntax)
+IMF,IFS:ITA.NGDP_R,ITA,annual,2026-04-13T03:15:12.896365,FAIL,<urlopen error timed out>,IMF IFS nominal GDP (Italy)
+BIS/CDIS,BIS:LBS_D_PUB,,quarterly,2026-04-13T03:15:26.126336,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/structural/bis_lbs_d_pub.csv,BIS Locational Banking Statistics (public CSV)
+BIS/CDIS,CDIS:CDIS_D_PUB,,annual,2026-04-13T03:15:39.336623,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/structural/bis_cdis_d_pub.csv,IMF/BIS Coordinated Direct Investment Survey (public CSV)

@@ -1,0 +1,36 @@
+\beamer@sectionintoc {1}{Introduction \& Motivation}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{The 2026 Iran War Commodity Shock}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Analytical Framework}{4}{0}{1}
+\beamer@sectionintoc {2}{Data}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{Data Sources and Estimation Sample}{5}{0}{2}
+\beamer@sectionintoc {3}{The GPR Index}{6}{0}{3}
+\beamer@subsectionintoc {3}{1}{Caldara--Iacoviello Construction: Threats vs Acts}{6}{0}{3}
+\beamer@sectionintoc {4}{Commodity Price Model (ARX-Koyck)}{7}{0}{4}
+\beamer@subsectionintoc {4}{1}{The Koyck ARX Equation}{7}{0}{4}
+\beamer@subsectionintoc {4}{2}{Sparse Network Extension}{8}{0}{4}
+\beamer@subsectionintoc {4}{3}{Estimation Results}{9}{0}{4}
+\beamer@subsectionintoc {4}{4}{GPR Coefficients: Other Commodities}{10}{0}{4}
+\beamer@subsectionintoc {4}{5}{BIC Model Comparison}{11}{0}{4}
+\beamer@sectionintoc {5}{Volatility Model (GJR-GARCH)}{12}{0}{5}
+\beamer@subsectionintoc {5}{1}{GJR-GARCH Specification and Leverage Effect}{12}{0}{5}
+\beamer@subsectionintoc {5}{2}{Estimated Parameters}{13}{0}{5}
+\beamer@sectionintoc {6}{Correlation Model (DCC-MIDAS)}{14}{0}{6}
+\beamer@subsectionintoc {6}{1}{Cross-Commodity Shock Correlation: Testing the Independence Assumption}{14}{0}{6}
+\beamer@subsectionintoc {6}{2}{From DCC to DCC-MIDAS}{15}{0}{6}
+\beamer@subsectionintoc {6}{3}{Beta Polynomial MIDAS Weighting}{16}{0}{6}
+\beamer@subsectionintoc {6}{4}{Estimated Parameters}{17}{0}{6}
+\beamer@sectionintoc {7}{Scenario Design}{18}{0}{7}
+\beamer@subsectionintoc {7}{1}{AR(1) Regime-Shift Paths}{18}{0}{7}
+\beamer@subsectionintoc {7}{2}{Calibration to Historical Events}{19}{0}{7}
+\beamer@sectionintoc {8}{Simulation Results}{20}{0}{8}
+\beamer@subsectionintoc {8}{1}{12-Month Price Forecasts: Cross-Scenario Summary}{20}{0}{8}
+\beamer@subsectionintoc {8}{2}{Energy: Scenario Fan Charts}{21}{0}{8}
+\beamer@subsectionintoc {8}{3}{Fertilizers \& Agriculture: Scenario Fan Charts}{22}{0}{8}
+\beamer@subsectionintoc {8}{4}{Metals: Scenario Fan Charts}{23}{0}{8}
+\beamer@subsectionintoc {8}{5}{Fan Chart Commentary}{24}{0}{8}
+\beamer@subsectionintoc {8}{6}{Fertilizer Indirect Transmission: Network Decomposition}{25}{0}{8}
+\beamer@sectionintoc {9}{Country Impact}{26}{0}{9}
+\beamer@subsectionintoc {9}{1}{Comtrade Trade-Balance Methodology}{26}{0}{9}
+\beamer@subsectionintoc {9}{2}{Country Exposure Under Escalation}{27}{0}{9}
+\beamer@sectionintoc {10}{Conclusions}{28}{0}{10}
+\beamer@subsectionintoc {10}{1}{Key Findings and Limitations}{28}{0}{10}

@@ -1,0 +1,38 @@
+﻿%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Minimal clean Beamer style -- no outer theme, single slim footer
+
+\usetheme{default}
+\useinnertheme{circles}
+\usefonttheme{serif}
+
+%% -- Remove navigation symbols -----------------------------------------------
+\setbeamertemplate{navigation symbols}{}
+
+%% -- Frame title with hairline rule ------------------------------------------
+\setbeamertemplate{frametitle}{%
+  \vskip2pt%
+  \usebeamerfont{frametitle}\insertframetitle\strut%
+  \vskip-1pt%
+  \leaders\vrule width \textwidth\vskip0.4pt%
+  \vskip3pt%
+  \nointerlineskip
+}
+
+%% -- Slim footer: short title (left) + page/total (right) --------------------
+\setbeamercolor{footline slim}{fg=gray!70}
+
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.70\paperwidth,ht=2ex,dp=1ex,left]{footline slim}%
+      \hspace*{2ex}{\tiny\color{gray!70}%
+        F.~Guidetti \quad \insertshorttitle}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.30\paperwidth,ht=2ex,dp=1ex,right]{footline slim}%
+      {\tiny\color{gray!70}\insertframenumber\,/\,\inserttotalframenumber}%
+      \hspace*{2ex}%
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

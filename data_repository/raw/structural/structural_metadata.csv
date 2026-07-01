@@ -1663,3 +1663,16 @@ IMF,IFS:USA.NGDP_R,USA,annual,2026-06-30T03:12:01.261307,FAIL,<urlopen error [Er
 IMF,IFS:ITA.NGDP_R,ITA,annual,2026-06-30T03:12:06.541155,FAIL,<urlopen error [Errno -2] Name or service not known>,IMF IFS nominal GDP (Italy)
 BIS/CDIS,BIS:LBS_D_PUB,,quarterly,2026-06-30T03:12:20.193965,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/structural/bis_lbs_d_pub.csv,BIS Locational Banking Statistics (public CSV)
 BIS/CDIS,CDIS:CDIS_D_PUB,,annual,2026-06-30T03:12:37.634037,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/structural/bis_cdis_d_pub.csv,IMF/BIS Coordinated Direct Investment Survey (public CSV)
+WorldBank,GC.DOD.TOTL.GD.ZS,FRA,annual,2026-07-01T03:13:09.803520,FAIL,HTTP Error 502: Bad Gateway,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,DEU,annual,2026-07-01T03:13:15.022297,FAIL,HTTP Error 502: Bad Gateway,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,ITA,annual,2026-07-01T03:13:20.240302,FAIL,HTTP Error 502: Bad Gateway,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,ESP,annual,2026-07-01T03:13:25.466620,FAIL,HTTP Error 502: Bad Gateway,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,USA,annual,2026-07-01T03:13:30.657578,FAIL,HTTP Error 502: Bad Gateway,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,GBR,annual,2026-07-01T03:13:35.969883,FAIL,HTTP Error 502: Bad Gateway,general government gross debt % GDP
+WorldBank,GC.DOD.TOTL.GD.ZS,CHE,annual,2026-07-01T03:13:41.257580,FAIL,HTTP Error 502: Bad Gateway,general government gross debt % GDP
+ECB,BSI:M.U2.N.A.A20.A.1.U2.3000.Z01.E,,monthly,2026-07-01T03:13:51.986211,FAIL,<urlopen error [Errno -2] Name or service not known>,"ECB BSI - Loans to NFCs (Euro area), SDMX guideline syntax (last error: <urlopen error [Errno -2] Name or service not known>)"
+ECB,BSI:M.U2.N.A.A20.A.1.U2.1000.Z01.E,,monthly,2026-07-01T03:14:02.333361,FAIL,<urlopen error [Errno -2] Name or service not known>,ECB BSI - Loans to households (Euro area) (last error: <urlopen error [Errno -2] Name or service not known>)
+IMF,IFS:USA.NGDP_R,USA,annual,2026-07-01T03:14:07.442518,FAIL,<urlopen error [Errno -2] Name or service not known>,IMF IFS nominal GDP (guideline CompactData syntax)
+IMF,IFS:ITA.NGDP_R,ITA,annual,2026-07-01T03:14:12.564292,FAIL,<urlopen error [Errno -2] Name or service not known>,IMF IFS nominal GDP (Italy)
+BIS/CDIS,BIS:LBS_D_PUB,,quarterly,2026-07-01T03:14:27.073830,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/structural/bis_lbs_d_pub.csv,BIS Locational Banking Statistics (public CSV)
+BIS/CDIS,CDIS:CDIS_D_PUB,,annual,2026-07-01T03:14:43.083449,OK,/home/runner/work/FRM-project/FRM-project/data_repository/raw/structural/bis_cdis_d_pub.csv,IMF/BIS Coordinated Direct Investment Survey (public CSV)
